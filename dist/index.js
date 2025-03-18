@@ -1,4 +1,4 @@
-import "../node_modules/jquery/dist/jquery.js";
+//import "../node_modules/jquery/dist/jquery.js";
 const API_KEY = "";
 
 //how tf do i not make it need to do this bru
