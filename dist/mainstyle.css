@@ -157,6 +157,34 @@
     .gamerCard:hover {
         width: 250%;
     }
+    .lexie {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        z-index: -1;
+        font-size: 6em;
+        color: #ffffff;
+        -webkit-text-stroke: .01em #f08000;
+        background-image: radial-gradient(circle at center center,
+            #ff9900,
+            #e5e5f7),
+        repeating-radial-gradient(circle at center top,
+            #f68eff,
+            #ff2437,
+            .2em,
+            transparent .2em,
+            transparent .1em),
+        repeating-radial-gradient(circle at center bottom,
+            #f68eff,
+            #ff2437,
+            .2em,
+            transparent .2em,
+            transparent .1em);
+        background-blend-mode: difference;
+        text-shadow: .1em 0 0 #fff6d0,
+        .2em 0 0 #fff0af,
+        .3em 0 0 #ffe676c9,
+        .4em 0 0 #ffdf5071,
+        .5em 0 0 #ffd41348;
+    }
 
 /* Page Specific */
     .blogGrid {
