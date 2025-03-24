@@ -150,6 +150,13 @@
         transform: translateX(var(--xpos)) scaleX(var(--flip));
         width: 25px;
     }
+    .gamerCard {
+        width: 100%;
+        transition: .5s;
+    }
+    .gamerCard:hover {
+        width: 250%;
+    }
 
 /* Page Specific */
     .blogGrid {
