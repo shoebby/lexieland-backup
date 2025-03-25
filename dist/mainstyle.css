@@ -152,10 +152,6 @@
     }
     .gamerCard {
         width: 100%;
-        transition: .5s;
-    }
-    .gamerCard:hover {
-        width: 250%;
     }
     .lexie {
         font-family: Georgia, 'Times New Roman', Times, serif;
