@@ -103,11 +103,19 @@
         vertical-align: baseline;
     }
     .box {
-        background-color: black;
         border: 2px solid darkgray;
         border-radius: 4px;
         padding: 10px 15px;
         margin: 5px;
+
+        background-image:
+        repeating-radial-gradient(circle at top center,
+            #1a1a1a,
+            #00000088,
+            .5em,
+            transparent .5em,
+            transparent .5em);
+        background-blend-mode: difference;
     }
     .box::after {
         content: "";
