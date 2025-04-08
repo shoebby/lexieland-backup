@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <title>Multi-Layered Recursion</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="create and print layers and layers of fractal trees">
+        <meta name="author" content="shoebby">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <style>
+            :root {
+                --height: 4px;
+                --borderRad: 0px;
+                --blendMode_mix: normal;
+                --blendMode_bg: normal;
+                --branchBackground: white;
+                --borderWidth: 0px;
+                --borderColour: black;
+                --borderType: none;
+            }
+
+            body {
+                overflow: hidden;
+                background-color: white;
+            }
+
+            .branch {
+                position: absolute;
+                left: 100%;
+                transform-origin: 0% 50%;
+                display: flex;
+                box-sizing: border-box;
+
+                width: var(--w);
+                transform: rotate(var(--a));
+                background-color: rgba(var(--colorR), var(--colorG), var(--colorB), var(--colorA));
+
+                height: var(--height);
+
+                border-radius: var(--borderRad);
+                border-width: var(--borderWidth);
+                border-style: var(--borderType);
+                border-color: var(--borderColour);
+                background: var(--branchBackground);
+
+                mix-blend-mode: var(--blendMode_mix);
+                background-blend-mode: var(--blendMode_bg);
+            }
+
+            .root {
+                left: 50%;
+                top: 0%;
+                transform-origin: 0% 0%;
+            }
+
+            .flower {
+                position: absolute;
+                display: flex;
+                box-sizing: border-box;
+
+                left: 100%;
+                top: 50%;
+                transform-origin: 0% 25%;
+                transform: Rotate(180deg);
+
+                width: 40px;
+                height: 40px;
+                border-radius: 50px;
+                
+                background: url('https://tr.rbxcdn.com/180DAY-e286a18d3f9c2cf140a283a923963d85/420/420/Hat/Webp/noFilter');
+                background-size: 40px 40px;
+            }
+
+            @media print
+            {    
+                .no-print, .no-print *
+                {
+                    display: none !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div style="position: absolute;z-index: 100;" class="no-print">
+            <p>When you're done, press CTRL+P and print!</p>
+            <div>
+                <h2 style="margin: 0;">Fractal Variables</h2>
+
+                <label for="startLength">Starting Length (pixels)</label>
+                <input type="number" id="startLength" min="0" max="500" value="150">
+                <br>
+                <label for="angleLeft">Left Angle (degrees)</label>
+                <input type="number" id="angleLeft" min="0" max="360" value="45">
+                <br>
+                <label for="angleRight">Right Angle (degrees)</label>
+                <input type="number" id="angleRight" min="0" max="360" value="45">
+                <br>
+                <label for="ratio">Ratio (/100)</label>
+                <input type="number" id="ratio" min="0" max="100" value="75">
+                <br>
+                <label for="depth">Depth</label>
+                <input type="number" id="depth" min="0" max="20" value="8">
+            </div>
+            <br>
+            <div>
+                <h2 style="margin: 0;">Style Variables</h2>
+
+                <label for="br_height">Height (pixels): </label>
+                <input type="number" id="br_height" value="4">
+                <br>
+                <label for="br_borderRadius">Border Radius (pixels): </label>
+                <input type="number" id="br_borderRadius" value="0">
+                <br><br>
+                <i>you can build a background <a href="https://colorbeta.com/">here</a></i>
+                <br>
+                <label for="br_background">Branch Background: </label>
+                <br>
+                <textarea id="br_background" rows="4" cols="40">black</textarea>
+                <br>
+                <label for="br_blendMode_mix">Mix Blend Mode: </label>
+                <select id="br_blendMode_mix" name="blend modes">
+                    <option value="normal">normal</option>
+                    <option value="multiply">multiply</option>
+                    <option value="screen">screen</option>
+                    <option value="overlay">overlay</option>
+                    <option value="darken">darken</option>
+                    <option value="lighten">lighten</option>
+                    <option value="color-dodge">color-dodge</option>
+                    <option value="color-burn">color-burn</option>
+                    <option value="hard-light">hard-light</option>
+                    <option value="soft-light">soft-light</option>
+                    <option value="difference">difference</option>
+                    <option value="exclusion">exclusion</option>
+                    <option value="hue">hue</option>
+                    <option value="saturation">saturation</option>
+                    <option value="color">color</option>
+                    <option value="luminosity">luminosity</option>
+                    <option value="plus-darker">plus-darker</option>
+                    <option value="plus-lighter">plus-lighter</option>
+                </select>
+                <br>
+                <label for="br_blendMode_bg">Background Blend Mode: </label>
+                <select id="br_blendMode_bg" name="blend modes">
+                    <option value="normal">normal</option>
+                    <option value="multiply">multiply</option>
+                    <option value="screen">screen</option>
+                    <option value="overlay">overlay</option>
+                    <option value="darken">darken</option>
+                    <option value="lighten">lighten</option>
+                    <option value="color-dodge">color-dodge</option>
+                    <option value="color-burn">color-burn</option>
+                    <option value="hard-light">hard-light</option>
+                    <option value="soft-light">soft-light</option>
+                    <option value="difference">difference</option>
+                    <option value="exclusion">exclusion</option>
+                    <option value="hue">hue</option>
+                    <option value="saturation">saturation</option>
+                    <option value="color">color</option>
+                    <option value="luminosity">luminosity</option>
+                    <option value="plus-darker">plus-darker</option>
+                    <option value="plus-lighter">plus-lighter</option>
+                </select>
+                <br><br>
+                <i>border types: none, hidden, dotted, dashed, solid,<br>double, groove, ridge, inset, outset</i>
+                <br>
+                <label for="br_borderType">Border Type: </label>
+                <br>
+                <textarea id="br_borderType" rows="1" cols="40">none</textarea>
+                <br>
+                <label for="br_borderWidth">Border Width (pixels): </label>
+                <input type="number" id="br_borderWidth" value="0">
+                <br>
+                <label for="br_borderColour">Border Colour: </label>
+                <br>
+                <textarea id="br_borderColour" rows="4" cols="40">black</textarea>
+            </div>
+            <br>
+            <input type="button" value="regenerate" onclick="initTree();">
+            <br><br>
+            <input type="button" value="clear" onclick="destroyTree();">
+            <br><br>
+        </div>
+
+        <script>
+            var depthStep;
+
+            const input_startLength = document.getElementById("startLength");
+            const input_angleLeft = document.getElementById("angleLeft");
+            const input_angleRight = document.getElementById("angleRight");
+            const input_ratio = document.getElementById("ratio");
+            const input_depth = document.getElementById("depth");
+
+            var startLength = input_startLength.value
+            var angleLeft = input_angleLeft.value;
+            var angleRight = input_angleRight.value;
+            var ratio = input_ratio.value / 100;
+            var depth = input_depth.value;
+
+            input_startLength.oninput = function () {
+                startLength = this.value;
+                initTree();
+            }
+            input_angleLeft.oninput = function () {
+                angleLeft = this.value;
+                initTree();
+            }
+            input_angleRight.oninput = function () {
+                angleRight = this.value;
+                initTree();
+            }
+            input_ratio.oninput = function () {
+                ratio = this.value / 100;
+                initTree();
+            }
+            input_depth.oninput = function () {
+                depth = this.value;
+                initTree();
+            }
+
+            const input_style_branchHeight = document.getElementById("br_height");
+            const input_style_branchBorderRadius = document.getElementById("br_borderRadius");
+            const input_style_branchBlendMode_mix = document.getElementById("br_blendMode_mix");
+            const input_style_branchBlendMode_bg = document.getElementById("br_blendMode_bg");
+            const input_style_branchBackground = document.getElementById("br_background");
+
+            const input_style_branchBorderWidth = document.getElementById("br_borderWidth");
+            const input_style_branchBorderColour = document.getElementById("br_borderColour");
+            const input_style_branchBorderType = document.getElementById("br_borderType");
+
+            document.documentElement.style.setProperty("--height", input_style_branchHeight.value + "px");
+            document.documentElement.style.setProperty("--borderRad", input_style_branchBorderRadius.value + "px");
+            document.documentElement.style.setProperty("--blendMode_mix", input_style_branchBlendMode_mix.value);
+            document.documentElement.style.setProperty("--blendMode_bg", input_style_branchBlendMode_bg.value);
+            document.documentElement.style.setProperty("--branchBackground", input_style_branchBackground.value);
+            document.documentElement.style.setProperty("--borderWidth", input_style_branchBorderWidth.value + "px");
+            document.documentElement.style.setProperty("--borderColour", input_style_branchBorderColour.value);
+            document.documentElement.style.setProperty("--borderType", input_style_branchBorderType.value);
+
+            input_style_branchHeight.oninput = function () {
+                document.documentElement.style.setProperty("--height", this.value + "px");
+            }
+            input_style_branchBorderRadius.oninput = function () {
+                document.documentElement.style.setProperty("--borderRad", this.value + "px");
+            }
+            input_style_branchBlendMode_bg.oninput = function () {
+                document.documentElement.style.setProperty("--blendMode_bg", this.value);
+            }
+            input_style_branchBlendMode_mix.oninput = function () {
+                document.documentElement.style.setProperty("--blendMode_mix", this.value);
+            }
+            input_style_branchBackground.oninput = function () {
+                document.documentElement.style.setProperty("--branchBackground", this.value);
+            }
+            input_style_branchBorderWidth.oninput = function () {
+                document.documentElement.style.setProperty("--borderWidth", this.value + "px");
+            }
+            input_style_branchBorderColour.oninput = function () {
+                document.documentElement.style.setProperty("--borderColour", this.value);
+            }
+            input_style_branchBorderType.oninput = function () {
+                document.documentElement.style.setProperty("--borderType", this.value);
+            }
+
+            function getRandomIntInclusive(min, max) {
+                const minCeiled = Math.ceil(min);
+                const maxFloored = Math.floor(max);
+                return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+            }
+
+            function getRandomArbitrary(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            function initTree() {
+                destroyTree();
+                var startAngle = 90;
+                depthstep = 255 / depth;
+                tree(startLength, startAngle, depth, null, null, ratio);
+            }
+
+            function destroyTree() {
+                if (document.getElementById("treeBranch") == null)
+                    return;
+
+                document.body.removeChild(document.getElementById("treeBranch"));
+            }
+
+            function checkForFlower(targetBranch) {
+                if (getRandomIntInclusive(1,2) == 2) {
+                    createFlower(targetBranch);
+                    checkForFlower(targetBranch);
+                }
+            }
+
+            function createFlower(parentBranch) {
+                const newFlower = document.createElement("div");
+                newFlower.classList.add("flower");
+                parentBranch.appendChild(newFlower);
+
+                newFlower.style.left = getRandomIntInclusive(0,100) + "%";
+                newFlower.style.top = getRandomIntInclusive(0,100) + "%";
+            }
+
+            function tree(startLength, startRot, depth, parent, angle, ratio) {
+                if (depth == 0) {
+                    createFlower(parent);
+                    return;
+                }
+
+                const newBranch = document.createElement("div");
+                newBranch.classList.add("branch");
+                
+                if (parent != null) {
+                    parent.appendChild(newBranch);
+
+                    const newAngle = getRandomIntInclusive(0, angle);
+                    const newRatio = getRandomArbitrary(0.6, ratio);
+
+                    newBranch.style.setProperty('--w', parent.offsetWidth * newRatio + "px");
+                    newBranch.style.setProperty('--a', newAngle + "deg");
+
+                } else if (parent == null) {
+                    newBranch.setAttribute("id", "treeBranch"); 
+                    newBranch.classList.add("root");
+                    document.body.appendChild(newBranch);
+
+                    newBranch.style.setProperty('--w', startLength + "px");
+                    newBranch.style.setProperty('--a', startRot + "deg");
+                }
+                newBranch.style.setProperty('--colorR', 255);
+                newBranch.style.setProperty('--colorG', 255 - (depth * depthstep));
+                newBranch.style.setProperty('--colorB', 0);
+                newBranch.style.setProperty('--colorA', 1);
+
+                checkForFlower(newBranch);
+
+                parent = newBranch;
+                tree(startLength, startRot, depth - 1, newBranch, angleLeft, ratio);
+                tree(startLength, startRot, depth - 1, newBranch, -angleRight, ratio);
+            }
+        </script>
+    <body>
