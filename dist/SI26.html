@@ -9,6 +9,7 @@
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <style>
             :root {
+                --styleBoxWidth: 20%;
                 /* branch vars */
                 --branchWidth: 4px;
                 --branchBorderRad: 0px;
@@ -25,6 +26,13 @@
             body {
                 /* overflow: hidden; */
                 background-color: white;
+            }
+
+            .styleVarBox {
+                position: absolute;
+                z-index: 100;
+                width: var(--styleBoxWidth);
+                right: 0%;
             }
 
             .settingsBox {
@@ -190,16 +198,16 @@
             <br>
         </div>
         <!-- Styling Menu -->
-        <div style="position: absolute;z-index: 100; width: 20%; right: 0%;" class="no-print">
+        <div class="styleVarBox no-print">
             <h2 style="margin: 0;">Style Variables</h2>
-            <div class="settingsBox">
-                <div id="branchStyleVars">
+            <div class="settingsBox" style="display: flex;">
+                <div id="branchStyleVars" style="flex: 1">
                     <h3 style="margin: 0;">Branches</h3>
                     <input type="checkbox" id="toggleSquareBranches">
-                    <label for="toggleSquareBranches">thickness == length?</label>
+                    <label for="toggleSquareBranches">width == height?</label>
                     <br>
                     <div id="branchThickVars">
-                        <label for="br_height">Thickness (pixels): </label>
+                        <label for="br_height">Width (pixels): </label>
                         <input type="number" id="br_height" value="4">
                     </div>
                     
@@ -226,7 +234,7 @@
                         <br>
                         <label for="br_background">Background: </label>
                         <br>
-                        <textarea id="br_background" rows="4" cols="40">black</textarea>
+                        <textarea id="br_background" rows="4" cols="47">black</textarea>
                         <br>
                         <label for="br_blendMode_mix">Mix Blend Mode: </label>
                         <select id="br_blendMode_mix" name="blend modes">
@@ -279,8 +287,10 @@
                             <option value="3">custom</option>
                         </select>
                         <br>
-                        <label for="br_bgSize_custom">Custom background size: </label>
-                        <input type="text" id="br_bgSize_custom" value="50px 50px">
+                        <div id="customBgSizeVar">
+                            <label for="br_bgSize_custom">Custom background size: </label>
+                            <input type="text" id="br_bgSize_custom" value="50px 50px">
+                        </div>
                         <div class="settingsBox" name="depth gradient">
                             <input type="checkbox" id="br_depthBasedBg">
                             <label for="br_depthBasedBg">Depth-based background colour?</label>
@@ -295,7 +305,9 @@
                         </div>
                     </div>
                     <div class="settingsBox" name="border vars">
-                        <P style="margin-bottom: 10px; margin-top: 0;"><i>Border types: none, hidden, dotted, dashed, solid,<br>double, groove, ridge, inset, outset</i></P>
+                        <P style="margin-bottom: 10px; margin-top: 0;">
+                            <i>Border types: none, hidden, dotted, dashed, solid,<br>double, groove, ridge, inset, outset</i>
+                        </P>
                         <label for="br_borderType">Border Type: </label>
                         <br>
                         <textarea id="br_borderType" rows="1" cols="40">none</textarea>
@@ -305,10 +317,10 @@
                         <br>
                         <label for="br_borderColour">Border Colour: </label>
                         <br>
-                        <textarea id="br_borderColour" rows="4" cols="40">black</textarea>
+                        <textarea id="br_borderColour" rows="4" cols="47">black</textarea>
                     </div>
                 </div>
-                <div id="flowerStyleVars">
+                <div id="flowerStyleVars" style="flex: 1">
                     <h3 style="margin: 0;">Flowers</h3>
                     <input type="checkbox" id="fl_toggleSquare" checked>
                     <label for="fl_toggleSquare">Width == height?</label>
@@ -572,12 +584,15 @@
             const toggleFlowers = document.getElementById("toggleFlowers");
             const toggleDepthGradient = document.getElementById("br_depthBasedBg");
 
+            const switchBgSize = document.getElementById("br_bgSize");
+
             toggleRandLeft.oninput = function () {SetMenu_AngleLeft();initTree();}
             toggleRandRight.oninput = function () {SetMenu_AngleRight();initTree();}
             toggleRandRatio.oninput = function () {SetMenu_Ratio();initTree();}
             toggleSquareBranches.oninput = function () {SetMenu_BranchThickness();initTree();}
             toggleFlowers.oninput = function () {SetMenu_Flowers();initTree();}
             toggleDepthGradient.oninput = function () {SetMenu_DepthGradient();initTree();}
+            switchBgSize.oninput = function () {SetMenu_BgSize();initTree();}
 
             function SetMenu_AngleLeft() {
                 if (toggleRandLeft.checked) {
@@ -610,9 +625,11 @@
                 if (toggleFlowers.checked) {
                     document.getElementById("flowerVars").style.display = "block";
                     document.getElementById("flowerStyleVars").style.display = "block";
+                    stylesheet.setProperty('--styleBoxWidth', "40%");
                 } else {
                     document.getElementById("flowerVars").style.display = "none";
                     document.getElementById("flowerStyleVars").style.display = "none";
+                    stylesheet.setProperty('--styleBoxWidth', "20%");
                 }
             }
             function SetMenu_BranchThickness() {
@@ -629,6 +646,13 @@
                     document.getElementById("depthColVars").style.display = "none";
                 }
             }
+            function SetMenu_BgSize() {
+                if (switchBgSize.value == 3) {
+                    document.getElementById("customBgSizeVar").style.display = "block";
+                } else {
+                    document.getElementById("customBgSizeVar").style.display = "none";
+                }
+            }
 
             window.onload = function() {
                 SetMenu_AngleLeft();
@@ -637,6 +661,7 @@
                 SetMenu_Flowers();
                 SetMenu_BranchThickness();
                 SetMenu_DepthGradient();
+                SetMenu_BgSize();
 
                 initTree();
             };
@@ -650,6 +675,7 @@
                 "br_borderWidth": {     cssVar: "--branchBorderWidth", suffix: "px" },
                 "br_borderColour": {    cssVar: "--branchBorderColour" },
                 "br_borderType": {      cssVar: "--branchBorderType" },
+                "br_bgSize_custom": {   cssVar: "--branchBackgroundSize" },
             };
 
             Object.entries(styleVariableMappings).forEach(([inputId, { cssVar, suffix="" }]) => {
@@ -745,6 +771,19 @@
                 }
             }
 
+            function CheckBgSize(newBranch) {
+                if (switchBgSize.value == 1) { //auto
+                    newBranch.style.setProperty("--branchBackgroundSize", "auto");
+                } else if (switchBgSize.value == 2) { //same as branch size 
+                    if (toggleSquareBranches.checked)
+                        newBranch.style.setProperty("--branchBackgroundSize", newBranch.style.getPropertyValue('--w') + " " + newBranch.style.getPropertyValue('--w'));
+                    else
+                        newBranch.style.setProperty("--branchBackgroundSize", newBranch.style.getPropertyValue('--w') + " " + newBranch.style.getPropertyValue('height')); 
+                } else if (switchBgSize.value == 3) { //custom
+                    
+                }
+            }
+
             function GetColorSteps() {
                 const start = depthGrad_start;
                 const end = depthGrad_end;
@@ -800,6 +839,8 @@
                     checkForFlower(newBranch);
 
                 CheckForSquare(newBranch);
+
+                CheckBgSize(newBranch);
 
                 parent = newBranch;
                 tree(startLength, startRot, depth - 1, newBranch, angleLeft, ratio);
