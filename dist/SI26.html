@@ -51,6 +51,93 @@
             body {
                 background-color: white;
                 overflow-x: hidden;
+                font-size: 11pt;
+            }
+            select {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                border-radius: 0px;
+                border: black 1px solid;
+                background-color: white;
+                cursor: pointer;
+            }
+            label {
+                color: #000000;
+                font-style: italic;
+            }
+            input {
+                border-radius: 0px;
+                border: black 1px solid;
+                background-color: #e6e6e6;
+            }
+            input[type=checkbox] {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+
+                width: 1em;
+                height: 1em;
+                margin: 0;
+
+                border-radius: 0px;
+                border: 1px solid black;
+                transform: translateY(-0.15em);
+                background-color: white;
+
+                display: inline-grid;
+                place-content: center;
+            }
+            input[type=checkbox]::before {
+                content: "";
+                width: 0.5em;
+                height: 0.5em;
+                transform: scale(0);
+                transition: 120ms transform ease-in-out;
+                box-shadow: inset 1em 1em black;
+            }
+            input[type="checkbox"]:checked::before {
+                transform: scale(1);
+            }
+            input[type=number] {
+                width: 50px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            input[type=button] {
+                cursor: pointer;
+                background-color: white;
+                transition: .1s;
+            }
+            input[type=button]:active {
+                cursor: pointer;
+                background-color: #e6e6e6;
+            }
+            input[type=color] {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border: none;
+                cursor: pointer;
+                background-color: transparent;
+                padding: 0;
+                margin: 0;
+                transform: translateY(0.15em);
+            }
+            input[type=color]::-webkit-color-swatch {
+                border-radius: 15px;
+                border: 1px black solid;
+                height: 1em;
+                width: 1em;
+                padding: 0;
+                margin: 0;
+            }
+            input[type=color]::-moz-color-swatch {
+                border-radius: 0px;
+                border: 1px black solid;
+                height: 1em;
+                width: 1em;
+                padding: 0;
+                margin: 0;
             }
             .styleVarBox {
                 position: absolute;
@@ -67,6 +154,7 @@
             }
             .settingsBox:hover {
                 background-color: white;
+                box-shadow: cyan 0px 0px 15px 5px;
             }
             .branch {
                 position: absolute;
@@ -164,41 +252,41 @@
             <div>
                 <h2 style="margin: 0;">Fractal Variables</h2>
                 <div class="settingsBox" name="trunk vars">
-                    <label for="startLength">Starting Length (pixels)</label>
+                    <label for="startLength">Starting Length (pixels): </label>
                     <input type="number" id="startLength" min="0" max="500" value="150">
                     <br>
-                    <label for="startAngle">Starting Angle (degrees)</label>
+                    <label for="startAngle">Starting Angle (degrees): </label>
                     <input type="number" id="startAngle" min="0" max="360" value="90">
                 </div>
                 <div class="settingsBox" name="angle left">
                     <input type="checkbox" id="randAngleLeft">
                     <label for="randAngleLeft">Randomize left angle?</label>
-                    <br><br>
+                    <br>
                     <div id="regValLeft">
-                        <label for="angleLeft">Left Angle (degrees)</label>
+                        <label for="angleLeft">Left Angle (Degrees): </label>
                         <input type="number" id="angleLeft" min="0" max="360" value="45">
                     </div>
                     <div id="randValsLeft">
-                        <label for="randAngleLeft_min">Minimum angle (Degrees)</label>
+                        <label for="randAngleLeft_min">Minimum Angle (Degrees): </label>
                         <input type="number" id="randAngleLeft_min" min="0" max="360"  value="45">
                         <br>
-                        <label for="randAngleLeft_max">Maximum angle (Degrees)</label>
+                        <label for="randAngleLeft_max">Maximum Angle (Degrees): </label>
                         <input type="number" id="randAngleLeft_max" min="0" max="360"  value="45">
                     </div>
                 </div>
                 <div class="settingsBox" name="angle right">
                     <input type="checkbox" id="randAngleRight">
                     <label for="randAngleRight">Randomize right angle?</label>
-                    <br><br>
+                    <br>
                     <div id="regValRight">
-                        <label for="angleRight">Right Angle (degrees)</label>
+                        <label for="angleRight">Right Angle (Degrees): </label>
                         <input type="number" id="angleRight" min="0" max="360" value="45">
                     </div>
                     <div id="randValsRight">
-                        <label for="randAngleRight_min">Minimum angle (Degrees)</label>
+                        <label for="randAngleRight_min">Minimum Angle (Degrees): </label>
                         <input type="number" id="randAngleRight_min" min="0" max="360" value="45">
                         <br>
-                        <label for="randAngleRight_max">Maximum angle (Degrees)</label>
+                        <label for="randAngleRight_max">Maximum Angle (Degrees): </label>
                         <input type="number" id="randAngleRight_max" min="0" max="360" value="45">
                     </div>
                 </div>
@@ -206,31 +294,31 @@
                     <P style="margin-bottom: 10px; margin-top: 0;"><i>The ratio is the number by which the following branch's length is multiplied.</i></P>
                     <input type="checkbox" id="randRatio">
                     <label for="randRatio">Randomize ratio?</label>
-                    <br><br>
+                    <br>
                     <div id="regValRatio">
-                        <label for="ratio">Ratio (/100)</label>
+                        <label for="ratio">Ratio (/100): </label>
                         <input type="number" id="ratio" value="75">
                     </div>
                     <div id="randValsRatio">
-                        <label for="randRatio_min">Minimum ratio (/100)</label>
+                        <label for="randRatio_min">Minimum Ratio (/100): </label>
                         <input type="number" id="randRatio_min" value="75">
                         <br>
-                        <label for="randRatio_max">Maximum ratio (/100)</label>
+                        <label for="randRatio_max">Maximum Ratio (/100): </label>
                         <input type="number" id="randRatio_max" value="75">
                     </div>
                 </div>
                 <div class="settingsBox" name="depth">
-                    <label for="depth">Depth</label>
+                    <label for="depth">Depth: </label>
                     <input type="number" id="depth" min="0" max="20" value="8">
                 </div>
                 <div class="settingsBox" name="flowers">
                     <P style="margin-bottom: 10px; margin-top: 0;"><i>Flowers are divs that have a chance to sprout along a branch</i></P>
                     <input type="checkbox" id="toggleFlowers">
                     <label for="toggleFlowers">Flowers?</label>
-                    <br><br>
                     <div id="flowerVars">
                         <div class="settingsBox" name="flower generation vars">
                             <label for="switchFlowerGenModes">Flower Generation Mode:</label>
+                            <br>
                             <select id="switchFlowerGenModes">
                                 <option value="1">Flat Amount Per Branch</option>
                                 <option value="2">Randomized Amount Per Brach</option>
@@ -238,34 +326,35 @@
                             </select>
                             <br>
                             <div id="flowerFlatVars">
-                                <label for="flower_genFlat">Amount Per Branch:</label>
+                                <label for="flower_genFlat">Amount Per Branch: </label>
                                 <input type="number" id="flower_genFlat" value="1">
                             </div>
                             <div id="flowerRandVars">
-                                <label for="flower_genRandMin">Maximum Amount:</label>
+                                <label for="flower_genRandMin">Maximum Amount: </label>
                                 <input type="number" id="flower_genRandMin" value="0">
                                 <br>
-                                <label for="flower_genRandMax">Minimum Amount:</label>
+                                <label for="flower_genRandMax">Minimum Amount: </label>
                                 <input type="number" id="flower_genRandMax" value="1">
                             </div>
                             <div id="flowerDepthVars">
-                                <label for="flower_genDepthMin">Minimum Depth:</label>
+                                <label for="flower_genDepthMin">Minimum Depth: </label>
                                 <input type="number" id="flower_genDepthMin" value="6">
-                                <label for="flower_genDepthMax">Maximum Depth:</label>
+                                <br>
+                                <label for="flower_genDepthMax">Maximum Depth: </label>
                                 <input type="number" id="flower_genDepthMax" value="8">
                             </div>
                         </div>
                         <div class="settingsBox" name="flower position vars">
-                            <label for="flowerPos_length_min">Minimum position along branch length (%)</label><br>
+                            <label for="flowerPos_length_min">Minimum Position Along Length (%): </label>
                             <input type="number" id="flowerPos_length_min" value="0">
                             <br>
-                            <label for="flowerPos_length_max">Maximum position along branch length (%)</label><br>
+                            <label for="flowerPos_length_max">Maximum Position Along Length (%): </label>
                             <input type="number" id="flowerPos_length_max"value="100">
                             <br>
-                            <label for="flowerPos_width_min">Minimum position along branch width (%)</label><br>
+                            <label for="flowerPos_width_min">Minimum Position Along Width (%): </label>
                             <input type="number" id="flowerPos_width_min" value="0">
                             <br>
-                            <label for="flowerPos_width_max">Maximum position along branch width (%)</label><br>
+                            <label for="flowerPos_width_max">Maximum Position Along Width (%): </label>
                             <input type="number" id="flowerPos_width_max" value="100">
                         </div>
                     </div>
@@ -281,6 +370,8 @@
                 <div id="branchStyleVars" style="flex: 1; margin-right: 10px;">
                     <h3 style="margin: 0;">Branches</h3>
                     <div class="settingsBox" name="width vars">
+                        <label for="br_widthOptions">Width Modes: </label>
+                        <br>
                         <select id="br_widthOptions">
                             <option value="1">Consistent Width</option>
                             <option value="2">Width == Length</option>
@@ -289,7 +380,7 @@
                         </select>
                         <br>
                         <div id="branchThickVars">
-                            <label for="br_height">Width (pixels): </label>
+                            <label for="br_height">Width (Pixels): </label>
                             <input type="number" id="br_height" value="4">
                         </div>
                         <div id="branchMaxThickVar">
@@ -297,15 +388,15 @@
                             <input type="number" id="br_depthMaxHeight" value="10">
                         </div>
                         <div id="branchRandThickVar">
-                            <label for="br_heightRandMin">Minimum Width (pixels): </label>
+                            <label for="br_heightRandMin">Minimum Width (Pixels): </label>
                             <input type="number" id="br_heightRandMin" value="4">
                             <br>
-                            <label for="br_heightRandMax">Maximum Width (pixels): </label>
+                            <label for="br_heightRandMax">Maximum Width (Pixels): </label>
                             <input type="number" id="br_heightRandMax" value="4">
                         </div>
                     </div>
                     <div class="settingsBox" name="branch edge rounding">
-                        Corner Rounding (pixels):
+                        Corner Rounding (Pixels):
                         <br>
                         <label for="br_borderRadius_topL">Top Right: </label>
                         <input type="number" id="br_borderRadius_topL" value="0">
@@ -326,11 +417,11 @@
                         <div class="settingsBox" id="br_bgVars">
                             <P style="margin-bottom: 10px; margin-top: 0;"><i>Need help? you can also build a background <a href="https://colorbeta.com/">here</a> and copy it over!</i></P>
 
-                            <input type="button" value="Add background colour" onclick="Br_BgAddColour();" style="width: 100%;">
+                            <input type="button" value="Add background Colour" onclick="Br_BgAddColour();" style="width: 100%;">
                             <br>
-                            <input type="button" value="Add background image" onclick="Br_BgAddImage();" style="width: 100%;">
+                            <input type="button" value="Add background Image" onclick="Br_BgAddImage();" style="width: 100%;">
                             <br>
-                            <input type="button" value="Add background gradient" onclick="Br_BgAddGradient();" style="width: 100%;">
+                            <input type="button" value="Add background Gradient" onclick="Br_BgAddGradient();" style="width: 100%;">
                             <br>
                             <label for="br_gradientType">Gradient Type: </label>
                             <select id="br_gradientType" name="gradient types">
@@ -370,21 +461,21 @@
                             <br>
                             <label for="br_bgSize">Background Size: </label>
                             <select id="br_bgSize" name="bg size modes">
-                                <option value="1">auto</option>
-                                <option value="2">same as branch size</option>
-                                <option value="3">custom</option>
+                                <option value="1">Auto</option>
+                                <option value="2">Same As Branch Size</option>
+                                <option value="3">Custom</option>
                             </select>
                             <br>
                             <div id="customBgSizeVar">
-                                <label for="br_bgSize_custom">Custom background size: </label>
-                                <input type="text" id="br_bgSize_custom" value="50px 50px">
+                                <label for="br_bgSize_custom">Custom Background Size: </label>
+                                <input type="text" id="br_bgSize_custom" value="50px 50px" style="width: 75px;">
                             </div>
                         </div>
                         <div class="settingsBox" id="depthColVars">
-                            <label for="br_depthBasedBg_startCol">Start colour (rgba)</label>
+                            <label for="br_depthBasedBg_startCol">Start Colour: </label>
                             <input type="color" id="br_depthBasedBg_startCol">
                             <br>
-                            <label for="br_depthBasedBg_endCol">End colour (rgba)</label>
+                            <label for="br_depthBasedBg_endCol">End Colour: </label>
                             <input type="color" id="br_depthBasedBg_endCol">
                         </div>
                         <label for="br_blendMode_mix">Mix Blend Mode: </label>
@@ -413,24 +504,24 @@
                         <P style="margin-bottom: 10px; margin-top: 0;">
                             <i>Border types: none, hidden, dotted, dashed, solid,<br>double, groove, ridge, inset, outset</i>
                         </P>
-                        <label for="br_borderType">Border Type: </label>
+                        <label for="br_borderType">Border Type(s): </label>
                         <br>
                         <textarea id="br_borderType" rows="1" cols="40">none</textarea>
                         <br>
-                        <label for="br_borderWidth">Border Width (pixels): </label>
+                        <label for="br_borderWidth">Border Width (Pixels): </label>
                         <input type="number" id="br_borderWidth" value="0">
                         <br>
                         <label for="br_borderColour">Border Colour: </label>
                         <br>
-                        <textarea id="br_borderColour" rows="4" cols="47">black</textarea>
+                        <textarea id="br_borderColour" rows="1" cols="40">black</textarea>
                     </div>
                     <div class="settingsBox" name="boxshadow vars">
-                        Box shadow:
+                        Box Shadow:
                         <br>
-                        <label for="br_boxshadow_setMode">Setmode: </label>
+                        <label for="br_boxshadow_setMode">Mode: </label>
                         <select id="br_boxshadow_setMode">
-                            <option value="">outset</option>
-                            <option value="inset">inset</option>
+                            <option value="">Outset</option>
+                            <option value="inset">Inset</option>
                         </select>
                         <br>
                         <label for="br_boxshadow_xOffset">X-Offset: </label>
@@ -458,14 +549,14 @@
                         <br>
                         <div class="settingsBox">
                             <div id="fl_regHeightVar">
-                                <label for="fl_height">Flower height (pixels): </label>
+                                <label for="fl_height">Flower Height (Pixels): </label>
                                 <input type="number" id="fl_height" value="10">
                             </div>
                             <div id="fl_randHeightVars">
-                                <label for="fl_randheight_min">Minimum height (pixels)</label>
+                                <label for="fl_randheight_min">Minimum Height (Pixels): </label>
                                 <input type="number" id="fl_randheight_min" value="10">
                                 <br>
-                                <label for="fl_randheight_max">Maximum height (pixels)</label>
+                                <label for="fl_randheight_max">Maximum Height (Pixels): </label>
                                 <input type="number" id="fl_randheight_max" value="10">
                             </div>
                         </div>
@@ -476,20 +567,20 @@
                         <br>
                         <div class="settingsBox">
                             <div id="fl_regWidthVar">
-                                <label for="fl_width">Flower width (pixels): </label>
+                                <label for="fl_width">Flower Width (Pixels): </label>
                                 <input type="number" id="fl_width" value="10">
                             </div>
                             <div id="fl_randWidthVars">
-                                <label for="fl_randwidth_min">Minimum width (pixels)</label>
+                                <label for="fl_randwidth_min">Minimum Width (Pixels)</label>
                                 <input type="number" id="fl_randwidth_min" value="10">
                                 <br>
-                                <label for="fl_randwidth_max">Maximum width (pixels)</label>
+                                <label for="fl_randwidth_max">Maximum Width (Pixels)</label>
                                 <input type="number" id="fl_randwidth_max" value="10">
                             </div>
                         </div>
                     </div>
                     <div class="settingsBox" name="flower edge rounding">
-                        Corner Rounding (pixels):
+                        Corner Rounding (Pixels):
                         <br>
                         <label for="fl_borderRadius_topL">Top Right: </label>
                         <input type="number" id="fl_borderRadius_topL" value="0">
@@ -506,15 +597,14 @@
                     <div class="settingsBox" name="flower background vars">
                         <input type="checkbox" id="fl_depthBasedBg">
                         <label for="fl_depthBasedBg">Depth-based background colour?</label>
-                        <br>
                         <div class="settingsBox" id="fl_bgVars">
                             <P style="margin-bottom: 10px; margin-top: 0;"><i>Need help? you can also build a background <a href="https://colorbeta.com/">here</a> and copy it over!</i></P>
                 
-                            <input type="button" value="Add background colour" onclick="Fl_BgAddColour();" style="width: 100%;">
+                            <input type="button" value="Add Background Colour" onclick="Fl_BgAddColour();" style="width: 100%;">
                             <br>
-                            <input type="button" value="Add background image" onclick="Fl_BgAddImage();" style="width: 100%;">
+                            <input type="button" value="Add Background Image" onclick="Fl_BgAddImage();" style="width: 100%;">
                             <br>
-                            <input type="button" value="Add background gradient" onclick="Fl_BgAddGradient();" style="width: 100%;">
+                            <input type="button" value="Add Background Gradient" onclick="Fl_BgAddGradient();" style="width: 100%;">
                             <br>
                             <label for="fl_gradientType">Gradient Type: </label>
                             <select id="fl_gradientType" name="gradient types">
@@ -554,21 +644,21 @@
                             <br>
                             <label for="fl_bgSize">Background Size: </label>
                             <select id="fl_bgSize" name="bg size modes">
-                                <option value="1">auto</option>
-                                <option value="2">same as flower size</option>
-                                <option value="3">custom</option>
+                                <option value="1">Auto</option>
+                                <option value="2">Same as flower size</option>
+                                <option value="3">Custom</option>
                             </select>
                             <br>
                             <div id="fl_customBgSizeVar">
-                                <label for="fl_bgSize_custom">Custom background size: </label>
-                                <input type="text" id="fl_bgSize_custom" value="50px 50px">
+                                <label for="fl_bgSize_custom">Custom Background Size: </label>
+                                <input type="text" id="fl_bgSize_custom" value="50px 50px" style="width: 75px;">
                             </div>
                         </div>
                         <div class="settingsBox" id="fl_depthColVars">
-                            <label for="fl_depthBasedBg_startCol">Start colour (rgba)</label>
+                            <label for="fl_depthBasedBg_startCol">Start Colour: </label>
                             <input type="color" id="fl_depthBasedBg_startCol">
                             <br>
-                            <label for="fl_depthBasedBg_endCol">End colour (rgba)</label>
+                            <label for="fl_depthBasedBg_endCol">End Colour: </label>
                             <input type="color" id="fl_depthBasedBg_endCol">
                         </div>
                         <div class="settingsBox" name="flower mix blend mode">
@@ -597,24 +687,24 @@
                     </div>
                     <div class="settingsBox" name = "flower border vars">
                         <P style="margin-bottom: 10px; margin-top: 0;"><i>Border types: none, hidden, dotted, dashed, solid,<br>double, groove, ridge, inset, outset</i></P>
-                        <label for="fl_borderType">Border Type: </label>
+                        <label for="fl_borderType">Border Type(s): </label>
                         <br>
                         <textarea id="fl_borderType" rows="1" cols="40">none</textarea>
                         <br>
-                        <label for="fl_borderWidth">Border Width (pixels): </label>
+                        <label for="fl_borderWidth">Border Width (Pixels): </label>
                         <input type="number" id="fl_borderWidth" value="0">
                         <br>
                         <label for="fl_borderColour">Border Colour: </label>
                         <br>
-                        <textarea id="fl_borderColour" rows="4" cols="40">black</textarea>
+                        <textarea id="fl_borderColour" rows="1" cols="40">black</textarea>
                     </div>
                     <div class="settingsBox" name="flower boxshadow vars">
-                        Box shadow:
+                        Box Shadow:
                         <br>
-                        <label for="fl_boxshadow_setMode">Setmode: </label>
+                        <label for="fl_boxshadow_setMode">Mode: </label>
                         <select id="fl_boxshadow_setMode">
-                            <option value="">outset</option>
-                            <option value="inset">inset</option>
+                            <option value="">Outset</option>
+                            <option value="inset">Inset</option>
                         </select>
                         <br>
                         <label for="fl_boxshadow_xOffset">X-Offset: </label>
