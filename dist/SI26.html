@@ -12,7 +12,10 @@
                 --styleBoxWidth: 20%;
                 /* branch vars */
                 --branchWidth: 4px;
-                --branchBorderRad: 0px;
+                --branchBorderRad_topL: 0px;
+                --branchBorderRad_topR: 0px;
+                --branchBorderRad_bottomL: 0px;
+                --branchBorderRad_bottomR: 0px;
                 --branchBlendMode_mix: normal;
                 --branchBlendMode_bg: normal;
                 --branchBackground: black;
@@ -20,9 +23,17 @@
                 --branchBorderWidth: 0px;
                 --branchBorderColour: black;
                 --branchBorderType: none;
-                --branchBoxShadow: none;
+                --branchBoxShadowSetMode: ;
+                --branchBoxShadowXpos: 0px;
+                --branchBoxShadowYpos: 0px;
+                --branchBoxShadowBlur: 0px;
+                --branchBoxShadowSpread: 0px;
+                --branchBoxShadowColour: black;
                 /* flower vars */
-                --flowerBorderRad: 0px;
+                --flowerBorderRad_topL: 0px;
+                --flowerBorderRad_topR: 0px;
+                --flowerBorderRad_bottomL: 0px;
+                --flowerBorderRad_bottomR: 0px;
                 --flowerBackground: pink;
                 --flowerBackgroundSize: auto;
                 --flowerBorderWidth: 0px;
@@ -30,21 +41,23 @@
                 --flowerBorderType: none;
                 --flowerBlendMode_mix: normal;
                 --flowerBlendMode_bg: normal;
-                --flowerBoxShadow: none;
+                --flowerBoxShadowSetmode: ;
+                --flowerBoxShadowXpos: 0px;
+                --flowerBoxShadowYpos: 0px;
+                --flowerBoxShadowBlur: 0px;
+                --flowerBoxShadowSpread: 0px;
+                --flowerBoxShadowColor: black;
             }
-
             body {
                 background-color: white;
                 overflow-x: hidden;
             }
-
             .styleVarBox {
                 position: absolute;
                 z-index: 100;
                 width: var(--styleBoxWidth);
                 right: 0%;
             }
-
             .settingsBox {
                 border: 1px black solid;
                 padding: 5px;
@@ -66,8 +79,7 @@
                 transform: rotate(var(--a));
 
                 height: var(--branchWidth);
-
-                border-radius: var(--branchBorderRad);
+                border-radius: var(--branchBorderRad_topL) var(--branchBorderRad_topR) var(--branchBorderRad_bottomL) var(--branchBorderRad_bottomR);
                 border-width: var(--branchBorderWidth);
                 border-style: var(--branchBorderType);
                 border-color: var(--branchBorderColour);
@@ -75,7 +87,12 @@
                 background: var(--branchBackground);
                 background-size: var(--branchBackgroundSize);
 
-                box-shadow: var(--branchBoxShadow);
+                box-shadow: var(--branchBoxShadowSetMode)
+                            var(--branchBoxShadowXpos)
+                            var(--branchBoxShadowYpos)
+                            var(--branchBoxShadowBlur)
+                            var(--branchBoxShadowSpread)
+                            var(--branchBoxShadowColour);
 
                 mix-blend-mode: var(--branchBlendMode_mix);
                 background-blend-mode: var(--branchBlendMode_bg);
@@ -100,7 +117,10 @@
                 /* styling vars */
                 height: var(--h);
                 width: var(--w);
-                border-radius: var(--flowerBorderRad);
+                border-radius:  var(--flowerBorderRad_topL)
+                                var(--flowerBorderRad_topR)
+                                var(--flowerBorderRad_bottomL)
+                                var(--flowerBorderRad_bottomR);
                 
                 background: var(--flowerBackground);
                 background-size: var(--flowerBackgroundSize);
@@ -113,6 +133,13 @@
                 border-width: var(--flowerBorderWidth);
                 border-color: var(--flowerBorderColour);
                 border-style: var(--flowerBorderType);
+
+                box-shadow: var(--flowerBoxShadowSetmode)
+                            var(--flowerBoxShadowXpos)
+                            var(--flowerBoxShadowYpos)
+                            var(--flowerBoxShadowBlur)
+                            var(--flowerBoxShadowSpread)
+                            var(--flowerBoxShadowColor);
             }
 
             @media print {    
@@ -129,11 +156,11 @@
             <input type="button" value="regenerate" onclick="initTree();" style="width: 100%;">
             <br>
             <input type="button" value="clear" onclick="destroyTree();" style="width: 100%;">
-
-            Make sure to specify units when the unit isn't already specified! (cm, mm, in, px, pt, pc, et cetera)<br><br>
-            For the CSS-savvy: try animating elements of the tree and see what happens!<br><br>
+            For the CSS-savvy: try animating elements of the tree and see what happens...hehe...
+            <br><br>
             When you're done, press CTRL+P and print!
-
+            <br>
+            <small><i>(make sure to enable to enable 'print backgrounds' in the printing settings)</i></small>
             <div>
                 <h2 style="margin: 0;">Fractal Variables</h2>
                 <div class="settingsBox" name="trunk vars">
@@ -202,20 +229,45 @@
                     <label for="toggleFlowers">Flowers?</label>
                     <br><br>
                     <div id="flowerVars">
-                        <label for="flowerOdds">Flower odds per branch (1/X chance)</label><br>
-                        <input type="number" id="flowerOdds" min="2" value="2">
-                        <br>
-                        <label for="flowerPos_length_min">Minimum position along branch length (%)</label><br>
-                        <input type="number" id="flowerPos_length_min" value="0">
-                        <br>
-                        <label for="flowerPos_length_max">Maximum position along branch length (%)</label><br>
-                        <input type="number" id="flowerPos_length_max"value="100">
-                        <br>
-                        <label for="flowerPos_width_min">Minimum position along branch width (%)</label><br>
-                        <input type="number" id="flowerPos_width_min" value="0">
-                        <br>
-                        <label for="flowerPos_width_max">Maximum position along branch width (%)</label><br>
-                        <input type="number" id="flowerPos_width_max" value="100">
+                        <div class="settingsBox" name="flower generation vars">
+                            <label for="switchFlowerGenModes">Flower Generation Mode:</label>
+                            <select id="switchFlowerGenModes">
+                                <option value="1">Flat Amount Per Branch</option>
+                                <option value="2">Randomized Amount Per Brach</option>
+                                <option value="3">Only Within Certain Depth Range</option>
+                            </select>
+                            <br>
+                            <div id="flowerFlatVars">
+                                <label for="flower_genFlat">Amount Per Branch:</label>
+                                <input type="number" id="flower_genFlat" value="1">
+                            </div>
+                            <div id="flowerRandVars">
+                                <label for="flower_genRandMin">Maximum Amount:</label>
+                                <input type="number" id="flower_genRandMin" value="0">
+                                <br>
+                                <label for="flower_genRandMax">Minimum Amount:</label>
+                                <input type="number" id="flower_genRandMax" value="1">
+                            </div>
+                            <div id="flowerDepthVars">
+                                <label for="flower_genDepthMin">Minimum Depth:</label>
+                                <input type="number" id="flower_genDepthMin" value="6">
+                                <label for="flower_genDepthMax">Maximum Depth:</label>
+                                <input type="number" id="flower_genDepthMax" value="8">
+                            </div>
+                        </div>
+                        <div class="settingsBox" name="flower position vars">
+                            <label for="flowerPos_length_min">Minimum position along branch length (%)</label><br>
+                            <input type="number" id="flowerPos_length_min" value="0">
+                            <br>
+                            <label for="flowerPos_length_max">Maximum position along branch length (%)</label><br>
+                            <input type="number" id="flowerPos_length_max"value="100">
+                            <br>
+                            <label for="flowerPos_width_min">Minimum position along branch width (%)</label><br>
+                            <input type="number" id="flowerPos_width_min" value="0">
+                            <br>
+                            <label for="flowerPos_width_max">Maximum position along branch width (%)</label><br>
+                            <input type="number" id="flowerPos_width_max" value="100">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,20 +277,47 @@
         <div class="styleVarBox no-print">
             <h2 style="margin: 0;">Style Variables</h2>
             <div style="display: flex;">
+                <!-- branch vars -->
                 <div id="branchStyleVars" style="flex: 1; margin-right: 10px;">
                     <h3 style="margin: 0;">Branches</h3>
                     <div class="settingsBox" name="width vars">
-                        <input type="checkbox" id="toggleSquareBranches">
-                        <label for="toggleSquareBranches">width == height?</label>
+                        <select id="br_widthOptions">
+                            <option value="1">Consistent Width</option>
+                            <option value="2">Width == Length</option>
+                            <option value="3">Depth-Based Width</option>
+                            <option value="4">Randomized Width</option>
+                        </select>
                         <br>
                         <div id="branchThickVars">
                             <label for="br_height">Width (pixels): </label>
                             <input type="number" id="br_height" value="4">
                         </div>
+                        <div id="branchMaxThickVar">
+                            <label for="br_depthMaxHeight">Starting Width (pixels): </label>
+                            <input type="number" id="br_depthMaxHeight" value="10">
+                        </div>
+                        <div id="branchRandThickVar">
+                            <label for="br_heightRandMin">Minimum Width (pixels): </label>
+                            <input type="number" id="br_heightRandMin" value="4">
+                            <br>
+                            <label for="br_heightRandMax">Maximum Width (pixels): </label>
+                            <input type="number" id="br_heightRandMax" value="4">
+                        </div>
                     </div>
                     <div class="settingsBox" name="branch edge rounding">
-                        <label for="br_borderRadius">Edge rounding (pixels): </label>
-                        <input type="number" id="br_borderRadius" value="0">
+                        Corner Rounding (pixels):
+                        <br>
+                        <label for="br_borderRadius_topL">Top Right: </label>
+                        <input type="number" id="br_borderRadius_topL" value="0">
+                        <br>
+                        <label for="br_borderRadius_topR">Bottom Right: </label>
+                        <input type="number" id="br_borderRadius_topR" value="0">
+                        <br>
+                        <label for="br_borderRadius_bottomL">Bottom Left: </label>
+                        <input type="number" id="br_borderRadius_bottomL" value="0">
+                        <br>
+                        <label for="br_borderRadius_bottomR">Top Left: </label>
+                        <input type="number" id="br_borderRadius_bottomR" value="0">
                     </div>
                     <div class="settingsBox" name="background vars">
                         <input type="checkbox" id="br_depthBasedBg">
@@ -345,7 +424,32 @@
                         <br>
                         <textarea id="br_borderColour" rows="4" cols="47">black</textarea>
                     </div>
+                    <div class="settingsBox" name="boxshadow vars">
+                        Box shadow:
+                        <br>
+                        <label for="br_boxshadow_setMode">Setmode: </label>
+                        <select id="br_boxshadow_setMode">
+                            <option value="">outset</option>
+                            <option value="inset">inset</option>
+                        </select>
+                        <br>
+                        <label for="br_boxshadow_xOffset">X-Offset: </label>
+                        <input type="number" id="br_boxshadow_xOffset" value="0">
+                        <br>
+                        <label for="br_boxshadow_yOffset">Y-Offset: </label>
+                        <input type="number" id="br_boxshadow_yOffset" value="0">
+                        <br>
+                        <label for="br_boxshadow_blurRad">Blur: </label>
+                        <input type="number" id="br_boxshadow_blurRad" value="0">
+                        <br>
+                        <label for="br_boxshadow_spreadRad">Spread: </label>
+                        <input type="number" id="br_boxshadow_spreadRad" value="0">
+                        <br>
+                        <label for="br_boxshadow_color">Colour: </label>
+                        <input type="color" id="br_boxshadow_color">
+                    </div>
                 </div>
+                <!-- flower vars -->
                 <div id="flowerStyleVars" style="flex: 1">
                     <h3 style="margin: 0;">Flowers</h3>
                     <div class="settingsBox" name="flower height vars">
@@ -385,8 +489,19 @@
                         </div>
                     </div>
                     <div class="settingsBox" name="flower edge rounding">
-                        <label for="fl_borderRadius">Edge rounding (pixels): </label>
-                        <input type="number" id="fl_borderRadius" value="0">
+                        Corner Rounding (pixels):
+                        <br>
+                        <label for="fl_borderRadius_topL">Top Right: </label>
+                        <input type="number" id="fl_borderRadius_topL" value="0">
+                        <br>
+                        <label for="fl_borderRadius_topR">Bottom Right: </label>
+                        <input type="number" id="fl_borderRadius_topR" value="0">
+                        <br>
+                        <label for="fl_borderRadius_bottomL">Bottom Left: </label>
+                        <input type="number" id="fl_borderRadius_bottomL" value="0">
+                        <br>
+                        <label for="fl_borderRadius_bottomR">Top Left: </label>
+                        <input type="number" id="fl_borderRadius_bottomR" value="0">
                     </div>
                     <div class="settingsBox" name="flower background vars">
                         <input type="checkbox" id="fl_depthBasedBg">
@@ -493,6 +608,30 @@
                         <br>
                         <textarea id="fl_borderColour" rows="4" cols="40">black</textarea>
                     </div>
+                    <div class="settingsBox" name="flower boxshadow vars">
+                        Box shadow:
+                        <br>
+                        <label for="fl_boxshadow_setMode">Setmode: </label>
+                        <select id="fl_boxshadow_setMode">
+                            <option value="">outset</option>
+                            <option value="inset">inset</option>
+                        </select>
+                        <br>
+                        <label for="fl_boxshadow_xOffset">X-Offset: </label>
+                        <input type="number" id="fl_boxshadow_xOffset" value="0">
+                        <br>
+                        <label for="fl_boxshadow_yOffset">Y-Offset: </label>
+                        <input type="number" id="fl_boxshadow_yOffset" value="0">
+                        <br>
+                        <label for="fl_boxshadow_blurRad">Blur: </label>
+                        <input type="number" id="fl_boxshadow_blurRad" value="0">
+                        <br>
+                        <label for="fl_boxshadow_spreadRad">Spread: </label>
+                        <input type="number" id="fl_boxshadow_spreadRad" value="0">
+                        <br>
+                        <label for="fl_boxshadow_color">Colour: </label>
+                        <input type="color" id="fl_boxshadow_color">
+                    </div>
                 </div>
             </div>
         </div>
@@ -501,127 +640,168 @@
             const stylesheet = document.documentElement.style;
             var colorSteps = null;
             var flowerColorSteps = null;
+            var widthsteps = 0;
 
+            //starting branch
             const input_startLength = document.getElementById("startLength");
             const input_startAngle = document.getElementById("startAngle");
+            var startLength = input_startLength.value;
+            var startAngle = input_startAngle.value;
+            input_startLength.oninput = function () {startLength = this.value;initTree();}
+            input_startAngle.oninput = function () {startAngle = this.value;initTree();}
+
+            //branch angle left
             const input_angleLeft = document.getElementById("angleLeft");
             const input_randAngleLeft_min = document.getElementById("randAngleLeft_min");
             const input_randAngleLeft_max = document.getElementById("randAngleLeft_max");
+            var angleLeft = input_angleLeft.value;
+            var randAngleLeft_min = input_randAngleLeft_min.value;
+            var randAngleLeft_max = input_randAngleLeft_max.value;
+            input_angleLeft.oninput = function () {angleLeft = this.value;initTree();}
+            input_randAngleLeft_min.oninput = function () {randAngleLeft_min = this.value;initTree();}
+            input_randAngleLeft_max.oninput = function () {randAngleLeft_max = this.value;initTree();}
+
+            //branch angle right
             const input_angleRight = document.getElementById("angleRight");
             const input_randAngleRight_min = document.getElementById("randAngleRight_min");
             const input_randAngleRight_max = document.getElementById("randAngleRight_max");
+            var angleRight = input_angleRight.value;
+            var randAngleRight_min = input_randAngleRight_min.value;
+            var randAngleRight_max = input_randAngleRight_max.value;
+            input_angleRight.oninput = function () {angleRight = this.value;initTree();}
+            input_randAngleRight_min.oninput = function () {randAngleRight_min = this.value;initTree();}
+            input_randAngleRight_max.oninput = function () {randAngleRight_max = this.value;initTree();}
+
+            //ratio
             const input_ratio = document.getElementById("ratio");
             const input_randRatio_min = document.getElementById("randRatio_min");
             const input_randRatio_max = document.getElementById("randRatio_max");
+            var ratio = input_ratio.value / 100;
+            var randRatio_min = input_randRatio_min.value / 100;
+            var randRatio_max = input_randRatio_max.value / 100;
+            input_ratio.oninput = function () {ratio = this.value / 100;initTree();}
+            input_randRatio_min.oninput = function () {randRatio_min = this.value / 100;initTree();}
+            input_randRatio_max.oninput = function () {randRatio_max = this.value / 100;initTree();}
+
+            //depth
             const input_depth = document.getElementById("depth");
-            const input_flowerOdds = document.getElementById("flowerOdds");
+            var depth = input_depth.value;
+            input_depth.oninput = function () {depth = this.value;initTree();}
+
+            //flower generation modes
+            const input_flower_genFlat = document.getElementById("flower_genFlat");
+            const input_flower_genRandMin = document.getElementById("flower_genRandMin");
+            const input_flower_genRandMax = document.getElementById("flower_genRandMax");
+            const input_flower_genDepthMin = document.getElementById("flower_genDepthMin");
+            const input_flower_genDepthMax = document.getElementById("flower_genDepthMax");
+            var flower_genFlat = input_flower_genFlat.value;
+            var flower_genRandMin = input_flower_genRandMin.value;
+            var flower_genRandMax = input_flower_genRandMax.value;
+            var flower_genDepthMin = input_flower_genDepthMin.value;
+            var flower_genDepthMax = input_flower_genDepthMax.value;
+            input_flower_genFlat.oninput = function () {flower_genFlat = this.value;initTree();}
+            input_flower_genRandMin.oninput = function () {flower_genRandMin = this.value;initTree();}
+            input_flower_genRandMax.oninput = function () {flower_genRandMax = this.value;initTree();}
+            input_flower_genDepthMin.oninput = function () {flower_genDepthMin = this.value;initTree();}
+            input_flower_genDepthMax.oninput = function () {flower_genDepthMax = this.value;initTree();}
+
+            //flower position
             const input_flowerPos_length_min = document.getElementById("flowerPos_length_min");
             const input_flowerPos_length_max = document.getElementById("flowerPos_length_max");
             const input_flowerPos_width_min = document.getElementById("flowerPos_width_min");
             const input_flowerPos_width_max = document.getElementById("flowerPos_width_max");
-            const input_flowerBgSizeCustom = document.getElementById("fl_bgSize_custom");
-            const input_branchBgSizeCustom = document.getElementById("br_bgSize_custom");
-
-            const input_flowerHeight = document.getElementById("fl_height");
-            const input_flowerHeight_randMin = document.getElementById("fl_randheight_min");
-            const input_flowerHeight_randMax = document.getElementById("fl_randheight_max");
-            const input_flowerWidth = document.getElementById("fl_width");
-            const input_flowerWidth_randMin = document.getElementById("fl_randwidth_min");
-            const input_flowerWidth_randMax = document.getElementById("fl_randwidth_max");
-
-            var startLength = input_startLength.value;
-            var startAngle = input_startAngle.value;
-            var angleLeft = input_angleLeft.value;
-            var randAngleLeft_min = input_randAngleLeft_min.value;
-            var randAngleLeft_max = input_randAngleLeft_max.value;
-            var angleRight = input_angleRight.value;
-            var randAngleRight_min = input_randAngleRight_min.value;
-            var randAngleRight_max = input_randAngleRight_max.value;
-            var ratio = input_ratio.value / 100;
-            var randRatio_min = input_randRatio_min.value / 100;
-            var randRatio_max = input_randRatio_max.value / 100;
-            var depth = input_depth.value;
-            var flowerOdds = input_flowerOdds.value;
             var flowerPos_length_min = input_flowerPos_length_min.value;
             var flowerPos_length_max = input_flowerPos_length_max.value;
             var flowerPos_width_min = input_flowerPos_width_min.value;
             var flowerPos_width_max = input_flowerPos_width_max.value;
-            var flowerBgSizeCustom = input_flowerBgSizeCustom.value;
-            var branchBgSizeCustom = input_branchBgSizeCustom.value;
-
-            var flowerHeight = input_flowerHeight.value;
-            var flowerHeight_randMin = input_flowerHeight_randMin.value;
-            var flowerHeight_randMax = input_flowerHeight_randMax.value;
-            var flowerWidth = input_flowerWidth.value;
-            var flowerWidth_randMin = input_flowerWidth_randMin.value;
-            var flowerWidth_randMax = input_flowerWidth_randMax.value;
-
-            const input_depthGrad_start = document.getElementById("br_depthBasedBg_startCol");
-            const input_depthGrad_end = document.getElementById("br_depthBasedBg_endCol");
-            var depthGrad_start = input_depthGrad_start.value;
-            var depthGrad_end = input_depthGrad_end.value;
-
-            const input_flowerDepthGrad_start = document.getElementById("fl_depthBasedBg_startCol");
-            const input_flowerDepthGrad_end = document.getElementById("fl_depthBasedBg_endCol");
-            var flowerDepthGrad_start = input_flowerDepthGrad_start.value;
-            var flowerDepthGrad_end = input_flowerDepthGrad_end.value;
-
-            input_startLength.oninput = function () {startLength = this.value;initTree();}
-            input_startAngle.oninput = function () {startAngle = this.value;initTree();}
-            input_angleLeft.oninput = function () {angleLeft = this.value;initTree();}
-            input_randAngleLeft_min.oninput = function () {randAngleLeft_min = this.value;initTree();}
-            input_randAngleLeft_max.oninput = function () {randAngleLeft_max = this.value;initTree();}
-            input_angleRight.oninput = function () {angleRight = this.value;initTree();}
-            input_randAngleRight_min.oninput = function () {randAngleRight_min = this.value;initTree();}
-            input_randAngleRight_max.oninput = function () {randAngleRight_max = this.value;initTree();}
-            input_ratio.oninput = function () {ratio = this.value / 100;initTree();}
-            input_randRatio_min.oninput = function () {randRatio_min = this.value / 100;initTree();}
-            input_randRatio_max.oninput = function () {randRatio_max = this.value / 100;initTree();}
-            input_depth.oninput = function () {depth = this.value;initTree();}
-            input_flowerOdds.oninput = function () {flowerOdds = this.value;initTree();}
             input_flowerPos_length_min.oninput = function () {flowerPos_length_min = this.value;initTree();}
             input_flowerPos_length_max.oninput = function () {flowerPos_length_max = this.value;initTree();}
             input_flowerPos_width_min.oninput = function () {flowerPos_width_min = this.value;initTree();}
             input_flowerPos_width_max.oninput = function () {flowerPos_width_max = this.value;initTree();}
-            input_depthGrad_start.oninput = function () {depthGrad_start = this.value;initTree();}
-            input_depthGrad_end.oninput = function () {depthGrad_end = this.value;initTree();}
-            input_flowerBgSizeCustom.oninput = function () {flowerBgSizeCustom = this.value;initTree();}
+
+            //background sizes
+            const input_branchBgSizeCustom = document.getElementById("br_bgSize_custom");
+            const input_flowerBgSizeCustom = document.getElementById("fl_bgSize_custom");
+            var branchBgSizeCustom = input_branchBgSizeCustom.value;
+            var flowerBgSizeCustom = input_flowerBgSizeCustom.value;
             input_branchBgSizeCustom.oninput = function () {branchBgSizeCustom = this.value;initTree();}
+            input_flowerBgSizeCustom.oninput = function () {flowerBgSizeCustom = this.value;initTree();}
+
+            //branch width
+            const input_branchDepthMaxWidth = document.getElementById("br_depthMaxHeight");
+            const input_branchWidthRandMin = document.getElementById("br_heightRandMin");
+            const input_branchWidthRandMax = document.getElementById("br_heightRandMax");
+            var branchDepthMaxWidth = input_branchDepthMaxWidth.value;
+            var branchWidthRandMin = input_branchWidthRandMin.value;
+            var branchWidthRandMax = input_branchWidthRandMax.value;
+            input_branchDepthMaxWidth.oninput = function () {branchDepthMaxWidth = this.value;initTree();}
+            input_branchWidthRandMin.oninput = function () {branchWidthRandMin = this.value; initTree();}
+            input_branchWidthRandMax.oninput = function () {branchWidthRandMax = this.value; initTree();}
+
+            //flower height
+            const input_flowerHeight = document.getElementById("fl_height");
+            const input_flowerHeight_randMin = document.getElementById("fl_randheight_min");
+            const input_flowerHeight_randMax = document.getElementById("fl_randheight_max");
+            var flowerHeight = input_flowerHeight.value;
+            var flowerHeight_randMin = input_flowerHeight_randMin.value;
+            var flowerHeight_randMax = input_flowerHeight_randMax.value;
             input_flowerHeight.oninput = function () {flowerHeight = this.value; initTree();}
             input_flowerHeight_randMin.oninput = function () {flowerHeight_randMin = this.value; initTree();}
             input_flowerHeight_randMax.oninput = function () {flowerHeight_randMax = this.value; initTree();}
+
+            //flower width
+            const input_flowerWidth = document.getElementById("fl_width");
+            const input_flowerWidth_randMin = document.getElementById("fl_randwidth_min");
+            const input_flowerWidth_randMax = document.getElementById("fl_randwidth_max");
+            var flowerWidth = input_flowerWidth.value;
+            var flowerWidth_randMin = input_flowerWidth_randMin.value;
+            var flowerWidth_randMax = input_flowerWidth_randMax.value;
             input_flowerWidth.oninput = function () {flowerWidth = this.value; initTree();}
             input_flowerWidth_randMin.oninput = function () {flowerWidth_randMin = this.value; initTree();}
             input_flowerWidth_randMax.oninput = function () {flowerWidth_randMax = this.value; initTree();}
+
+            //branch depth gradient
+            const input_depthGrad_start = document.getElementById("br_depthBasedBg_startCol");
+            const input_depthGrad_end = document.getElementById("br_depthBasedBg_endCol");
+            var depthGrad_start = input_depthGrad_start.value;
+            var depthGrad_end = input_depthGrad_end.value;
+            input_depthGrad_start.oninput = function () {depthGrad_start = this.value;initTree();}
+            input_depthGrad_end.oninput = function () {depthGrad_end = this.value;initTree();}
+
+            //flower depth gradient
+            const input_flowerDepthGrad_start = document.getElementById("fl_depthBasedBg_startCol");
+            const input_flowerDepthGrad_end = document.getElementById("fl_depthBasedBg_endCol");
+            var flowerDepthGrad_start = input_flowerDepthGrad_start.value;
+            var flowerDepthGrad_end = input_flowerDepthGrad_end.value;
             input_flowerDepthGrad_start.oninput = function () {flowerDepthGrad_start = this.value;initTree();}
             input_flowerDepthGrad_end.oninput = function () {flowerDepthGrad_end = this.value;initTree();}
 
-            // boolean menu handling
+            //menu handling
             const toggleRandLeft = document.getElementById("randAngleLeft");
             const toggleRandRight = document.getElementById("randAngleRight");
             const toggleRandRatio = document.getElementById("randRatio");
-            const toggleSquareBranches = document.getElementById("toggleSquareBranches");
             const toggleFlowers = document.getElementById("toggleFlowers");
             const toggleDepthGradient = document.getElementById("br_depthBasedBg");
             const switchBgSize = document.getElementById("br_bgSize");
-
+            const switchWidthModes = document.getElementById("br_widthOptions");
             const toggleFlowerRandHeight = document.getElementById("fl_randheight");
             const toggleFlowerRandWidth = document.getElementById("fl_randwidth");
             const toggleFlowerDepthGradient = document.getElementById("fl_depthBasedBg");
             const switchFlowerBgSize = document.getElementById("fl_bgSize");
+            const switchFlowerGenModes = document.getElementById("switchFlowerGenModes");
 
             toggleRandLeft.oninput = function () {SetMenu_AngleLeft();initTree();}
             toggleRandRight.oninput = function () {SetMenu_AngleRight();initTree();}
             toggleRandRatio.oninput = function () {SetMenu_Ratio();initTree();}
-            toggleSquareBranches.oninput = function () {SetMenu_BranchThickness();initTree();}
             toggleFlowers.oninput = function () {SetMenu_Flowers();initTree();}
             toggleDepthGradient.oninput = function () {SetMenu_DepthGradient();initTree();}
             switchBgSize.oninput = function () {SetMenu_BgSize();initTree();}
-
+            switchWidthModes.oninput = function () {SetMenu_WidthModes();initTree();}
             toggleFlowerRandHeight.oninput = function () {SetMenu_FlowerHeight();initTree();}
             toggleFlowerRandWidth.oninput = function () {SetMenu_FlowerWidth();initTree();}
             toggleFlowerDepthGradient.oninput = function () {SetMenu_FlowerDepthGradient();initTree();}
             switchFlowerBgSize.oninput = function () {SetMenu_FlowerBgSize();initTree();}
+            switchFlowerGenModes.oninput = function () {SetMenu_FlowerGenModes();initTree();}
 
             function SetMenu_AngleLeft() {
                 if (toggleRandLeft.checked) {
@@ -659,13 +839,6 @@
                     document.getElementById("flowerVars").style.display = "none";
                     document.getElementById("flowerStyleVars").style.display = "none";
                     stylesheet.setProperty('--styleBoxWidth', "20%");
-                }
-            }
-            function SetMenu_BranchThickness() {
-                if (toggleSquareBranches.checked) {
-                    document.getElementById("branchThickVars").style.display = "none";
-                } else {
-                    document.getElementById("branchThickVars").style.display = "block";
                 }
             }
             function SetMenu_DepthGradient() {
@@ -718,16 +891,52 @@
                     document.getElementById("fl_customBgSizeVar").style.display = "none";
                 }
             }
+            function SetMenu_WidthModes() {
+                if (switchWidthModes.value == 1) {          //consistent width
+                    document.getElementById("branchMaxThickVar").style.display = "none";
+                    document.getElementById("branchThickVars").style.display = "block";
+                    document.getElementById("branchRandThickVar").style.display = "none";
+                } else if (switchWidthModes.value == 2) {   //width == length
+                    document.getElementById("branchMaxThickVar").style.display = "none";
+                    document.getElementById("branchThickVars").style.display = "none";
+                    document.getElementById("branchRandThickVar").style.display = "none";
+                } else if (switchWidthModes.value == 3) {   //depth-based width
+                    document.getElementById("branchMaxThickVar").style.display = "block";
+                    document.getElementById("branchThickVars").style.display = "none";
+                    document.getElementById("branchRandThickVar").style.display = "none";
+                } else if (switchWidthModes.value == 4) {   //randomized width
+                    document.getElementById("branchMaxThickVar").style.display = "none";
+                    document.getElementById("branchThickVars").style.display = "none";
+                    document.getElementById("branchRandThickVar").style.display = "block";
+                }
+            }
+            function SetMenu_FlowerGenModes() {
+                if (switchFlowerGenModes.value == "1") {
+                    document.getElementById("flowerFlatVars").style.display = "block";
+                    document.getElementById("flowerRandVars").style.display = "none";
+                    document.getElementById("flowerDepthVars").style.display = "none";
+                } else if (switchFlowerGenModes.value == "2") {
+                    document.getElementById("flowerFlatVars").style.display = "none";
+                    document.getElementById("flowerRandVars").style.display = "block";
+                    document.getElementById("flowerDepthVars").style.display = "none";
+                } else if (switchFlowerGenModes.value == "3") {
+                    document.getElementById("flowerFlatVars").style.display = "none";
+                    document.getElementById("flowerRandVars").style.display = "none";
+                    document.getElementById("flowerDepthVars").style.display = "block";
+                }
+                
+            }
 
             window.onload = function InitMenus() {
                 SetMenu_AngleLeft();
                 SetMenu_AngleRight();
                 SetMenu_Ratio();
                 SetMenu_Flowers();
-                SetMenu_BranchThickness();
                 SetMenu_DepthGradient();
                 SetMenu_BgSize();
+                SetMenu_WidthModes();
 
+                SetMenu_FlowerGenModes();
                 SetMenu_FlowerHeight();
                 SetMenu_FlowerWidth();
                 SetMenu_FlowerDepthGradient();
@@ -738,22 +947,40 @@
 
             const styleVariableMappings = {
                 //branch vars
-                "br_height": {          cssVar: "--branchHeight", suffix: "px" },
-                "br_borderRadius": {    cssVar: "--branchBorderRad", suffix: "px" },
-                "br_blendMode_mix": {   cssVar: "--branchBlendMode_mix" },
-                "br_blendMode_bg": {    cssVar: "--branchBlendMode_bg" },
-                "br_background": {      cssVar: "--branchBackground" },
-                "br_borderWidth": {     cssVar: "--branchBorderWidth", suffix: "px" },
-                "br_borderColour": {    cssVar: "--branchBorderColour" },
-                "br_borderType": {      cssVar: "--branchBorderType" },
+                "br_height": {                  cssVar: "--branchHeight", suffix: "px" },
+                "br_borderRadius_topL": {       cssVar: "--branchBorderRad_topL", suffix: "px" },
+                "br_borderRadius_topR": {       cssVar: "--branchBorderRad_topR", suffix: "px" },
+                "br_borderRadius_bottomL": {    cssVar: "--branchBorderRad_bottomL", suffix: "px" },
+                "br_borderRadius_bottomR": {    cssVar: "--branchBorderRad_bottomR", suffix: "px" },
+                "br_blendMode_mix": {           cssVar: "--branchBlendMode_mix" },
+                "br_blendMode_bg": {            cssVar: "--branchBlendMode_bg" },
+                "br_background": {              cssVar: "--branchBackground" },
+                "br_borderWidth": {             cssVar: "--branchBorderWidth", suffix: "px" },
+                "br_borderColour": {            cssVar: "--branchBorderColour" },
+                "br_borderType": {              cssVar: "--branchBorderType" },
+                "br_boxshadow_setMode": {       cssVar: "--branchBoxShadowSetMode" },
+                "br_boxshadow_xOffset": {       cssVar: "--branchBoxShadowXpos", suffix: "px" },
+                "br_boxshadow_yOffset": {       cssVar: "--branchBoxShadowYpos", suffix: "px" },
+                "br_boxshadow_blurRad": {       cssVar: "--branchBoxShadowBlur", suffix: "px" },
+                "br_boxshadow_spreadRad": {     cssVar: "--branchBoxShadowSpread", suffix: "px" },
+                "br_boxshadow_color": {         cssVar: "--branchBoxShadowColour" },
                 //flower vars
-                "fl_borderRadius": {   cssVar: "--flowerBorderRad", suffix: "px" },
-                "fl_background": {   cssVar: "--flowerBackground" },
-                "fl_borderWidth": {   cssVar: "--flowerBorderWidth", suffix: "px" },
-                "fl_borderColour": {   cssVar: "--flowerBorderColour" },
-                "fl_borderType": {   cssVar: "--flowerBorderType" },
-                "fl_blendMode_mix": {   cssVar: "--flowerBlendMode_mix" },
-                "fl_blendMode_bg": {   cssVar: "--flowerBlendMode_bg" },
+                "fl_borderRadius_topL": {       cssVar: "--flowerBorderRad_topL", suffix: "px" },
+                "fl_borderRadius_topR": {       cssVar: "--flowerBorderRad_topR", suffix: "px" },
+                "fl_borderRadius_bottomL": {    cssVar: "--flowerBorderRad_bottomL", suffix: "px" },
+                "fl_borderRadius_bottomR": {    cssVar: "--flowerBorderRad_bottomR", suffix: "px" },
+                "fl_background": {              cssVar: "--flowerBackground" },
+                "fl_borderWidth": {             cssVar: "--flowerBorderWidth", suffix: "px" },
+                "fl_borderColour": {            cssVar: "--flowerBorderColour" },
+                "fl_borderType": {              cssVar: "--flowerBorderType" },
+                "fl_blendMode_mix": {           cssVar: "--flowerBlendMode_mix" },
+                "fl_blendMode_bg": {            cssVar: "--flowerBlendMode_bg" },
+                "fl_boxshadow_setMode": {       cssVar: "--flowerBoxShadowSetmode" },
+                "fl_boxshadow_xOffset": {       cssVar: "--flowerBoxShadowXpos", suffix: "px" },
+                "fl_boxshadow_yOffset": {       cssVar: "--flowerBoxShadowYpos", suffix: "px" },
+                "fl_boxshadow_blurRad": {       cssVar: "--flowerBoxShadowBlur", suffix: "px" },
+                "fl_boxshadow_spreadRad": {     cssVar: "--flowerBoxShadowSpread", suffix: "px" },
+                "fl_boxshadow_color": {         cssVar: "--flowerBoxShadowColor" },
             };
 
             Object.entries(styleVariableMappings).forEach(([inputId, { cssVar, suffix="" }]) => {
@@ -833,6 +1060,8 @@
             function initTree() {
                 destroyTree();
 
+                widthsteps = branchDepthMaxWidth / depth;
+
                 if (toggleDepthGradient.checked)
                     colorSteps = ColorSteps.getColorSteps(depthGrad_end, depthGrad_start, depth);
                 if (toggleFlowerDepthGradient.checked)
@@ -848,10 +1077,18 @@
                 document.body.removeChild(document.getElementById("treeBranch"));
             }
 
-            function checkForFlower(targetBranch, depth) {
-                if (getRandomIntInclusive(1,flowerOdds) == flowerOdds) {
+            function checkForFlower(targetBranch, depth) {              
+                if (switchFlowerGenModes.value == "1") {
+                    for (let i = 0; i < flower_genFlat; i++)
+                        createFlower(targetBranch, depth);
+                } else if (switchFlowerGenModes.value == "2") {
+                    let genAmount = getRandomIntInclusive(flower_genRandMin, flower_genRandMax);
+                    for (let i = 0; i < genAmount; i++)
+                        createFlower(targetBranch, depth);
+                } else if (switchFlowerGenModes.value == "3") {
+                    if (depth < flower_genDepthMin || depth > flower_genDepthMax)
+                        return;
                     createFlower(targetBranch, depth);
-                    checkForFlower(targetBranch);
                 }
             }
 
@@ -873,12 +1110,15 @@
                 }
             }
 
-            function CheckForSquare(branch) {
-                if (toggleSquareBranches.checked) {
-                    branch.style.height = "var(--w)";
-                }
-                else {
+            function CheckBranchWidthState(branch, depth) {
+                if (switchWidthModes.value == 1) {
                     branch.style.height = "var(--branchHeight)";
+                } else if (switchWidthModes.value == 2) {
+                    branch.style.height = "var(--w)";
+                } else if (switchWidthModes.value == 3) {
+                    branch.style.height = widthsteps * depth + "px";
+                } else if (switchWidthModes.value == 4) {
+                    branch.style.height = getRandomIntInclusive(branchWidthRandMin,branchWidthRandMax) + "px";
                 }
             }
 
@@ -973,7 +1213,7 @@
                 if (toggleFlowers.checked)
                     checkForFlower(newBranch, depth);
 
-                CheckForSquare(newBranch);
+                CheckBranchWidthState(newBranch, depth);
 
                 CheckBgSize(newBranch);
 
