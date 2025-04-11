@@ -20,12 +20,22 @@
                 --branchBorderWidth: 0px;
                 --branchBorderColour: black;
                 --branchBorderType: none;
+                --branchBoxShadow: none;
                 /* flower vars */
+                --flowerBorderRad: 0px;
+                --flowerBackground: pink;
+                --flowerBackgroundSize: auto;
+                --flowerBorderWidth: 0px;
+                --flowerBorderColour: black;
+                --flowerBorderType: none;
+                --flowerBlendMode_mix: normal;
+                --flowerBlendMode_bg: normal;
+                --flowerBoxShadow: none;
             }
 
             body {
-                /* overflow: hidden; */
                 background-color: white;
+                overflow-x: hidden;
             }
 
             .styleVarBox {
@@ -40,8 +50,11 @@
                 padding: 5px;
                 margin-top: 10px;
                 margin-bottom: 10px;
+                transition: .5s;
             }
-
+            .settingsBox:hover {
+                background-color: white;
+            }
             .branch {
                 position: absolute;
                 left: 100%;
@@ -61,6 +74,8 @@
 
                 background: var(--branchBackground);
                 background-size: var(--branchBackgroundSize);
+
+                box-shadow: var(--branchBoxShadow);
 
                 mix-blend-mode: var(--branchBlendMode_mix);
                 background-blend-mode: var(--branchBlendMode_bg);
@@ -82,16 +97,25 @@
                 transform-origin: 0% 25%;
                 transform: Rotate(180deg);
 
-                width: 40px;
-                height: 40px;
-                border-radius: 50px;
+                /* styling vars */
+                height: var(--h);
+                width: var(--w);
+                border-radius: var(--flowerBorderRad);
                 
-                background: url('https://tr.rbxcdn.com/180DAY-e286a18d3f9c2cf140a283a923963d85/420/420/Hat/Webp/noFilter');
-                background-size: 40px 40px;
+                background: var(--flowerBackground);
+                background-size: var(--flowerBackgroundSize);
+
+                mix-blend-mode: var(--flowerBlendMode_mix);
+                background-blend-mode: var(--flowerBlendMode_bg);
+
+                box-shadow: var(--flowerBoxShadow);
+
+                border-width: var(--flowerBorderWidth);
+                border-color: var(--flowerBorderColour);
+                border-style: var(--flowerBorderType);
             }
 
-            @media print
-            {    
+            @media print {    
                 .no-print, .no-print *
                 {
                     display: none !important;
@@ -200,42 +224,90 @@
         <!-- Styling Menu -->
         <div class="styleVarBox no-print">
             <h2 style="margin: 0;">Style Variables</h2>
-            <div class="settingsBox" style="display: flex;">
-                <div id="branchStyleVars" style="flex: 1">
+            <div style="display: flex;">
+                <div id="branchStyleVars" style="flex: 1; margin-right: 10px;">
                     <h3 style="margin: 0;">Branches</h3>
-                    <input type="checkbox" id="toggleSquareBranches">
-                    <label for="toggleSquareBranches">width == height?</label>
-                    <br>
-                    <div id="branchThickVars">
-                        <label for="br_height">Width (pixels): </label>
-                        <input type="number" id="br_height" value="4">
+                    <div class="settingsBox" name="width vars">
+                        <input type="checkbox" id="toggleSquareBranches">
+                        <label for="toggleSquareBranches">width == height?</label>
+                        <br>
+                        <div id="branchThickVars">
+                            <label for="br_height">Width (pixels): </label>
+                            <input type="number" id="br_height" value="4">
+                        </div>
                     </div>
-                    
-                    <label for="br_borderRadius">Edge rounding (pixels): </label>
-                    <input type="number" id="br_borderRadius" value="0">
+                    <div class="settingsBox" name="branch edge rounding">
+                        <label for="br_borderRadius">Edge rounding (pixels): </label>
+                        <input type="number" id="br_borderRadius" value="0">
+                    </div>
                     <div class="settingsBox" name="background vars">
-                        <P style="margin-bottom: 10px; margin-top: 0;"><i>Need help? you can also build a background <a href="https://colorbeta.com/">here</a> and copy it over!</i></P>
+                        <input type="checkbox" id="br_depthBasedBg">
+                        <label for="br_depthBasedBg">Depth-based background colour?</label>
+                        <br>
+                        <div class="settingsBox" id="br_bgVars">
+                            <P style="margin-bottom: 10px; margin-top: 0;"><i>Need help? you can also build a background <a href="https://colorbeta.com/">here</a> and copy it over!</i></P>
 
-                        <input type="button" value="Add background colour" onclick="Br_BgAddColour();" style="width: 100%;">
-                        <br>
-                        <input type="button" value="Add background image" onclick="Br_BgAddImage();" style="width: 100%;">
-                        <br>
-                        <input type="button" value="Add background gradient" onclick="Br_BgAddGradient();" style="width: 100%;">
-                        <br>
-                        <label for="br_gradientType">Gradient Type: </label>
-                        <select id="br_gradientType" name="gradient types">
-                            <option value="linear-gradient">Linear Gradient</option>
-                            <option value="radial-gradient">Radial Gradient</option>
-                            <option value="conic-gradient">Conic Gradient</option>
-                            <option value="repeating-linear-gradient">Repeating Linear Gradient</option>
-                            <option value="repeating-radial-gradient">Repeating Radial Gradient</option>
-                            <option value="repeating-conic-gradient">Repeating Conic Gradient</option>
-                        </select>
-                        <br>
-                        <label for="br_background">Background: </label>
-                        <br>
-                        <textarea id="br_background" rows="4" cols="47">black</textarea>
-                        <br>
+                            <input type="button" value="Add background colour" onclick="Br_BgAddColour();" style="width: 100%;">
+                            <br>
+                            <input type="button" value="Add background image" onclick="Br_BgAddImage();" style="width: 100%;">
+                            <br>
+                            <input type="button" value="Add background gradient" onclick="Br_BgAddGradient();" style="width: 100%;">
+                            <br>
+                            <label for="br_gradientType">Gradient Type: </label>
+                            <select id="br_gradientType" name="gradient types">
+                                <option value="linear-gradient">Linear Gradient</option>
+                                <option value="radial-gradient">Radial Gradient</option>
+                                <option value="conic-gradient">Conic Gradient</option>
+                                <option value="repeating-linear-gradient">Repeating Linear Gradient</option>
+                                <option value="repeating-radial-gradient">Repeating Radial Gradient</option>
+                                <option value="repeating-conic-gradient">Repeating Conic Gradient</option>
+                            </select>
+                            <br>
+                            <label for="br_background">Background: </label>
+                            <br>
+                            <textarea id="br_background" rows="4" cols="47">black</textarea>
+                            <br>
+                            <label for="br_blendMode_bg">Background Blend Mode: </label>
+                            <select id="br_blendMode_bg" name="blend modes">
+                                <option value="normal">normal</option>
+                                <option value="multiply">multiply</option>
+                                <option value="screen">screen</option>
+                                <option value="overlay">overlay</option>
+                                <option value="darken">darken</option>
+                                <option value="lighten">lighten</option>
+                                <option value="color-dodge">color-dodge</option>
+                                <option value="color-burn">color-burn</option>
+                                <option value="hard-light">hard-light</option>
+                                <option value="soft-light">soft-light</option>
+                                <option value="difference">difference</option>
+                                <option value="exclusion">exclusion</option>
+                                <option value="hue">hue</option>
+                                <option value="saturation">saturation</option>
+                                <option value="color">color</option>
+                                <option value="luminosity">luminosity</option>
+                                <option value="plus-darker">plus-darker</option>
+                                <option value="plus-lighter">plus-lighter</option>
+                            </select>
+                            <br>
+                            <label for="br_bgSize">Background Size: </label>
+                            <select id="br_bgSize" name="bg size modes">
+                                <option value="1">auto</option>
+                                <option value="2">same as branch size</option>
+                                <option value="3">custom</option>
+                            </select>
+                            <br>
+                            <div id="customBgSizeVar">
+                                <label for="br_bgSize_custom">Custom background size: </label>
+                                <input type="text" id="br_bgSize_custom" value="50px 50px">
+                            </div>
+                        </div>
+                        <div class="settingsBox" id="depthColVars">
+                            <label for="br_depthBasedBg_startCol">Start colour (rgba)</label>
+                            <input type="color" id="br_depthBasedBg_startCol">
+                            <br>
+                            <label for="br_depthBasedBg_endCol">End colour (rgba)</label>
+                            <input type="color" id="br_depthBasedBg_endCol">
+                        </div>
                         <label for="br_blendMode_mix">Mix Blend Mode: </label>
                         <select id="br_blendMode_mix" name="blend modes">
                             <option value="normal">normal</option>
@@ -257,52 +329,6 @@
                             <option value="plus-darker">plus-darker</option>
                             <option value="plus-lighter">plus-lighter</option>
                         </select>
-                        <br>
-                        <label for="br_blendMode_bg">Background Blend Mode: </label>
-                        <select id="br_blendMode_bg" name="blend modes">
-                            <option value="normal">normal</option>
-                            <option value="multiply">multiply</option>
-                            <option value="screen">screen</option>
-                            <option value="overlay">overlay</option>
-                            <option value="darken">darken</option>
-                            <option value="lighten">lighten</option>
-                            <option value="color-dodge">color-dodge</option>
-                            <option value="color-burn">color-burn</option>
-                            <option value="hard-light">hard-light</option>
-                            <option value="soft-light">soft-light</option>
-                            <option value="difference">difference</option>
-                            <option value="exclusion">exclusion</option>
-                            <option value="hue">hue</option>
-                            <option value="saturation">saturation</option>
-                            <option value="color">color</option>
-                            <option value="luminosity">luminosity</option>
-                            <option value="plus-darker">plus-darker</option>
-                            <option value="plus-lighter">plus-lighter</option>
-                        </select>
-                        <br>
-                        <label for="br_bgSize">Background Size: </label>
-                        <select id="br_bgSize" name="bg size modes">
-                            <option value="1">auto</option>
-                            <option value="2">same as branch size</option>
-                            <option value="3">custom</option>
-                        </select>
-                        <br>
-                        <div id="customBgSizeVar">
-                            <label for="br_bgSize_custom">Custom background size: </label>
-                            <input type="text" id="br_bgSize_custom" value="50px 50px">
-                        </div>
-                        <div class="settingsBox" name="depth gradient">
-                            <input type="checkbox" id="br_depthBasedBg">
-                            <label for="br_depthBasedBg">Depth-based background colour?</label>
-                            <br>
-                            <div id="depthColVars">
-                                <label for="br_depthBasedBg_startCol">Start colour (rgba)</label>
-                                <input type="color" id="br_depthBasedBg_startCol">
-                                <br>
-                                <label for="br_depthBasedBg_endCol">End colour (rgba)</label>
-                                <input type="color" id="br_depthBasedBg_endCol">
-                            </div>
-                        </div>
                     </div>
                     <div class="settingsBox" name="border vars">
                         <P style="margin-bottom: 10px; margin-top: 0;">
@@ -322,123 +348,139 @@
                 </div>
                 <div id="flowerStyleVars" style="flex: 1">
                     <h3 style="margin: 0;">Flowers</h3>
-                    <input type="checkbox" id="fl_toggleSquare" checked>
-                    <label for="fl_toggleSquare">Width == height?</label>
-                    <div class="settingsBox">
-                        <label for="fl_height">Flower height (pixels): </label>
-                        <input type="number" id="fl_height" value="10">
-                        <br>
+                    <div class="settingsBox" name="flower height vars">
                         <input type="checkbox" id="fl_randheight">
                         <label for="fl_randheight">Randomize flower height?</label>
                         <br>
-                        <label for="fl_randheight_min">Minimum height (pixels)</label>
-                        <input type="number" id="fl_randheight_min" value="10">
-                        <br>
-                        <label for="fl_randheight_max">Maximum height (pixels)</label>
-                        <input type="number" id="fl_randheight_max" value="10">
-                    </div>
-                    <div class="settingsBox">
-                        <label for="fl_width">Flower width (pixels): </label>
-                        <input type="number" id="fl_width" value="10">
-                        <br>
-                        <input type="checkbox" id="fl_randwidth">
-                        <label for="randAngleLeft">Randomize left angle?</label>
-                        <br>
-                        <label for="fl_randwidth_min">Minimum width (pixels)</label>
-                        <input type="number" id="fl_randwidth_min" value="10">
-                        <br>
-                        <label for="fl_randwidth_max">Maximum width (pixels)</label>
-                        <input type="number" id="fl_randwidth_max" value="10">
-                    </div>
-                        
-                    <div class="settingsBox">
-                        <P style="margin-bottom: 10px; margin-top: 0;"><i>Need help? you can also build a background <a href="https://colorbeta.com/">here</a> and copy it over!</i></P>
-            
-                        <input type="button" value="Add background colour" onclick="Fl_BgAddColour();" style="width: 100%;">
-                        <br>
-                        <input type="button" value="Add background image" onclick="Fl_BgAddImage();" style="width: 100%;">
-                        <br>
-                        <input type="button" value="Add background gradient" onclick="Fl_BgAddGradient();" style="width: 100%;">
-                        <br>
-                        <label for="fl_gradientType">Gradient Type: </label>
-                        <select id="fl_gradientType" name="gradient types">
-                            <option value="linear-gradient">Linear Gradient</option>
-                            <option value="radial-gradient">Radial Gradient</option>
-                            <option value="conic-gradient">Conic Gradient</option>
-                            <option value="repeating-linear-gradient">Repeating Linear Gradient</option>
-                            <option value="repeating-radial-gradient">Repeating Radial Gradient</option>
-                            <option value="repeating-conic-gradient">Repeating Conic Gradient</option>
-                        </select>
-                        <br>
-                        <label for="fl_background">Background: </label>
-                        <br>
-                        <textarea id="fl_background" rows="4" cols="40">black</textarea>
-                        <br>
-                        <label for="fl_blendMode_mix">Mix Blend Mode: </label>
-                        <select id="fl_blendMode_mix" name="blend modes">
-                            <option value="normal">normal</option>
-                            <option value="multiply">multiply</option>
-                            <option value="screen">screen</option>
-                            <option value="overlay">overlay</option>
-                            <option value="darken">darken</option>
-                            <option value="lighten">lighten</option>
-                            <option value="color-dodge">color-dodge</option>
-                            <option value="color-burn">color-burn</option>
-                            <option value="hard-light">hard-light</option>
-                            <option value="soft-light">soft-light</option>
-                            <option value="difference">difference</option>
-                            <option value="exclusion">exclusion</option>
-                            <option value="hue">hue</option>
-                            <option value="saturation">saturation</option>
-                            <option value="color">color</option>
-                            <option value="luminosity">luminosity</option>
-                            <option value="plus-darker">plus-darker</option>
-                            <option value="plus-lighter">plus-lighter</option>
-                        </select>
-                        <br>
-                        <label for="fl_blendMode_bg">Background Blend Mode: </label>
-                        <select id="fl_blendMode_bg" name="blend modes">
-                            <option value="normal">normal</option>
-                            <option value="multiply">multiply</option>
-                            <option value="screen">screen</option>
-                            <option value="overlay">overlay</option>
-                            <option value="darken">darken</option>
-                            <option value="lighten">lighten</option>
-                            <option value="color-dodge">color-dodge</option>
-                            <option value="color-burn">color-burn</option>
-                            <option value="hard-light">hard-light</option>
-                            <option value="soft-light">soft-light</option>
-                            <option value="difference">difference</option>
-                            <option value="exclusion">exclusion</option>
-                            <option value="hue">hue</option>
-                            <option value="saturation">saturation</option>
-                            <option value="color">color</option>
-                            <option value="luminosity">luminosity</option>
-                            <option value="plus-darker">plus-darker</option>
-                            <option value="plus-lighter">plus-lighter</option>
-                        </select>
-                        <br>
-                        <label for="fl_bgSize">Background Size: </label>
-                        <select id="fl_bgSize" name="bg size modes">
-                            <option value="1">auto</option>
-                            <option value="2">same as branch size</option>
-                            <option value="3">custom</option>
-                        </select>
-                        <br>
-                        <label for="fl_bgSize_custom">Custom background size: </label>
-                        <input type="text" id="fl_bgSize_custom" value="50px 50px">
                         <div class="settingsBox">
-                            <input type="checkbox" id="fl_depthBasedBg">
-                            <label for="fl_depthBasedBg">Depth-based background colour?</label>
+                            <div id="fl_regHeightVar">
+                                <label for="fl_height">Flower height (pixels): </label>
+                                <input type="number" id="fl_height" value="10">
+                            </div>
+                            <div id="fl_randHeightVars">
+                                <label for="fl_randheight_min">Minimum height (pixels)</label>
+                                <input type="number" id="fl_randheight_min" value="10">
+                                <br>
+                                <label for="fl_randheight_max">Maximum height (pixels)</label>
+                                <input type="number" id="fl_randheight_max" value="10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settingsBox" name="flower width vars">
+                        <input type="checkbox" id="fl_randwidth">
+                        <label for="fl_randwidth">Randomize flower width?</label>
+                        <br>
+                        <div class="settingsBox">
+                            <div id="fl_regWidthVar">
+                                <label for="fl_width">Flower width (pixels): </label>
+                                <input type="number" id="fl_width" value="10">
+                            </div>
+                            <div id="fl_randWidthVars">
+                                <label for="fl_randwidth_min">Minimum width (pixels)</label>
+                                <input type="number" id="fl_randwidth_min" value="10">
+                                <br>
+                                <label for="fl_randwidth_max">Maximum width (pixels)</label>
+                                <input type="number" id="fl_randwidth_max" value="10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settingsBox" name="flower edge rounding">
+                        <label for="fl_borderRadius">Edge rounding (pixels): </label>
+                        <input type="number" id="fl_borderRadius" value="0">
+                    </div>
+                    <div class="settingsBox" name="flower background vars">
+                        <input type="checkbox" id="fl_depthBasedBg">
+                        <label for="fl_depthBasedBg">Depth-based background colour?</label>
+                        <br>
+                        <div class="settingsBox" id="fl_bgVars">
+                            <P style="margin-bottom: 10px; margin-top: 0;"><i>Need help? you can also build a background <a href="https://colorbeta.com/">here</a> and copy it over!</i></P>
+                
+                            <input type="button" value="Add background colour" onclick="Fl_BgAddColour();" style="width: 100%;">
                             <br>
+                            <input type="button" value="Add background image" onclick="Fl_BgAddImage();" style="width: 100%;">
+                            <br>
+                            <input type="button" value="Add background gradient" onclick="Fl_BgAddGradient();" style="width: 100%;">
+                            <br>
+                            <label for="fl_gradientType">Gradient Type: </label>
+                            <select id="fl_gradientType" name="gradient types">
+                                <option value="linear-gradient">Linear Gradient</option>
+                                <option value="radial-gradient">Radial Gradient</option>
+                                <option value="conic-gradient">Conic Gradient</option>
+                                <option value="repeating-linear-gradient">Repeating Linear Gradient</option>
+                                <option value="repeating-radial-gradient">Repeating Radial Gradient</option>
+                                <option value="repeating-conic-gradient">Repeating Conic Gradient</option>
+                            </select>
+                            <br>
+                            <label for="fl_background">Background: </label>
+                            <br>
+                            <textarea id="fl_background" rows="4" cols="40">black</textarea>
+                            <br>
+                            <label for="fl_blendMode_bg">Background Blend Mode: </label>
+                            <select id="fl_blendMode_bg" name="blend modes">
+                                <option value="normal">normal</option>
+                                <option value="multiply">multiply</option>
+                                <option value="screen">screen</option>
+                                <option value="overlay">overlay</option>
+                                <option value="darken">darken</option>
+                                <option value="lighten">lighten</option>
+                                <option value="color-dodge">color-dodge</option>
+                                <option value="color-burn">color-burn</option>
+                                <option value="hard-light">hard-light</option>
+                                <option value="soft-light">soft-light</option>
+                                <option value="difference">difference</option>
+                                <option value="exclusion">exclusion</option>
+                                <option value="hue">hue</option>
+                                <option value="saturation">saturation</option>
+                                <option value="color">color</option>
+                                <option value="luminosity">luminosity</option>
+                                <option value="plus-darker">plus-darker</option>
+                                <option value="plus-lighter">plus-lighter</option>
+                            </select>
+                            <br>
+                            <label for="fl_bgSize">Background Size: </label>
+                            <select id="fl_bgSize" name="bg size modes">
+                                <option value="1">auto</option>
+                                <option value="2">same as flower size</option>
+                                <option value="3">custom</option>
+                            </select>
+                            <br>
+                            <div id="fl_customBgSizeVar">
+                                <label for="fl_bgSize_custom">Custom background size: </label>
+                                <input type="text" id="fl_bgSize_custom" value="50px 50px">
+                            </div>
+                        </div>
+                        <div class="settingsBox" id="fl_depthColVars">
                             <label for="fl_depthBasedBg_startCol">Start colour (rgba)</label>
                             <input type="color" id="fl_depthBasedBg_startCol">
                             <br>
                             <label for="fl_depthBasedBg_endCol">End colour (rgba)</label>
-                            <input type="color" id="fl_depthBasedBg_startCol">
+                            <input type="color" id="fl_depthBasedBg_endCol">
+                        </div>
+                        <div class="settingsBox" name="flower mix blend mode">
+                            <label for="fl_blendMode_mix">Mix Blend Mode: </label>
+                            <select id="fl_blendMode_mix" name="blend modes">
+                                <option value="normal">normal</option>
+                                <option value="multiply">multiply</option>
+                                <option value="screen">screen</option>
+                                <option value="overlay">overlay</option>
+                                <option value="darken">darken</option>
+                                <option value="lighten">lighten</option>
+                                <option value="color-dodge">color-dodge</option>
+                                <option value="color-burn">color-burn</option>
+                                <option value="hard-light">hard-light</option>
+                                <option value="soft-light">soft-light</option>
+                                <option value="difference">difference</option>
+                                <option value="exclusion">exclusion</option>
+                                <option value="hue">hue</option>
+                                <option value="saturation">saturation</option>
+                                <option value="color">color</option>
+                                <option value="luminosity">luminosity</option>
+                                <option value="plus-darker">plus-darker</option>
+                                <option value="plus-lighter">plus-lighter</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="settingsBox">
+                    <div class="settingsBox" name = "flower border vars">
                         <P style="margin-bottom: 10px; margin-top: 0;"><i>Border types: none, hidden, dotted, dashed, solid,<br>double, groove, ridge, inset, outset</i></P>
                         <label for="fl_borderType">Border Type: </label>
                         <br>
@@ -475,6 +517,15 @@
             const input_flowerPos_length_max = document.getElementById("flowerPos_length_max");
             const input_flowerPos_width_min = document.getElementById("flowerPos_width_min");
             const input_flowerPos_width_max = document.getElementById("flowerPos_width_max");
+            const input_flowerBgSizeCustom = document.getElementById("fl_bgSize_custom");
+            const input_branchBgSizeCustom = document.getElementById("br_bgSize_custom");
+
+            const input_flowerHeight = document.getElementById("fl_height");
+            const input_flowerHeight_randMin = document.getElementById("fl_randheight_min");
+            const input_flowerHeight_randMax = document.getElementById("fl_randheight_max");
+            const input_flowerWidth = document.getElementById("fl_width");
+            const input_flowerWidth_randMin = document.getElementById("fl_randwidth_min");
+            const input_flowerWidth_randMax = document.getElementById("fl_randwidth_max");
 
             var startLength = input_startLength.value;
             var startAngle = input_startAngle.value;
@@ -493,11 +544,25 @@
             var flowerPos_length_max = input_flowerPos_length_max.value;
             var flowerPos_width_min = input_flowerPos_width_min.value;
             var flowerPos_width_max = input_flowerPos_width_max.value;
+            var flowerBgSizeCustom = input_flowerBgSizeCustom.value;
+            var branchBgSizeCustom = input_branchBgSizeCustom.value;
+
+            var flowerHeight = input_flowerHeight.value;
+            var flowerHeight_randMin = input_flowerHeight_randMin.value;
+            var flowerHeight_randMax = input_flowerHeight_randMax.value;
+            var flowerWidth = input_flowerWidth.value;
+            var flowerWidth_randMin = input_flowerWidth_randMin.value;
+            var flowerWidth_randMax = input_flowerWidth_randMax.value;
 
             const input_depthGrad_start = document.getElementById("br_depthBasedBg_startCol");
             const input_depthGrad_end = document.getElementById("br_depthBasedBg_endCol");
             var depthGrad_start = input_depthGrad_start.value;
             var depthGrad_end = input_depthGrad_end.value;
+
+            const input_flowerDepthGrad_start = document.getElementById("fl_depthBasedBg_startCol");
+            const input_flowerDepthGrad_end = document.getElementById("fl_depthBasedBg_endCol");
+            var flowerDepthGrad_start = input_flowerDepthGrad_start.value;
+            var flowerDepthGrad_end = input_flowerDepthGrad_end.value;
 
             input_startLength.oninput = function () {
                 startLength = this.value;
@@ -575,16 +640,42 @@
                 depthGrad_end = this.value;
                 initTree();
             }
+            input_flowerBgSizeCustom.oninput = function () {
+                flowerBgSizeCustom = this.value;
+                initTree();
+            }
+            input_branchBgSizeCustom.oninput = function () {
+                branchBgSizeCustom = this.value;
+                initTree();
+            }
+            input_flowerHeight.oninput = function () {flowerHeight = this.value; initTree();}
+            input_flowerHeight_randMin.oninput = function () {flowerHeight_randMin = this.value; initTree();}
+            input_flowerHeight_randMax.oninput = function () {flowerHeight_randMax = this.value; initTree();}
+            input_flowerWidth.oninput = function () {flowerWidth = this.value; initTree();}
+            input_flowerWidth_randMin.oninput = function () {flowerWidth_randMin = this.value; initTree();}
+            input_flowerWidth_randMax.oninput = function () {flowerWidth_randMax = this.value; initTree();}
+            input_flowerDepthGrad_start.oninput = function () {
+                flowerDepthGrad_start = this.value;
+                initTree();
+            }
+            input_flowerDepthGrad_end.oninput = function () {
+                flowerDepthGrad_end = this.value;
+                initTree();
+            }
 
-            // boolean handling
+            // boolean menu handling
             const toggleRandLeft = document.getElementById("randAngleLeft");
             const toggleRandRight = document.getElementById("randAngleRight");
             const toggleRandRatio = document.getElementById("randRatio");
             const toggleSquareBranches = document.getElementById("toggleSquareBranches");
             const toggleFlowers = document.getElementById("toggleFlowers");
             const toggleDepthGradient = document.getElementById("br_depthBasedBg");
-
             const switchBgSize = document.getElementById("br_bgSize");
+
+            const toggleFlowerRandHeight = document.getElementById("fl_randheight");
+            const toggleFlowerRandWidth = document.getElementById("fl_randwidth");
+            const toggleFlowerDepthGradient = document.getElementById("fl_depthBasedBg");
+            const switchFlowerBgSize = document.getElementById("fl_bgSize");
 
             toggleRandLeft.oninput = function () {SetMenu_AngleLeft();initTree();}
             toggleRandRight.oninput = function () {SetMenu_AngleRight();initTree();}
@@ -593,6 +684,11 @@
             toggleFlowers.oninput = function () {SetMenu_Flowers();initTree();}
             toggleDepthGradient.oninput = function () {SetMenu_DepthGradient();initTree();}
             switchBgSize.oninput = function () {SetMenu_BgSize();initTree();}
+
+            toggleFlowerRandHeight.oninput = function () {SetMenu_FlowerHeight();initTree();}
+            toggleFlowerRandWidth.oninput = function () {SetMenu_FlowerWidth();initTree();}
+            toggleFlowerDepthGradient.oninput = function () {SetMenu_FlowerDepthGradient();initTree();}
+            switchFlowerBgSize.oninput = function () {SetMenu_FlowerBgSize();initTree();}
 
             function SetMenu_AngleLeft() {
                 if (toggleRandLeft.checked) {
@@ -642,8 +738,10 @@
             function SetMenu_DepthGradient() {
                 if (toggleDepthGradient.checked) {
                     document.getElementById("depthColVars").style.display = "block";
+                    document.getElementById("br_bgVars").style.display = "none";
                 } else {
                     document.getElementById("depthColVars").style.display = "none";
+                    document.getElementById("br_bgVars").style.display = "block";
                 }
             }
             function SetMenu_BgSize() {
@@ -653,8 +751,42 @@
                     document.getElementById("customBgSizeVar").style.display = "none";
                 }
             }
+            function SetMenu_FlowerHeight() {
+                if (toggleFlowerRandHeight.checked) {
+                    document.getElementById("fl_regHeightVar").style.display = "none";
+                    document.getElementById("fl_randHeightVars").style.display = "block";
+                } else {
+                    document.getElementById("fl_regHeightVar").style.display = "block";
+                    document.getElementById("fl_randHeightVars").style.display = "none";
+                }
+            }
+            function SetMenu_FlowerWidth() {
+                if (toggleFlowerRandWidth.checked) {
+                    document.getElementById("fl_regWidthVar").style.display = "none";
+                    document.getElementById("fl_randWidthVars").style.display = "block";
+                } else {
+                    document.getElementById("fl_regWidthVar").style.display = "block";
+                    document.getElementById("fl_randWidthVars").style.display = "none";
+                }
+            }
+            function SetMenu_FlowerDepthGradient() {
+                if (toggleFlowerDepthGradient.checked) {
+                    document.getElementById("fl_depthColVars").style.display = "block";
+                    document.getElementById("fl_bgVars").style.display = "none";
+                } else {
+                    document.getElementById("fl_depthColVars").style.display = "none";
+                    document.getElementById("fl_bgVars").style.display = "block";
+                }
+            }
+            function SetMenu_FlowerBgSize() {
+                if (switchFlowerBgSize.value == 3) {
+                    document.getElementById("fl_customBgSizeVar").style.display = "block";
+                } else {
+                    document.getElementById("fl_customBgSizeVar").style.display = "none";
+                }
+            }
 
-            window.onload = function() {
+            window.onload = function InitMenus() {
                 SetMenu_AngleLeft();
                 SetMenu_AngleRight();
                 SetMenu_Ratio();
@@ -663,10 +795,16 @@
                 SetMenu_DepthGradient();
                 SetMenu_BgSize();
 
+                SetMenu_FlowerHeight();
+                SetMenu_FlowerWidth();
+                SetMenu_FlowerDepthGradient();
+                SetMenu_FlowerBgSize();
+
                 initTree();
             };
 
             const styleVariableMappings = {
+                //branch vars
                 "br_height": {          cssVar: "--branchHeight", suffix: "px" },
                 "br_borderRadius": {    cssVar: "--branchBorderRad", suffix: "px" },
                 "br_blendMode_mix": {   cssVar: "--branchBlendMode_mix" },
@@ -675,7 +813,14 @@
                 "br_borderWidth": {     cssVar: "--branchBorderWidth", suffix: "px" },
                 "br_borderColour": {    cssVar: "--branchBorderColour" },
                 "br_borderType": {      cssVar: "--branchBorderType" },
-                "br_bgSize_custom": {   cssVar: "--branchBackgroundSize" },
+                //flower vars
+                "fl_borderRadius": {   cssVar: "--flowerBorderRad", suffix: "px" },
+                "fl_background": {   cssVar: "--flowerBackground" },
+                "fl_borderWidth": {   cssVar: "--flowerBorderWidth", suffix: "px" },
+                "fl_borderColour": {   cssVar: "--flowerBorderColour" },
+                "fl_borderType": {   cssVar: "--flowerBorderType" },
+                "fl_blendMode_mix": {   cssVar: "--flowerBlendMode_mix" },
+                "fl_blendMode_bg": {   cssVar: "--flowerBlendMode_bg" },
             };
 
             Object.entries(styleVariableMappings).forEach(([inputId, { cssVar, suffix="" }]) => {
@@ -716,25 +861,52 @@
 
                 document.getElementById("br_background").value = stylesheet.getPropertyValue("--branchBackground");
             }
+            function Fl_BgAddColour() {
+                if (stylesheet.getPropertyValue("--flowerBackground") == "")
+                    stylesheet.setProperty("--flowerBackground", "#008000");
+                else
+                    stylesheet.setProperty("--flowerBackground", stylesheet.getPropertyValue("--flowerBackground") + ",\n#008000");
+
+                document.getElementById("fl_background").value = stylesheet.getPropertyValue("--flowerBackground");
+            }
+            function Fl_BgAddImage() {
+                if (stylesheet.getPropertyValue("--flowerBackground") == "")
+                    stylesheet.setProperty("--flowerBackground", "url(place your link to an image here)");
+                else
+                    stylesheet.setProperty("--flowerBackground", stylesheet.getPropertyValue("--flowerBackground") + ",\nurl(place your link to an image here)");
+
+                document.getElementById("fl_background").value = stylesheet.getPropertyValue("--flowerBackground");
+            }
+            function Fl_BgAddGradient() {
+                var gradient = document.getElementById('fl_gradientType').value;
+                
+                if (stylesheet.getPropertyValue("--flowerBackground") == "")
+                    stylesheet.setProperty("--flowerBackground", gradient + "(red, blue)");
+                else
+                    stylesheet.setProperty("--flowerBackground", stylesheet.getPropertyValue("--flowerBackground") + ",\n" + gradient + "(red, blue)");
+
+                document.getElementById("fl_background").value = stylesheet.getPropertyValue("--flowerBackground");
+            }
 
             function getRandomIntInclusive(min, max) {
                 const minCeiled = Math.ceil(min);
                 const maxFloored = Math.floor(max);
                 return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is exclusive and the minimum is inclusive
             }
-
             function getRandomArbitrary(min, max) {
                 return Math.random() * (max - min) + min;
             }
 
             let colorSteps = null;
+            let flowerColorSteps = null;
 
             function initTree() {
                 destroyTree();
 
                 if (toggleDepthGradient.checked)
                     colorSteps = ColorSteps.getColorSteps(depthGrad_end, depthGrad_start, depth);
-                    
+                if (toggleFlowerDepthGradient.checked)
+                    flowerColorSteps = ColorSteps.getColorSteps(flowerDepthGrad_end, flowerDepthGrad_start, depth);
 
                 tree(startLength, startAngle, depth, null, null, ratio);
             }
@@ -746,20 +918,29 @@
                 document.body.removeChild(document.getElementById("treeBranch"));
             }
 
-            function checkForFlower(targetBranch) {
+            function checkForFlower(targetBranch, depth) {
                 if (getRandomIntInclusive(1,flowerOdds) == flowerOdds) {
-                    createFlower(targetBranch);
+                    createFlower(targetBranch, depth);
                     checkForFlower(targetBranch);
                 }
             }
 
-            function createFlower(parentBranch) {
+            function createFlower(parentBranch, depth) {
                 const newFlower = document.createElement("div");
                 newFlower.classList.add("flower");
                 parentBranch.appendChild(newFlower);
 
+                
+                SetFlowerSize(newFlower);
+
                 newFlower.style.left = getRandomIntInclusive(flowerPos_length_min,flowerPos_length_max) + "%";
                 newFlower.style.top = getRandomIntInclusive(flowerPos_width_min,flowerPos_width_max) + "%";
+
+                checkFlowerBgSize(newFlower);
+
+                if (toggleFlowerDepthGradient.checked) {
+                    newFlower.style.setProperty('--flowerBackground', flowerColorSteps[depth - 1]);
+                }
             }
 
             function CheckForSquare(branch) {
@@ -780,13 +961,38 @@
                     else
                         newBranch.style.setProperty("--branchBackgroundSize", newBranch.style.getPropertyValue('--w') + " " + newBranch.style.getPropertyValue('height')); 
                 } else if (switchBgSize.value == 3) { //custom
-                    
+                    newBranch.style.setProperty("--branchBackgroundSize", document.getElementById("br_bgSize_custom").value);
                 }
             }
 
-            function GetColorSteps() {
-                const start = depthGrad_start;
-                const end = depthGrad_end;
+            function SetFlowerSize(flower) {
+                var height = 0;
+                var width = 0;
+
+                if (toggleFlowerRandHeight.checked){
+                    height = getRandomIntInclusive(flowerHeight_randMin, flowerHeight_randMax);
+                } else {
+                    height = flowerHeight;
+                }
+
+                if (toggleFlowerRandWidth.checked){
+                    width = getRandomIntInclusive(flowerWidth_randMin, flowerWidth_randMax);
+                } else {
+                    width = flowerWidth;
+                }
+
+                flower.style.setProperty("--h", height + "px");
+                flower.style.setProperty("--w", width + "px");
+            }
+
+            function checkFlowerBgSize(flower) {
+                if (switchFlowerBgSize.value == 1) { //auto
+                    flower.style.setProperty("--flowerBackgroundSize", "auto");
+                } else if (switchFlowerBgSize.value == 2) { //same as flower size 
+                    flower.style.setProperty("--flowerBackgroundSize", 'var(--flowerWidth) var(--flowerHeight)'); 
+                } else if (switchFlowerBgSize.value == 3) { //custom
+                    flower.style.setProperty("--flowerBackgroundSize", document.getElementById("fl_bgSize_custom").value);
+                }
             }
 
             function tree(startLength, startRot, depth, parent, angle, ratio) {
@@ -818,10 +1024,9 @@
                     else
                         newRatio = ratio;
                     
-
                     newBranch.style.setProperty('--w', parent.offsetWidth * newRatio + "px");
                     newBranch.style.setProperty('--a', newAngle + "deg");
-
+                
                 } else if (parent == null) {
                     newBranch.setAttribute("id", "treeBranch"); 
                     newBranch.classList.add("root");
@@ -832,11 +1037,11 @@
                 }
 
                 if (toggleDepthGradient.checked) {
-                    newBranch.style.background = colorSteps[depth];
+                    newBranch.style.setProperty('--branchBackground' , colorSteps[depth-1]);
                 }
 
                 if (toggleFlowers.checked)
-                    checkForFlower(newBranch);
+                    checkForFlower(newBranch, depth);
 
                 CheckForSquare(newBranch);
 
