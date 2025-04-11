@@ -499,6 +499,8 @@
 
         <script>
             const stylesheet = document.documentElement.style;
+            var colorSteps = null;
+            var flowerColorSteps = null;
 
             const input_startLength = document.getElementById("startLength");
             const input_startAngle = document.getElementById("startAngle");
@@ -564,104 +566,35 @@
             var flowerDepthGrad_start = input_flowerDepthGrad_start.value;
             var flowerDepthGrad_end = input_flowerDepthGrad_end.value;
 
-            input_startLength.oninput = function () {
-                startLength = this.value;
-                initTree();
-            }
-            input_startAngle.oninput = function () {
-                startAngle = this.value;
-                initTree();
-            }
-            input_angleLeft.oninput = function () {
-                angleLeft = this.value;
-                initTree();
-            }
-            input_randAngleLeft_min.oninput = function () {
-                randAngleLeft_min = this.value;
-                initTree();
-            }
-            input_randAngleLeft_max.oninput = function () {
-                randAngleLeft_max = this.value;
-                initTree();
-            }
-            input_angleRight.oninput = function () {
-                angleRight = this.value;
-                initTree();
-            }
-            input_randAngleRight_min.oninput = function () {
-                randAngleRight_min = this.value;
-                initTree();
-            }
-            input_randAngleRight_max.oninput = function () {
-                randAngleRight_max = this.value;
-                initTree();
-            }
-            input_ratio.oninput = function () {
-                ratio = this.value / 100;
-                initTree();
-            }
-            input_randRatio_min.oninput = function () {
-                randRatio_min = this.value / 100;
-                initTree();
-            }
-            input_randRatio_max.oninput = function () {
-                randRatio_max = this.value / 100;
-                initTree();
-            }
-            input_depth.oninput = function () {
-                depth = this.value;
-                initTree();
-            }
-            input_flowerOdds.oninput = function () {
-                flowerOdds = this.value;
-                initTree();
-            }
-            input_flowerPos_length_min.oninput = function () {
-                flowerPos_length_min = this.value;
-                initTree();
-            }
-            input_flowerPos_length_max.oninput = function () {
-                flowerPos_length_max = this.value;
-                initTree();
-            }
-            input_flowerPos_width_min.oninput = function () {
-                flowerPos_width_min = this.value;
-                initTree();
-            }
-            input_flowerPos_width_max.oninput = function () {
-                flowerPos_width_max = this.value;
-                initTree();
-            }
-            input_depthGrad_start.oninput = function () {
-                depthGrad_start = this.value;
-                initTree();
-            }
-            input_depthGrad_end.oninput = function () {
-                depthGrad_end = this.value;
-                initTree();
-            }
-            input_flowerBgSizeCustom.oninput = function () {
-                flowerBgSizeCustom = this.value;
-                initTree();
-            }
-            input_branchBgSizeCustom.oninput = function () {
-                branchBgSizeCustom = this.value;
-                initTree();
-            }
+            input_startLength.oninput = function () {startLength = this.value;initTree();}
+            input_startAngle.oninput = function () {startAngle = this.value;initTree();}
+            input_angleLeft.oninput = function () {angleLeft = this.value;initTree();}
+            input_randAngleLeft_min.oninput = function () {randAngleLeft_min = this.value;initTree();}
+            input_randAngleLeft_max.oninput = function () {randAngleLeft_max = this.value;initTree();}
+            input_angleRight.oninput = function () {angleRight = this.value;initTree();}
+            input_randAngleRight_min.oninput = function () {randAngleRight_min = this.value;initTree();}
+            input_randAngleRight_max.oninput = function () {randAngleRight_max = this.value;initTree();}
+            input_ratio.oninput = function () {ratio = this.value / 100;initTree();}
+            input_randRatio_min.oninput = function () {randRatio_min = this.value / 100;initTree();}
+            input_randRatio_max.oninput = function () {randRatio_max = this.value / 100;initTree();}
+            input_depth.oninput = function () {depth = this.value;initTree();}
+            input_flowerOdds.oninput = function () {flowerOdds = this.value;initTree();}
+            input_flowerPos_length_min.oninput = function () {flowerPos_length_min = this.value;initTree();}
+            input_flowerPos_length_max.oninput = function () {flowerPos_length_max = this.value;initTree();}
+            input_flowerPos_width_min.oninput = function () {flowerPos_width_min = this.value;initTree();}
+            input_flowerPos_width_max.oninput = function () {flowerPos_width_max = this.value;initTree();}
+            input_depthGrad_start.oninput = function () {depthGrad_start = this.value;initTree();}
+            input_depthGrad_end.oninput = function () {depthGrad_end = this.value;initTree();}
+            input_flowerBgSizeCustom.oninput = function () {flowerBgSizeCustom = this.value;initTree();}
+            input_branchBgSizeCustom.oninput = function () {branchBgSizeCustom = this.value;initTree();}
             input_flowerHeight.oninput = function () {flowerHeight = this.value; initTree();}
             input_flowerHeight_randMin.oninput = function () {flowerHeight_randMin = this.value; initTree();}
             input_flowerHeight_randMax.oninput = function () {flowerHeight_randMax = this.value; initTree();}
             input_flowerWidth.oninput = function () {flowerWidth = this.value; initTree();}
             input_flowerWidth_randMin.oninput = function () {flowerWidth_randMin = this.value; initTree();}
             input_flowerWidth_randMax.oninput = function () {flowerWidth_randMax = this.value; initTree();}
-            input_flowerDepthGrad_start.oninput = function () {
-                flowerDepthGrad_start = this.value;
-                initTree();
-            }
-            input_flowerDepthGrad_end.oninput = function () {
-                flowerDepthGrad_end = this.value;
-                initTree();
-            }
+            input_flowerDepthGrad_start.oninput = function () {flowerDepthGrad_start = this.value;initTree();}
+            input_flowerDepthGrad_end.oninput = function () {flowerDepthGrad_end = this.value;initTree();}
 
             // boolean menu handling
             const toggleRandLeft = document.getElementById("randAngleLeft");
@@ -896,9 +829,6 @@
             function getRandomArbitrary(min, max) {
                 return Math.random() * (max - min) + min;
             }
-
-            let colorSteps = null;
-            let flowerColorSteps = null;
 
             function initTree() {
                 destroyTree();
