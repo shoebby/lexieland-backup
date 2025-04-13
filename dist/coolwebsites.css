@@ -1,0 +1,59 @@
+body {
+    background: radial-gradient(circle at center center, black 50%, transparent),
+                repeating-radial-gradient(circle at center top, black 0%, transparent 1%),
+                repeating-radial-gradient(circle at center bottom, black 0%, transparent 5%),
+                #5c5c5c;
+    font-size: 16pt;
+}
+
+a {
+    color: black;
+    text-decoration-line: underline;
+}
+
+p {
+    margin: 0 0 .5em 0;
+}
+
+h3 {
+    margin: .5em 0 0 0;
+    color: black;
+    font-size: 20pt;
+    border-bottom: solid black .1em;
+}
+
+h4 {
+    margin: .5em 0 0 0;
+    color: black;
+    font-size: 16pt;
+    font-weight: bold;
+    border-bottom: solid black .1em;
+}
+
+.flex-grid {
+    display: flex;
+    gap: 1em;
+}
+
+.category {
+    padding: 0 1em 1em 1em;
+    margin: .5em 0 .5em 0;
+    flex: 1;
+
+    border: .1em solid black;
+    background-color: white;
+    color: black;
+}
+
+.subcategory {
+    background-color: white;
+    color: black;
+}
+
+.navbar {
+    text-align: center;
+    background-color: white;
+    color: black;
+    flex: 1;
+    padding: .5em;
+}

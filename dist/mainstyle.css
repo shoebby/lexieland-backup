@@ -77,6 +77,8 @@
         margin: 0;
         text-align: center;
         padding-top: 5px;
+        white-space: nowrap;
+        width: 100%;
     }
     .bannerTextGradient {
         background: linear-gradient(to top, white, black);
@@ -89,17 +91,15 @@
         margin-bottom: 5px;
     }
     .container {
-        width: 900px;
+        width: 50%;
         margin: 0 auto;
     }
     .maintd {
-        width: 675px;
-        max-width: 675px;
+        width: 85%;
         vertical-align: baseline;
     }
     .menutd {
-        width: 225px;
-        max-width: 225px;
+        width: 15%;
         vertical-align: baseline;
     }
     .box {
