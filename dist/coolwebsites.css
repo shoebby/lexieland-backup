@@ -1,33 +1,45 @@
+@font-face {
+    font-family: "RainyHearts";
+    src: url("fonts/rainyhearts.ttf") format("truetype");
+}
+
 body {
     background: radial-gradient(circle at center center, black 50%, transparent),
                 repeating-radial-gradient(circle at center top, black 0%, transparent 1%),
                 repeating-radial-gradient(circle at center bottom, black 0%, transparent 5%),
                 #5c5c5c;
-    font-size: 16pt;
+    font-size: 14pt;
+    font-family:"RainyHearts";
+    color: black;
 }
 
 a {
-    color: black;
     text-decoration-line: underline;
+    font-weight: bold;
+    color: black;
 }
 
-p {
-    margin: 0 0 .5em 0;
+.entry {
+    padding: 0 0 .4em 0;
+    border-bottom: dashed black 1px;
 }
 
 h3 {
     margin: .5em 0 0 0;
-    color: black;
     font-size: 20pt;
     border-bottom: solid black .1em;
 }
 
 h4 {
     margin: .5em 0 0 0;
-    color: black;
     font-size: 16pt;
     font-weight: bold;
     border-bottom: solid black .1em;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
 }
 
 .flex-grid {
@@ -41,19 +53,40 @@ h4 {
     flex: 1;
 
     border: .1em solid black;
-    background-color: white;
-    color: black;
+    background: white;
 }
 
 .subcategory {
-    background-color: white;
-    color: black;
+    flex: 1;
 }
 
 .navbar {
     text-align: center;
     background-color: white;
-    color: black;
     flex: 1;
     padding: .5em;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 130%;
+    top: 100%;
+    min-width: 300px;
+    padding: .5em;
+    z-index: 1;
+
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    box-shadow: 8px 8px 1px 0px rgba(0,0,0,0.5);
+    border: white 1px solid;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
