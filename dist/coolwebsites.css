@@ -4,10 +4,7 @@
 }
 
 body {
-    background: radial-gradient(circle at center center, black 50%, transparent),
-                repeating-radial-gradient(circle at center top, black 0%, transparent 1%),
-                repeating-radial-gradient(circle at center bottom, black 0%, transparent 5%),
-                #5c5c5c;
+    background: url("images/doitforyou.png"), black;
     font-size: 14pt;
     font-family:"RainyHearts";
     color: white;
