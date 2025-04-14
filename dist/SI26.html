@@ -184,14 +184,14 @@
 
                 mix-blend-mode: var(--branchBlendMode_mix);
                 background-blend-mode: var(--branchBlendMode_bg);
-            }
 
+                animation: anim-branch duration timing-function delay iteration-count direction fill-mode;
+            }
             .root {
                 left: 50%;
                 top: 0%;
                 transform-origin: 0% 0%;
             }
-
             .flower {
                 position: absolute;
                 display: flex;
@@ -228,8 +228,16 @@
                             var(--flowerBoxShadowBlur)
                             var(--flowerBoxShadowSpread)
                             var(--flowerBoxShadowColor);
+
+                animation: anim-flower duration timing-function delay iteration-count direction fill-mode;
             }
 
+            @keyframes anim-branch {
+                
+            }
+            @keyframes anim-flower {
+                
+            }
             @media print {    
                 .no-print, .no-print *
                 {
@@ -241,10 +249,13 @@
     <body>
         <!-- Base Generator Menu -->
         <div style="position: absolute;z-index: 100; width: 20%;" class="no-print">
+            <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+                <h1 style="padding: 0; margin: 0;">Recurse() {<br>&emsp;Recurse();<br>&emsp;Recurse();<br>}</h1>
+            </div>
             <input type="button" value="regenerate" onclick="initTree();" style="width: 100%;">
             <br>
             <input type="button" value="clear" onclick="destroyTree();" style="width: 100%;">
-            For the CSS-savvy: try animating elements of the tree and see what happens...hehe...
+            For the CSS-savvy: inspect element and try to animate the branch and flower elements of the tree!
             <br><br>
             When you're done, press CTRL+P and print!
             <br>
@@ -1313,7 +1324,6 @@
             }
 
             const ColorSteps = (() => {
-
                 /**
                  * Convert any color string to an [r,g,b,a] array.
                  * @author Arjan Haverkamp (arjan-at-avoid-dot-org)
@@ -1322,19 +1332,19 @@
                  * @see https://gist.github.com/av01d/8f068dd43447b475dec4aad0a6107288
                  */
                 const colorValues = color => {
-                const div = document.createElement('div');
-                div.style.backgroundColor = color;
-                document.body.appendChild(div);
-                let rgba = getComputedStyle(div).getPropertyValue('background-color');
-                div.remove();
+                    const div = document.createElement('div');
+                    div.style.backgroundColor = color;
+                    document.body.appendChild(div);
+                    let rgba = getComputedStyle(div).getPropertyValue('background-color');
+                    div.remove();
 
-                if (rgba.indexOf('rgba') === -1) {
-                    rgba += ',1'; // convert 'rgb(R,G,B)' to 'rgb(R,G,B)A' which looks awful but will pass the regxep below
-                }
+                    if (rgba.indexOf('rgba') === -1) {
+                        rgba += ',1'; // convert 'rgb(R,G,B)' to 'rgb(R,G,B)A' which looks awful but will pass the regxep below
+                    }
 
-                return rgba.match(/[\.\d]+/g).map(a => {
-                    return +a
-                });
+                    return rgba.match(/[\.\d]+/g).map(a => {
+                        return +a
+                    });
                 }
 
                 /**
@@ -1346,34 +1356,34 @@
                  * @returns {array} Array of 'rgb(r,g,b)' or 'rgba(r,g,b,a)' arrays
                  */
                 const getColorSteps = (colorStart, colorEnd, steps) => {
-                const start = colorValues(colorStart),
-                    end = colorValues(colorEnd),
-                    opacityStep = (end[3] * 100 - start[3] * 100) / steps,
-                    colors = [];
-                let alpha = 0, opacity = start[3] * 100;
+                    const start = colorValues(colorStart),
+                        end = colorValues(colorEnd),
+                        opacityStep = (end[3] * 100 - start[3] * 100) / steps,
+                        colors = [];
+                    let alpha = 0, opacity = start[3] * 100;
 
-                for (let i = 0; i < steps; i++) {
-                    alpha += 1.0 / steps;
-                    opacity += opacityStep;
+                    for (let i = 0; i < steps; i++) {
+                        alpha += 1.0 / steps;
+                        opacity += opacityStep;
 
-                    let c = [
-                    Math.round(end[0] * alpha + (1 - alpha) * start[0]),
-                    Math.round(end[1] * alpha + (1 - alpha) * start[1]),
-                    Math.round(end[2] * alpha + (1 - alpha) * start[2])
-                    ];
+                        let c = [
+                        Math.round(end[0] * alpha + (1 - alpha) * start[0]),
+                        Math.round(end[1] * alpha + (1 - alpha) * start[1]),
+                        Math.round(end[2] * alpha + (1 - alpha) * start[2])
+                        ];
 
-                    colors.push(
-                    opacity == 100 ? `rgb(${c[0]},${c[1]},${c[2]})` : `rgba(${c[0]},${c[1]},${c[2]},${opacity/100})`
-                    );
-                }
+                        colors.push(
+                        opacity == 100 ? `rgb(${c[0]},${c[1]},${c[2]})` : `rgba(${c[0]},${c[1]},${c[2]},${opacity/100})`
+                        );
+                    }
 
-                return colors;
+                    return colors;
                 }
 
                 return {
-                colorValues,
-                getColorSteps
+                    colorValues,
+                    getColorSteps
                 }
-                })();
+            })();
         </script>
     <body>
