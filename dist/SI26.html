@@ -319,8 +319,11 @@
                     </div>
                 </div>
                 <div class="settingsBox" name="depth">
+                    <P style="margin-bottom: 10px; margin-top: 0;">
+                        <i>The depth is the amount of times the tree 'splits'. Be aware that at 12 and up it starts to have severe performance challenges</i>
+                    </P>
                     <label for="depth">Depth: </label>
-                    <input type="number" id="depth" min="0" max="20" value="8">
+                    <input type="number" id="depth" min="0" max="15" value="8">
                 </div>
                 <div class="settingsBox" name="flowers">
                     <P style="margin-bottom: 10px; margin-top: 0;"><i>Flowers are divs that have a chance to sprout along a branch</i></P>
@@ -376,9 +379,9 @@
         <!-- Styling Menu -->
         <div class="styleVarBox no-print">
             <h2 style="margin: 0;">Style Variables</h2>
-            <div style="display: flex;">
+            <div style="display: flex; gap: 10px;">
                 <!-- branch vars -->
-                <div id="branchStyleVars" style="flex: 1; margin-right: 10px;">
+                <div id="branchStyleVars" style="flex: 1;">
                     <h3 style="margin: 0;">Branches</h3>
                     <div class="settingsBox" name="width vars">
                         <label for="br_widthOptions">Width Modes: </label>
@@ -552,7 +555,7 @@
                     </div>
                 </div>
                 <!-- flower vars -->
-                <div id="flowerStyleVars" style="flex: 1">
+                <div id="flowerStyleVars" style="flex: 1;">
                     <h3 style="margin: 0;">Flowers</h3>
                     <div class="settingsBox" name="flower height vars">
                         <input type="checkbox" id="fl_randheight">
