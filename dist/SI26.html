@@ -1230,7 +1230,7 @@
                 if (switchBgSize.value == 1) { //auto
                     newBranch.style.setProperty("--branchBackgroundSize", "auto");
                 } else if (switchBgSize.value == 2) { //same as branch size 
-                    if (toggleSquareBranches.checked)
+                    if (switchWidthModes.value == 2)
                         newBranch.style.setProperty("--branchBackgroundSize", newBranch.style.getPropertyValue('--w') + " " + newBranch.style.getPropertyValue('--w'));
                     else
                         newBranch.style.setProperty("--branchBackgroundSize", newBranch.style.getPropertyValue('--w') + " " + newBranch.style.getPropertyValue('height')); 
