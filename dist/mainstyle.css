@@ -197,7 +197,7 @@
         display: grid;
     }
     .blogItem {
-        width: 252px;
+        flex: 1;
         display: inline-block;
     }
 
