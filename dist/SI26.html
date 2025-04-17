@@ -1263,7 +1263,7 @@
                 if (switchFlowerBgSize.value == 1) { //auto
                     flower.style.setProperty("--flowerBackgroundSize", "auto");
                 } else if (switchFlowerBgSize.value == 2) { //same as flower size 
-                    flower.style.setProperty("--flowerBackgroundSize", 'var(--flowerWidth) var(--flowerHeight)'); 
+                    flower.style.setProperty("--flowerBackgroundSize", 'var(--w) var(--h)'); 
                 } else if (switchFlowerBgSize.value == 3) { //custom
                     flower.style.setProperty("--flowerBackgroundSize", document.getElementById("fl_bgSize_custom").value);
                 }
