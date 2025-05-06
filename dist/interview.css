@@ -1,0 +1,87 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14pt;
+    background-color: #222222;
+    color: white;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 700;
+    font-size: 32pt;
+}
+h2 {
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    font-size: 22pt;
+}
+p {
+    margin: 3em 0 3em 0;
+    line-height: 1.75em;
+}
+
+a {
+    color: #bce6ff;
+    text-decoration: none;
+}
+a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.navlink {
+    color: rgb(196, 196, 196);
+    padding: .5em 1.5em .5em 1.5em;
+    text-decoration: none;
+}
+.navlink:hover {
+    background-color: #222222;
+    color: rgb(255, 255, 255);
+}
+
+.headbanner {
+    image-rendering: pixelated;
+    width: 100%
+}
+
+.wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.foreword {
+    font-style: italic;
+    line-height: 1.4em;
+}
+.lexie {
+    
+}
+.lexie::before {
+    content: "LE: ";
+    color: rgb(255, 181, 155);
+}
+.godot {
+    
+}
+.godot::before {
+    content: "GD: ";
+    color: rgb(170, 170, 255);
+}
+.topnav {
+    width: 100%;
+    position: relative;
+    background-color: rgb(15, 15, 15);
+    border-bottom: 1px solid rgb(206, 206, 206);
+}
+.container {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1em;
+    padding: .5em;
+}

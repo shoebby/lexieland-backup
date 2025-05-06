@@ -32,6 +32,13 @@ h4 {
     border-bottom: solid white .1rem;
 }
 
+footer {
+    text-align: center;
+    color: #fc8e4e;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
 .container {
     width: 50%;
     margin: 0 auto;

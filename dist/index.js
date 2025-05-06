@@ -1,3 +1,22 @@
+let common = {};
+common.audio = {};
+
+window.addEventListener("DOMContentLoaded", async () => {
+    common.audio.interact = new Audio("sounds/pop.mp3");
+    common.audio.interact.volume = 0.3;
+
+    common.audio.context = new AudioContext();
+    common.audio.track = {};
+    common.audio.track.interact = common.audio.context.createMediaElementSource(common.audio.interact);
+    common.audio.track.interact.connect(common.audio.context.destination);
+
+    document.addEventListener("mouseover", (e) => {
+        if (e.target.tagName == "A" || (e.target.parentElement != undefined && e.target.parentElement.tagName == "A")) {
+            common.audio.interact.play();
+        }
+    });
+});
+
 //how tf do i not make it need to do this bru
 window.onload = () => {
     //background music
@@ -24,13 +43,14 @@ window.onload = () => {
     //pfp arf and shake on click
     var pfp = document.getElementById("pfp");
     var pfpSize = 99;
-    
+
     pfp.onclick = function () {
         pfpSize -= 1;
         pfp.style.width = pfpSize + "%";
         pfp.style.marginLeft = ((99 - pfpSize) / 2) + "%";
         pfp.style.marginRight = ((99 - pfpSize) / 2) + "%";
         var sound_oof = new Audio("sounds/oof.mp3");
+        sound_oof.volume = 0.3;
         sound_oof.play();
     };
 
@@ -70,6 +90,7 @@ window.onload = () => {
         newBuddy.style.filter = "grayscale(" + randomIntFromInterval(0,100) + "%)";
 
         var sound_buddy = new Audio("sounds/pop.mp3");
+        sound_buddy.volume = 0.3;
         sound_buddy.play();
     }
 
@@ -92,6 +113,7 @@ window.onload = () => {
                 spinner.style.transform = "rotate(".concat(parseInt(spinner.style.transform.split("(")[1].split("deg")[0]) + 360,"deg)");
             }
             var sound_spin = new Audio("sounds/woo.mp3");
+            sound_spin.volume = 0.3;
             sound_spin.play();
         };
     };
