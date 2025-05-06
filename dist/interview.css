@@ -1,7 +1,12 @@
+@font-face {
+    font-family: "Apple Garamond";
+    src: url("fonts/AppleGaramond.ttf") format("truetype");
+}
+
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 14pt;
-    background-color: #222222;
+    background-color: #181818;
     color: white;
     overflow-x: hidden;
     margin: 0;
@@ -33,6 +38,16 @@ a:hover {
     text-decoration: underline;
 }
 
+footer {
+    text-align: center;
+    padding: 3em 0 3em 0;
+}
+
+.outletName {
+    font-family: "Apple Garamond";
+    font-size: 28pt;
+}
+
 .navlink {
     color: rgb(196, 196, 196);
     padding: .5em 1.5em .5em 1.5em;
@@ -58,6 +73,7 @@ a:hover {
     font-style: italic;
     line-height: 1.4em;
 }
+
 .lexie {
     
 }
@@ -84,4 +100,14 @@ a:hover {
     flex-flow: row wrap;
     gap: 1em;
     padding: .5em;
+}
+.bottomSection {
+    border-bottom: 1px solid rgb(206, 206, 206);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1em;
+    padding: .5em;
+    width: 900px;
+    margin: 0 auto;
 }
