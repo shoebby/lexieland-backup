@@ -10,6 +10,7 @@ body {
     color: white;
     overflow-x: hidden;
     margin: 0;
+    text-align: justify;
 }
 
 h1 {
@@ -64,14 +65,50 @@ footer {
 }
 
 .wrapper {
-    max-width: 900px;
+    max-width: 50%;
     margin: 0 auto;
     padding: 1em;
 }
 
-.foreword {
-    font-style: italic;
-    line-height: 1.4em;
+.adspace-left {
+    float: left;
+    width: 15%;
+    margin: 1em 5% 0 5%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(15, 15, 15);
+}
+
+.adspace-right {
+    float: right;
+    width: 15%;
+    margin: 1em 5% 0 5%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(15, 15, 15);
+}
+
+.popupAd {
+    position: fixed;
+    bottom: -10%;
+    height: 4em;
+    width: 30%;
+    transition: 1s;
+    display: flex;
+    justify-content: center;
+    animation: popupanim 1s linear 2s 1 forwards;
+    border: 1px solid white;
+    left: 35%;
+}
+
+.ad {
+    width: 80%;
+    padding: 1em 10% 1em 10%;
+}
+
+@keyframes popupanim {
+    0% {bottom: -10%;}
+    100% {bottom: 0%;}
 }
 
 .lexie {
@@ -90,9 +127,10 @@ footer {
 }
 .topnav {
     width: 100%;
-    position: relative;
+    position: fixed;
     background-color: rgb(15, 15, 15);
     border-bottom: 1px solid rgb(206, 206, 206);
+    z-index: 999;
 }
 .container {
     align-items: center;
@@ -108,6 +146,6 @@ footer {
     align-items: stretch;
     gap: 1em;
     padding: .5em;
-    width: 900px;
+    width: 50%;
     margin: 0 auto;
 }
