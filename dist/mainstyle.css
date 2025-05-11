@@ -98,11 +98,11 @@
     }
     .maintd {
         width: 85%;
-        vertical-align: baseline;
+        vertical-align: top;
     }
     .menutd {
         width: 15%;
-        vertical-align: baseline;
+        vertical-align: top;
     }
     .box {
         border: 2px solid darkgray;
@@ -190,6 +190,17 @@
         .3em 0 0 #ffe676c9,
         .4em 0 0 #ffdf5071,
         .5em 0 0 #ffd41348;
+    }
+
+    #statuscafe {
+    }
+    #statuscafe-username {
+        margin-bottom: .5em;
+        font-size: 12pt;
+        color: #fc8e4e;
+    }
+    #statuscafe-content {
+        
     }
 
 /* Page Specific */
