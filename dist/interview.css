@@ -6,11 +6,12 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 14pt;
-    background-color: #181818;
-    color: white;
+    background-color: white;
+    color: #181818;
     overflow-x: hidden;
     margin: 0;
     text-align: justify;
+    cursor: default;
 }
 
 h1 {
@@ -31,12 +32,15 @@ p {
 }
 
 a {
-    color: #bce6ff;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: chocolate;
+    text-decoration-thickness: .1em;
+    color: #181818;
 }
 a:hover {
-    color: #ffffff;
+    color: chocolate;
     text-decoration: underline;
+    text-decoration-thickness: .1em;
 }
 
 footer {
@@ -76,7 +80,6 @@ footer {
     margin: 1em 5% 0 5%;
     display: flex;
     flex-direction: column;
-    background-color: rgb(15, 15, 15);
 }
 
 .adspace-right {
@@ -85,7 +88,6 @@ footer {
     margin: 1em 5% 0 5%;
     display: flex;
     flex-direction: column;
-    background-color: rgb(15, 15, 15);
 }
 
 .popupAd {
@@ -97,13 +99,15 @@ footer {
     display: flex;
     justify-content: center;
     animation: popupanim 1s linear 2s 1 forwards;
-    border: 1px solid white;
     left: 35%;
+}
+.popupAd:hover {
+    cursor: pointer;
 }
 
 .ad {
     width: 80%;
-    padding: 1em 10% 1em 10%;
+    margin: 1em 10% 1em 10%;
 }
 
 @keyframes popupanim {
@@ -112,18 +116,16 @@ footer {
 }
 
 .lexie {
-    
+    font-weight: bold;
 }
 .lexie::before {
-    content: "LE: ";
-    color: rgb(255, 181, 155);
-}
-.godot {
     
 }
+.godot {
+    text-indent: 2em;
+}
 .godot::before {
-    content: "GD: ";
-    color: rgb(170, 170, 255);
+    
 }
 .topnav {
     width: 100%;
@@ -131,6 +133,7 @@ footer {
     background-color: rgb(15, 15, 15);
     border-bottom: 1px solid rgb(206, 206, 206);
     z-index: 999;
+    color: white;
 }
 .container {
     align-items: center;
@@ -139,7 +142,26 @@ footer {
     gap: 1em;
     padding: .5em;
 }
-.bottomSection {
+
+.relatedNewsTitle {
+    font-size: 12pt;
+    text-align: left;
+    display: block;
+    text-decoration: none;
+    color: #181818;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+.relatedNewsTitle:hover {
+    text-decoration: underline;
+    color: #181818;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+}
+.footerLinksContainer {
     border-bottom: 1px solid rgb(206, 206, 206);
     display: flex;
     flex-direction: row;
@@ -148,4 +170,22 @@ footer {
     padding: .5em;
     width: 50%;
     margin: 0 auto;
+}
+.footerLinksContainer div {
+    margin: 1em auto 0 auto;
+    display: block;
+}
+.footerLinksContainer a {
+    color: white;
+    font-family: "Work Sans", sans-serif;
+    font-size: 11pt;
+}
+.footerLinksContainer h1 {
+    margin: 0;
+    font-size: 18pt;
+}
+.footerLinksContainer ul {
+    line-height: 1.75em;
+    list-style: none;
+    padding: 0;
 }
