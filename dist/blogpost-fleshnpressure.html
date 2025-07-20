@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <link rel="stylesheet" href="mainstyle.css">
+        <style>
+            a {
+                color: #fcc400;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="banner bannerTextGradient" style="width: 100%;">
+            <h1 style="white-space: nowrap;">
+                ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL 
+                ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL 
+                ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL ACADEMICS, SELFISHNESS, AND MY FIRST VISUAL NOVEL 
+            </h1>
+        </div>
+        
+        <div class="container">
+            <div class="box" style="text-align: center;">
+                <a class="navlink" href="index.html">Back 2 Home</a> - 
+                <a class="navlink" href="blogindex.html">Back 2 Blog</a>
+            </div>
+
+            <span style="float: right;">20/07/2025</span>
+            <h3>Academics, Selfishness, and My First Visual Novel</h3>
+            <div class="box">
+                <img src="images/blogimgs/fnp-banner.jpg" style="width: 100%;">
+                Chat, I've officially fallen in love with writing.<br><br>
+
+                Maybe specifically visual novels, even more specifically kinetic novels (visual novels but largely linear), but love is love nonetheless! It feels like I have finally found a manner in which I feel comfortable talking/connecting/communicating and oh my god I want, nay, need to get better at it.<br><br>
+
+                To provide some context, I entered the <a href="https://itch.io/jam/toxic-yuri-vn-jam/entries">Toxic Yuri VN Jam</a>, a 6-week-long game jam highlighting the literary subgenre of 'toxic yuri', meaning stories about messy women with messy relationships with other messy women.<br>
+                I wrote, programmed, and arted <a href="https://shoebby.itch.io/flesh-and-pressure">Flesh and Pressure</a>, an extremely indulgent piece of work about a girl eerilie resembling myself and the trash compactor she falls in love with. I am happy with this work, maybe even ecstatic, and so far friends seem to love it!<br>
+                Finishing development did leave a sort of hollow feeling though (is this what postpartum depression feels like?), and I'm hoping writing about it and getting it out of my system will help alleviate this in some amount. This was my first visual novel after all, and my first time -really- using Ren'Py, so there was a lot to learn and a lot of fuck-ups along the way as well!<br><br>
+
+                <h4>Making an Obvious Choice</h4>
+                If this entire project has taught me anything it's that Ren'Py is an incredible piece of software and that I hate it for reasons I cannot blame it for. Python is by far my least favourite language to write in and GOD it was so annoying to trial-and-error my way through the documentation and -everything-.<br>
+                This did give me an idea though, what if I develop my own little visual novel framework in another engine, like Godot or some old Unity version I still regrettably use? Turns out I wasn't the only one to have this idea; <a href="https://github.com/SnekOfSpice/dialog-editor/wiki">DIISIS</a> is a dialogue plugin for Godot 4, developed by the eerilie talented <a href="https://snekofspice.itch.io/">Snek RK, or SnekOfSpice, or Remilia</a>. Poking around in it a bit made me even more intrigued to develop my own solution for it, but that's something for the future and for when my partner is back from holiday so she can help me realize my delusions.<br><br>
+
+                But yeah, Ren'Py was largely a joy to work in, besides a few hangups around Transform- and Image functions it let me do what I wanted and a bit more. Speech blips are my guilty pleasure and I will always indulge in them like the freak I am.<br><br>
+
+                <h4>Itske</h4>
+                By far my largest breakthrough was my process for designing Itske.<br><br>
+
+                I put and embarrassing amount of myself into her as a character, and in turn this made it really really REALLY easy for me to draw her in a bunch of situations. Whether it was her napping, getting impaled, or soggy; my own proclivities quite clearly live through that process book.<br>
+                Half-flattened curls, big round clown nose, three bottom eyelashes, thick brows... IRLs were being very annoying about all the similarities between her and I and I've had to defend myself from piss-drinking allegations (wink wink), but it was worth it. I love her design, and I love drawing expressions and poses for her.<br><br>
+                <div style="text-align: center;">
+                    <img src="images/blogimgs/fnp-3.PNG" style="height: 30vh;">
+                    <img src="images/blogimgs/fnp-4.PNG" style="height: 30vh;"><br>
+                    <small>Itske, in the flesh! Full process book can be downloaded as a PDF from the game page.</small>
+                </div><br>
+
+                Now I struggle with drawing things besides her, ack...<br><br>
+                
+                <h4>Ren'Py's Layered Images</h4>
+                <div>
+                    <div style="display: inline-block; width: 45%; vertical-align: top;">
+                        An exciting part of learning Ren'Py was the layeredimage type of images. These images are essentially composites of a few layers of images, traditionally used to enable different expressions on the same character body sprite without the need of having a bunch of duplicates.<br>
+                        These layers can also be at specified positions, have transform functions tied to them, and can even take in blend modes. They turned out to be super versatile, to the extent where I also used them for backgrounds!<br><br>
+
+                        These enabled me to do all kinds of effects to get across feelings of distress and sadness, and have a cool scanline/colour banding effect on the images by splitting them into separate R/G/B images that I then move and jitter around using transform functions.<br>
+                        There's also no lack of the traditional use-case of course, I felt enabled to add as many expressions as I saw fit, and often found myself wishing for -just- one more, and being gladdened by the ease of implementation. EVEN IF I had to draw three different frames for each expression most of the work sat in the actual drawing, the fun part!<br><br>
+                        <img src="images/blogimgs/fnp-1.gif" style="height: 9em;">
+                    </div>
+                    <div style="display: inline-block; width: 45%;">
+                        <p class="codeSnippet" style="margin-bottom: 0; margin: 0;">
+                            layeredimage bg backyard:<br>
+                            &emsp;group main:<br>
+                            &emsp;&emsp;attribute backyard default:<br>
+                            &emsp;&emsp;&emsp;at bgpos<br>
+                            &emsp;&emsp;&emsp;"backyard"<br><br>
+
+                            &emsp;group red:<br>
+                            &emsp;&emsp;attribute slight default:<br>
+                            &emsp;&emsp;&emsp;FlickerRight("backyard_r")<br>
+                            &emsp;&emsp;attribute moderate:<br>
+                            &emsp;&emsp;&emsp;FlickerRight_moderate("backyard_r")<br>
+                            &emsp;&emsp;attribute intense:<br>
+                            &emsp;&emsp;&emsp;FlickerRight_intense("backyard_r")<br><br>
+
+                            &emsp;group green:<br>
+                            &emsp;&emsp;attribute slight default:<br>
+                            &emsp;&emsp;&emsp;FlickerUp_slight("backyard_g")<br>
+                            &emsp;&emsp;attribute moderate:<br>
+                            &emsp;&emsp;&emsp;FlickerUp_moderate("backyard_g")<br>
+                            &emsp;&emsp;attribute intense:<br>
+                            &emsp;&emsp;&emsp;FlickerUp_intense("backyard_r")<br><br>
+
+                            &emsp;group blue:<br>
+                            &emsp;&emsp;attribute slight default:<br>
+                            &emsp;&emsp;&emsp;FlickerLeft("backyard_b")<br>
+                            &emsp;&emsp;attribute moderate:<br>
+                            &emsp;&emsp;&emsp;FlickerLeft_moderate("backyard_b")<br>
+                            &emsp;&emsp;attribute intense:<br>
+                            &emsp;&emsp;&emsp;FlickerLeft_intense("backyard_b")<br><br>
+                                        
+                            &emsp;group scanlines:<br>
+                            &emsp;&emsp;attribute slight default:<br>
+                            &emsp;&emsp;&emsp;at scanlines_slight<br>
+                            &emsp;&emsp;&emsp;"pulse_scanlines"<br>
+                            &emsp;&emsp;attribute moderate:<br>
+                            &emsp;&emsp;&emsp;at scanlines_moderate<br>
+                            &emsp;&emsp;&emsp;"pulse_scanlines"<br>
+                            &emsp;&emsp;attribute intense:<br>
+                            &emsp;&emsp;&emsp;at scanlines_intense<br>
+                            &emsp;&emsp;&emsp;"pulse_scanlines"
+                        </p>
+                        <p style="margin: 0;">
+                            <small>Example of one of the background layeredimages</small>
+                        </p>
+                    </div>
+                </div><br><br>
+
+                <h4>Self-Indulgent Craft</h4>
+                This was a project I felt like I absolutely 100% without a doubt HAD to do by myself. I wouldn't have felt comfortable writing half the stuff with someone looking over my shoulder anyways, let alone someone intimately familiar with me and my personal life. I did sparsely ask friends and loved ones for their thoughts about individual parts, processes, ideas, but always in a way where I could refrain from giving them the full picture. This game had to be released and it had to be unequivacly mine.<br>
+                I feel a bit bad for having snubbed people in that way though, it wasn't easy or fun, and my living situation made it a bit more painful than it had to be. My solace was that, in the future, I can and will involve people more closely. Especially now that I'm a little bit more familiar in writing and visual-novel-devving.<br>
+                Art isn't made sequestered in an attic, it's born from an array of past, current, and prospective life experiences. Art lives, and it can't be born out of lifelessness.<br>
+                I went out taking pictures for BGs, wrote textual interpretations of my surroundings at various places, brainstormed at parties, I was living and it was largely for Flesh and Pressure.<br>
+                (Maybe that's why I feel so hollow now lol)<br><br>
+                <img src="images/blogimgs/fnp-2.JPG" style="width: 70%; display: block; margin: auto;">
+                <small style="display: block; text-align: center;">Unedited picture that was used in the main menu and itch page background, taken with my trusty decade-old digicam.</small><br><br>
+
+                <h4>Uh Oh! University!</h4>
+                Oh yeah I'm still in school, and I realized this about halfway through the jam as well... And I had to make something... To add to the end-of-year exhibition... Something that wasn't mildly embarrassing, something I could show my parents, and generally digestible for the well-adjusted...<br>
+                <marquee>FUCK</marquee>
+                <div style="border: 2px dashed white; width: 1em; height: 1em; border-radius: 100%; text-align: center; display: inline-block;"></div>
+                <div style="border: 2px dashed white; width: 2em; height: 2em; border-radius: 100%; text-align: center; display: inline-block;"></div>
+                <div style="border: 2px dashed white; width: 4em; height: 4em; border-radius: 100%; text-align: center; display: inline-block;"></div>
+                <div style="border: 2px dashed white; width: 30%; margin: 1em; border-radius: 40%; padding: 1em; text-align: center; display: inline-block;">
+                    Okay...<br>
+                    So...<br>
+                    Uhhh...<br>
+                    What about...<br>
+                    An interactive critique of art schooling...<br>
+                    Specifically targeting game-related departments...?<br>
+                    ... Yeah fuck it
+                </div><br>
+                And that is how <a href="https://shoebby.itch.io/out-of-time">Out Of Time</a> was born!<br><br>
+                
+                Since it was a game about unmade deadlines and general academic suffering I could give myself quite some leeway, and I managed to bang it out in about a week. Most of the time was spent on pointless indulgence (the player character specifically) and I love it quite a lot.<br><br>
+
+                An ode to artworks trampled by deadlines and rubrics.<br><br>
+
+                <h4>So What The Fuck Do I Do Now</h4>
+                Shit idk I really want to write more, and there's a bunch of upcoming visual novel game jams that I could use to further practice my writing.<br>
+                Magical Girl Game Jam... Spooktober... Yuri Game Jam... All back-to-back, and the Yuri one could provide a nice chance to go much more in depth and maybe make something I could feel comfortable asking donations for!<br>
+                And then of course I'll earn 5 million dollars and retire in  bourgeois shame. Hell yeah.<br><br>
+
+                Think I'm just gonna leave Flesh and Pressure as-is though, Android build would be a pain and the web version has horrible performance (probably cause of the speech blips and layered animated BGs, lol). I'm happy how it turned out, and it enabled me to vent some frustrations and fears out into the open. It helped make me feel invigorated to make new things and I find that terribly exciting!<br><br>
+
+                Following is an incredibly arbitrary rating of my own game by myself, using the rating system I have been using when playing other entries:<br><br>
+                <div style="text-align: center;">
+                    <img src="images/blogimgs/fnp-5.png" style="width: 100%; display: block; margin: auto;">
+                    <small>Flesh and Pressure rated on the Most Objective Visual Novel Rating Scale Ever Conceived.<br>
+                    (With credit and thanks to Ratmax)</small>
+                </div><br>
+            </div>
+            <footer>
+                <span>(c) 2025 shoebby. All Rights Reserved.</span>
+            </footer>
+        </div>
+    </body>
+</HTML>
