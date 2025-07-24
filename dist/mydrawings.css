@@ -1,0 +1,32 @@
+:root {
+    --drawingRot: 0deg;
+    --drawingXpos: 0;
+    --drawingYpos: 0;
+}
+body {
+    overflow: hidden;
+}
+.title {
+    position: absolute;
+    z-index: -999;
+    transform: translateX(-50%);
+    left: 50vw;
+}
+#drawing {
+    position: absolute;
+    z-index: 999;
+    background-color: gray;
+    border: 1px solid black;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    rotate: var(--drawingRot);
+    left: var(--drawingXpos);
+    top: var(--drawingYpos);
+    max-width: 30vw;
+    max-height: 30vw;
+}
+.drawimage {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}

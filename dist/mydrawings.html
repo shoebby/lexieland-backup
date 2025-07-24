@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>LexieLand - My Drawings</title>
+        <meta name="description" content="Most if not all of the stuff I've drawn over the years, I try to compile them here as well as I can!">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="mydrawings.css">
+    </head>
+    <body>
+        <img class="title" src="images/mydrawings-title.PNG">
+        <a href="index.html">Back To Main Menu</a>
+        
+    </body>
+    <script>
+        function getRandomIntInclusive(min, max) {
+            const minCeiled = Math.ceil(min);
+            const maxFloored = Math.floor(max);
+            return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+        }
+
+        function addDrawing(drawingNum) {
+            if (drawingNum <= 0) {
+                return;
+            }
+
+            const newDrawing = document.createElement("div");
+            newDrawing.classList.add("draggable");
+            newDrawing.setAttribute("id", "drawing");
+            document.body.appendChild(newDrawing);
+            newDrawing.innerHTML = "<img class=\"drawimage\" src=\"drawings/drawing" + drawingNum + ".png\">";
+
+            newDrawing.style.setProperty('--drawingRot', getRandomIntInclusive(-35,35) + "deg");
+            newDrawing.style.setProperty('--drawingXpos', getRandomIntInclusive(40,60) + "%");
+            newDrawing.style.setProperty('--drawingYpos', getRandomIntInclusive(40,60) + "%");
+
+            drawingNum -= 1;
+            addDrawing(drawingNum);
+        }
+        
+        addDrawing(20);
+
+        var draggableElements = document.getElementsByClassName("draggable");
+
+        for(var i = 0; i < draggableElements.length; i++){
+            dragElement(draggableElements[i]);
+        }
+
+        function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                pos3 = parseInt(e.clientX);
+                pos4 = parseInt(e.clientY);
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+                return false;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                pos1 = pos3 - parseInt(e.clientX);
+                pos2 = pos4 - parseInt(e.clientY);
+                pos3 = parseInt(e.clientX);
+                pos4 = parseInt(e.clientY);
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                console.log(elmnt.offsetTop)
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</html>
