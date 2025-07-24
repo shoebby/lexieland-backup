@@ -1,0 +1,40 @@
+<rss version="2.0">
+    <channel>
+        <title>Lexie.Land BLOG!</title>
+        <link>https://www.lexie.land/dist/blogindex.html</link>
+        <description>Thoughts about stuff, post-mortems, reviews, manic writings, everything a girl could ask for.</description>
+        <image>
+            <url>https://www.lexie.land/dist/images/blogthumbs/fnp.jpg</url>
+            <link>https://www.lexie.land/dist/blogindex.html</link>
+            <title>Lexie.Land</title>
+        </image>
+        <item>
+            <title>Academics, Selfishness, and My First Visual Novel</title>
+            <description>Chat, I've officially fallen in love with writing. Maybe specifically visual novels, even more specifically kinetic novels (visual novels but largely linear), but love is love nonetheless! It feels like I have finally found a manner in which I feel comfortable talking/connecting/communicating and oh my god I want, nay, need to get better at it.</description>
+            <link>https://www.lexie.land/dist/blogpost-fleshnpressure.html</link>
+            <guid>sincere-web</guid>
+            <pubDate>Sun, 20 Jul 2025</pubDate>
+        </item>
+        <item>
+            <title>The Sincere Web - Or, Learning To Be Myself</title>
+            <description>What does someone put on a webpage? This question which, initially, felt simple to me, turned out to be much more difficult to answer than it should've been. For the life of me I couldn't figure out what to put on my webpage, for ages, it felt like I had nothing I cared enough about to make viewable, for myself or others.</description>
+            <link>https://www.lexie.land/dist/blogpost-sincereweb.html</link>
+            <guid>sincere-web</guid>
+            <pubDate>Tue, 01 Apr 2025</pubDate>
+        </item>
+        <item>
+            <title>A Paradox is a Gun - Shadow of Memories/Destiny</title>
+            <description>Shadow of Memories/Destiny (SoM/D) is a time-hopping narrative puzzle game set in the deliciously unsubtly named German village of Lebensbaum; a fantastically real setting featuring a cozy diner, a pack of road-blocking wild dogs, and our himbo-tastic protag Eike (the tree references are excessive).</description>
+            <link>https://www.lexie.land/dist/blogpost-somreview.html</link>
+            <guid>somd-review</guid>
+            <pubDate>Thu, 25 Mar 2025</pubDate>
+        </item>
+        <item>
+            <title>Pen Plotters, Fractals, and Other Whimsical Tangents</title>
+            <description>For my current master's I've been fucking around with these nifty older machines called 'pen Plotters'. In essence, these machines draw based on given instructions sent over a COM port. It is janky, imperfect, surprisingly precise, and I absolutely love it.</description>
+            <link>https://www.lexie.land/dist/blogpost-penplot.html</link>
+            <guid>pen-plotters</guid>
+            <pubDate>Mon, 24 Feb 2025</pubDate>
+        </item>
+    </channel>
+</rss>
