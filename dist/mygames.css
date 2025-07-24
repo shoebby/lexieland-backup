@@ -1,0 +1,37 @@
+body {
+
+}
+h1 {
+    font-size: 2vw;
+}
+button {
+    font-size: .8vw;
+}
+.description {
+    font-size: 1.2vw;
+    text-align: justify;
+    margin-bottom: 1vw;
+}
+.container {
+    width: 35vw;
+    margin: auto;
+}
+.game-box {
+    border: 1px solid black;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1vw;
+}
+.game-img {
+    float: left;
+    width: 10vw;
+    margin-right: 1vw;
+}
+.game-title {
+    font-size: 1.5vw;
+    margin: 1vw 0 0 0;
+}
+.game-desc {
+    font-size: .8vw;
+    margin: 0 0 1vw 0;
+}
