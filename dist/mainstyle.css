@@ -24,13 +24,6 @@
         src: url("fonts/Daydream.ttf") format("truetype");
     }
 
-/* Animations */
-    @keyframes bannerAnim {
-        0% {font-size: 28pt;}
-        50% {font-size: 0pt;}
-        100% {font-size: 28pt;}
-    }
-
 /* Elements */
     body {
         background-color: black;
@@ -78,19 +71,15 @@
 
 /* Classes */
     .banner {
-        font-family: "BarcodeFont";
-        font-size: 28pt;
-        margin: 0;
         text-align: center;
-        padding-top: 5px;
-        white-space: nowrap;
+        padding-top: 1vh;
         width: 100%;
     }
-    .bannerTextGradient {
-        background: linear-gradient(to top, white, black);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+    .banner-letter {
+        display: inline-block;
+        width: 9%;
+        margin: 0;
+        padding: 0;
     }
     .navlink {
         display: inline-block;
@@ -160,7 +149,7 @@
     }
     .buddy {
         position: absolute;
-        top: 77px;
+        top: 96px;
         transform: translateX(var(--xpos)) scaleX(var(--flip));
         width: 25px;
     }
