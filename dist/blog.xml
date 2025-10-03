@@ -5,11 +5,19 @@
         <description>Thoughts about stuff, post-mortems, reviews, manic writings, everything a girl could ask for.</description>
         
         <item>
+            <title>Lino VN Graphix and Shitpost Soundpacks</title>
+            <img src="images/blogthumbs/lcg.jpg"></img>
+            <description>Made another freakin' VN, hell yeah buddy. This time I wanted to experiment with alternatives styles of making visual assets, and while browsing the art supply store near my uni I kind of happened upon linoleum. I had been intrigued by stamps for a while already and I figured lino is kinda just big stamps!</description>
+            <link>https://www.lexie.land/dist/blogpost-lcgdemo.html</link>
+            <guid>lathe-cut-grooves</guid>
+            <pubDate>Thu, 02 oct 2025</pubDate>
+        </item>
+        <item>
             <title>Academics, Selfishness, and My First Visual Novel</title>
             <img src="images/blogthumbs/fnp.jpg"></img>
             <description>Chat, I've officially fallen in love with writing. Maybe specifically visual novels, even more specifically kinetic novels (visual novels but largely linear), but love is love nonetheless! It feels like I have finally found a manner in which I feel comfortable talking/connecting/communicating and oh my god I want, nay, need to get better at it.</description>
             <link>https://www.lexie.land/dist/blogpost-fleshnpressure.html</link>
-            <guid>sincere-web</guid>
+            <guid>flesh-n-pressure</guid>
             <pubDate>Sun, 20 Jul 2025</pubDate>
         </item>
         <item>
