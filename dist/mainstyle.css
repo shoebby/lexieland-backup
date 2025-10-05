@@ -68,11 +68,9 @@
     a:hover {
         text-decoration: underline;
     }
-
 /* Classes */
     .banner {
         text-align: center;
-        padding-top: 1vh;
         width: 100%;
     }
     .banner-letter {
@@ -80,6 +78,12 @@
         width: 9%;
         margin: 0;
         padding: 0;
+        animation: bannerLetterAnim 10s infinite linear;
+    }
+    @keyframes bannerLetterAnim {
+        0% {transform: rotate3d(0,0,0,0deg);}
+        50% {transform: rotate3d(0, 1, 0, 360deg);}
+        100% {transform: rotate3d(0,0,0,0deg);}
     }
     .navlink {
         display: inline-block;
@@ -98,25 +102,67 @@
         vertical-align: top;
     }
     .box {
-        border: 2px solid darkgray;
+        border: 2px solid #fc8e4e;
         border-radius: 4px;
         padding: 10px 15px;
         margin: 5px;
-
-        background-image:
-        repeating-radial-gradient(circle at top center,
-            #1a1a1a,
-            #00000088,
-            .5em,
-            transparent .5em,
-            transparent .5em);
+        background-color: black;
         background-blend-mode: difference;
+        animation: boxBgAnim .25s ease-in-out infinite;
     }
     .box::after {
         content: "";
         display: table;
         clear: both;
     }
+    @keyframes boxBgAnim {
+        0% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #1a1a1a,
+                    #00000088,
+                    .25vw,
+                    transparent .25vw,
+                    transparent .25vw);
+        }
+        25% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #1a1a1a,
+                    #00000088,
+                    .5vw,
+                    transparent .5vw,
+                    transparent .5vw);
+        }
+        50% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #1a1a1a,
+                    #00000088,
+                    .75vw,
+                    transparent .75vw,
+                    transparent .75vw);
+        }
+        75% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #1a1a1a,
+                    #00000088,
+                    .5vw,
+                    transparent .5vw,
+                    transparent .5vw);
+        }
+        100% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #1a1a1a,
+                    #00000088,
+                    .25vw,
+                    transparent .25vw,
+                    transparent .25vw);
+        }
+    }
+    
     .wiki {
         border: 2px solid darkgray;
         border-radius: 4px;
@@ -149,48 +195,61 @@
     }
     .buddy {
         position: absolute;
-        top: 96px;
+        top: 8.9vh;
         transform: translateX(var(--xpos)) scaleX(var(--flip));
         width: 25px;
     }
     .gamerCard {
         width: 100%;
     }
-    .lexie {
+    .lexietop {
         font-family: Georgia, 'Times New Roman', Times, serif;
-        z-index: -1;
+        z-index: -998;
+        width: 100%;
+        height: 100%;
+        position: fixed;
         font-size: 6em;
-        color: #ffffff;
-        -webkit-text-stroke: .01em #f08000;
-        background-image: radial-gradient(circle at center center,
-            #ff9900,
-            #e5e5f7),
-        repeating-radial-gradient(circle at center top,
-            #f68eff,
-            #ff2437,
-            .2em,
-            transparent .2em,
-            transparent .1em),
-        repeating-radial-gradient(circle at center bottom,
-            #f68eff,
-            #ff2437,
-            .2em,
-            transparent .2em,
-            transparent .1em);
-        background-blend-mode: difference;
-        text-shadow: .1em 0 0 #fff6d0,
-        .2em 0 0 #fff0af,
-        .3em 0 0 #ffe676c9,
-        .4em 0 0 #ffdf5071,
-        .5em 0 0 #ffd41348;
+        mix-blend-mode: color-burn;
+        background-size: 75px 75px;
+        background-image:
+            url("images/doitforyou.png");
+        animation: bgAnim 30s linear infinite;
+    }
+    .lexiebottom {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        z-index: -999;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        font-size: 6em;
+        background-blend-mode: color-burn;
+        background-image:
+            radial-gradient(circle at center center,
+                #000000,
+                #ffa600),
+            repeating-radial-gradient(circle at top right,
+                #f7c1a1,
+                #a02500,
+                .2em,
+                transparent .2em,
+                transparent .1em);
+    }
+    @keyframes bgAnim {
+        0% {
+            background-position: top left;
+        }
+        100% {
+            background-position: bottom center;
+        }
     }
 
     #statuscafe {
+        background-color: #fc8e4e;
     }
     #statuscafe-username {
         margin-bottom: .5em;
         font-size: 12pt;
-        color: #fc8e4e;
+        color: #ffffff;
     }
     #statuscafe-content {
         

@@ -17,29 +17,15 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
 });
 
+window.addEventListener("DOMContentLoaded", event => {
+  const audio = document.querySelector("audio");
+  audio.volume = 0.25;
+  audio.loop = true;
+  audio.play();
+});
+
 //how tf do i not make it need to do this bru
 window.onload = () => {
-    //background music
-    // var bgm = new Audio("sounds/strawberriesandlancables.mp3");
-    // var bgmText = document.getElementById("bgmText");
-    // var playbutton = document.getElementById("playbgm");
-
-    // bgm.loop = true;
-    
-    // playbutton.onclick = function () {
-    //     if (isPlaying(bgm)) {
-    //         bgmText.innerHTML = "< 'click me to play some tunes!'";
-    //         bgm.pause();
-    //         return;
-    //     }
-    //     bgmText.innerHTML = "< 'click me to pause these tunes!'";
-    //     bgm.play();
-    // }
-
-    // function isPlaying(audioEl) {
-    //     return !audioEl.paused;
-    // }
-
     //pfp arf and shake on click
     var pfp = document.getElementById("pfp");
     var pfpSize = 99;
