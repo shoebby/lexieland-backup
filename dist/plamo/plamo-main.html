@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            width: 75vw;
+            margin: 0 auto;
+            font-size: 14pt;
+        }
+        img {
+            margin-top: 8px;
+            vertical-align: middle;
+            width: 100%;
+            opacity: 1;
+            transition: .25s ease-out;
+        }
+        .imgnote {
+            background-color: white;
+            padding: 1em;
+            opacity: 0;
+            position: absolute;
+            transition: .25s ease-out;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .container:hover .img {
+            opacity: .3;
+        }
+        .container:hover .imgnote {
+            opacity: 1;
+        }
+        .container {
+            margin-top: 8px;
+            vertical-align: middle;
+            position: relative;
+            width: 100%;
+            transition: .25s ease-out;
+        }
+        .column {
+            flex: 25%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+        @media screen and (max-width: 800px) {
+        .column {
+            flex: 50%;
+            max-width: 50%;
+        }
+        }
+        @media screen and (max-width: 600px) {
+        .column {
+            flex: 100%;
+            max-width: 100%;
+        }
+        }
+    </style>
+</head>
+<body>
+    <h1>Plamo Zone</h1>
+    <p><a href="../index.html">Home</a> <a href="plamo-why.html">Why</a></p>
+    <div class="row">
+        <div class="column">
+            <div class="container">
+                <img src="plamo pics/charZaku1.jpg">
+                <div class="imgnote">Char's Zaku, HG kit, in a cool carrying case that I can clip onto my belt loops or Ita bag.</div>
+            </div>
+            <div class="container">
+                <img src="plamo pics/gself-wip1.jpg">
+                <div class="imgnote">HG Gundam G-self Perfect Pack in progress.</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="container">
+                <img src="plamo pics/qubeley1.jpg">
+                <div class="imgnote">The Qubeleys, my pride and joy. I love them so much and I would kill for them too.</div>
+            </div>
+            <div class="container">
+                <img src="plamo pics/kshatriya1.jpg">
+                <div class="imgnote">Ksatriya is part of the beautiful round (usually Zeon) mobile suits that I like and want and love. Huge for an HG.</div>
+            </div>
+            <div class="container">
+                <img src="plamo pics/theo1.jpg">
+                <div class="imgnote">The-O is funny because it has penis swords, really cool kit with very unique and uniquely painful-to-build pauldrons.</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="container">
+                <img src="plamo pics/gself1.jpg">
+                <div class="imgnote">G-Self perfect pack, in attack mode! Really cool that it comes with a stand included cause without it it probably can't stand lol.</div>
+            </div>
+            <div class="container">
+                <img src="plamo pics/gself2.jpg">
+                <div class="imgnote">Another G-Self pic, this time in reflector mode.</div>
+            </div>
+            <div class="container">
+                <img src="plamo pics/shelf1.jpg">
+                <div class="imgnote">Shelf shot of a ragtag few plamo kits and other plastics.</div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="container">
+                <img src="plamo pics/shelf2.jpg">
+                <div class="imgnote">The Big Shelf, for the Big Boys. Especially Psycho Gundam on top.</div>
+            </div>
+            <div class="container">
+                <img src="plamo pics/spinata1.jpg">
+                <div class="imgnote">My one and only 30 Minutes Missions kit of Spinatia, pretty neat, quite liked the amount of panel lines and how well they took to panel liner.</div>
+            </div>
+            <div class="container">
+                <img src="plamo pics/yuri1.jpg">
+                <div class="imgnote">The Yuri Composition, not mine but my partner's, too cute not to include.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
