@@ -3,27 +3,86 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="me" href="https://mastodon.social/@shoebby">Mastodon</link>
+        <link rel="me" href="https://mastodon.social/@shoebby"></link>
 
         <title>LexieLand</title>
         <meta name="description" content="The home of a critter and its many wonderful tidbits, trinkets, and relics.
         If you ask it politely it might even share them with you!">
-        <meta property="og:image" content="http://lexie.zapto.org:1337/images/embedimg.jpg">
 
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <link rel="stylesheet" href="dist/mainstyle.css">
+        <Style>
+            body {
+                overflow: hidden;
+            }
+            .lexietop {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .lexiebottom {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image:
+                    radial-gradient(circle at center center,
+                        #000000,
+                        #ffa600),
+                    repeating-radial-gradient(circle at center center,
+                        #f7c1a1,
+                        #a02500,
+                        .2em,
+                        transparent .2em,
+                        transparent .1em);
+            }
+            .entranceImg {
+                animation: imgAnim linear 8s infinite;
+                image-rendering: pixelated;
+                filter: contrast(2);
+            }
+            @keyframes imgAnim {
+                0% {
+                    transform:
+                        rotate(5deg)
+                        scale(75%);
+                    filter: brightness(0.4) contrast(2);
+                }
+                25% {
+                    transform:
+                        rotate(0deg)
+                        scale(90%);
+                    filter: brightness(1) contrast(2);
+                }
+                50% {
+                    transform:
+                        rotate(-5deg)
+                        scale(75%);
+                    filter: brightness(0.4) contrast(2);
+                }
+                75% {
+                    transform:
+                        rotate(0deg)
+                        scale(90%);
+                    filter: brightness(1) contrast(2);
+                }
+                100% {
+                    transform:
+                        rotate(5deg)
+                        scale(75%);
+                    filter: brightness(0.4) contrast(2);
+                }
+            }
+        </Style>
     </head>
     <body>
+        <div class="lexietop"></div>
+        <div class="lexiebottom"></div>
         <div class="container">
-            <div class="box" style="margin-top: 10%; text-align: center;">
-                <img src="dist/images/embedimg.jpg" style="width: 850px;">
+            <div style="text-align: center; margin-top: 25vh; height: 50vh;">
+                <img src="dist/images/embedimg.jpg" class="entranceImg">
                 <br>
                 <a href="dist/index.html" style="border: 1px outset white; padding: 3px 8px; font-size: 18pt;">GO TO LEXIELAND!!!</a>
             </div>
-           <br>
-            <footer>
-                <span>(c) 2025 shoebby. All Rights Reserved.</span>
-            </footer>
         </div>
     </body>
 </HTML>

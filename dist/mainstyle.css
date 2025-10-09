@@ -39,7 +39,7 @@
     }
     footer {
         text-align: center;
-        color: #fc8e4e;
+        color: #FF1D00;
         margin-top: 100px;
         margin-bottom: 100px;
     }
@@ -47,17 +47,17 @@
         margin: 0;
     }
     h2 {
-        color: #fc8e4e;
-        text-shadow: -5px 5px #bd0707;
+        color: #FF1D00;
+        text-shadow: -5px 5px purple;
         font-family: "Daydream";
         margin: 0;
     }
     h3 {
-        color: #fc8e4e;
+        color: #FF1D00;
         margin: 0;
     }
     h4 {
-        color: #fc8e4e;
+        color: #FF1D00;
         margin: 0;
     }
     a {
@@ -102,7 +102,7 @@
         vertical-align: top;
     }
     .box {
-        border: 2px solid #fc8e4e;
+        border: 2px solid #FF1D00;
         border-radius: 4px;
         padding: 10px 15px;
         margin: 5px;
@@ -175,7 +175,7 @@
     .pfp {
         float: left;
         width: 99%;
-        border: 1px solid #fc8e4e;
+        border: 1px solid #FF1D00;
     }
     .spinner {
         display: inline-block;
@@ -244,7 +244,7 @@
     }
 
     #statuscafe {
-        background-color: #fc8e4e;
+        background-color: #FF1D00;
     }
     #statuscafe-username {
         margin-bottom: .5em;
