@@ -75,7 +75,7 @@
     }
     .banner-letter {
         display: inline-block;
-        width: 9%;
+        height: 8vh;
         margin: 0;
         padding: 0;
         animation: bannerLetterAnim 10s infinite linear;
@@ -195,7 +195,7 @@
     }
     .buddy {
         position: absolute;
-        top: 8.9vh;
+        top: 8vh;
         transform: translateX(var(--xpos)) scaleX(var(--flip));
         width: 25px;
     }
