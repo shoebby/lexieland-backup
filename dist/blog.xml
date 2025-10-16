@@ -6,6 +6,13 @@
         <atom:link href="https://www.lexie.land/dist/blog.xml" rel="self" type="application/rss+xml" />
 
         <item>
+            <title>The Perfect Narrative Evaluation System (P-NES)</title>
+            <description>In my Flesh and Pressure Post-Mortem blogpost I already talked a bit about the rating I gave my own game according to a self-conceived rating system. By this point this has been dubbed P-NES (The Perfect Narrative Evaluation System).</description>
+            <link>https://www.lexie.land/dist/blogpost-pnes.html</link>
+            <guid isPermaLink="false">p-nes</guid>
+            <pubDate>Thu, 16 Oct 2025 12:00:00 +0200</pubDate>
+        </item>
+        <item>
             <title>Lino VN Graphix and Shitpost Soundpacks</title>
             <description>Made another freakin' VN, hell yeah buddy. This time I wanted to experiment with alternatives styles of making visual assets, and while browsing the art supply store near my uni I kind of happened upon linoleum. I had been intrigued by stamps for a while already and I figured lino is kinda just big stamps!</description>
             <link>https://www.lexie.land/dist/blogpost-lcgdemo.html</link>
