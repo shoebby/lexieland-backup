@@ -132,7 +132,53 @@ body {
         }
     }
 @keyframes reveal {
-    0% { transform: translateY(10vh);}
-    50% { transform: translateY(10vh);}
+    0% { transform: translateY(12vh);}
+    50% { transform: translateY(12vh);}
     100% { transform: translateY(0);}
+}
+.pastwork {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+.pastwork iframe {
+    position: absolute;
+    width: 20vw;
+    height: 20vw;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+.pastwork img {
+    position: absolute;
+}
+.kennel {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.kennel img {
+    position: absolute;
+}
+.kennel span {
+    color: #ff7300;
+    position: absolute;
+    top: 2.5vh;
+    width: 18vw;
+    text-align: center;
+    z-index: 5;
+    font-size: 4vh;
+    font-family: 'rainyhearts';
+    rotate: 13deg;
+    font-weight: bold;
+}
+.research {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.research img {
+    position: absolute;
 }
