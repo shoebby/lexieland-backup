@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'appleGaramond';
+    src: url('fonts/AppleGaramond-Light.ttf');
+}
+
+@font-face {
+    font-family: 'barcode';
+    src: url('fonts/BarcodeFont.ttf');
+}
+
+@font-face {
+    font-family: 'daydream';
+    src: url('fonts/Daydream.ttf');
+}
+@font-face {
+    font-family: 'rainyhearts';
+    src: url('fonts/rainyhearts.ttf');
+}
+
+:root {
+    --bgimg: "";
+    --quotebg: "";
+    --quoteborder: "";
+}
+
+body {
+    background: var(--bgimg), rgb(255, 238, 238);
+    background-size: 110%;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    background-blend-mode: difference;
+}
+
+.bioContainer {
+    width: 50vw;
+    background: #000000ce;
+    margin: 5vh auto 10vh auto;
+    border: 0.1vw solid white;
+    padding: 0;
+}
+
+.bio {
+    width: 100%;
+}
+
+.btn_next {
+    width: 25vw;
+    height: 10vh;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.btn_next a {
+    font-family: 'daydream';
+    font-size: 5vh;
+    text-align: center;
+    color: white;
+    text-shadow: 0vw .5vw 1vw blue;
+    background: none;
+    border: none;
+    text-decoration: none;
+    transition: 1s;
+    transition-timing-function: ease-out;
+}
+.btn_next a:link, a:visited, a:focus, a:active {
+    text-decoration: none;
+}
+.btn_next a:hover {
+    color:blue;
+}
+.quoteblock {
+    position: absolute;
+    left: 5vw;
+    bottom: 10vh;
+    transform: rotate(-6deg);
+    font-family: 'appleGaramond';
+    font-size: 4vh;
+    background: var(--quotebg);
+    width: 30vw;
+    padding: 1vw;
+    color: #a02d00;
+    border: solid var(--quoteborder) .5vw;
+    animation: boxBgAnim 1s infinite linear;
+    font-weight: bolder;
+    text-shadow: .2vw .2vw 0 white;
+}
+@keyframes boxBgAnim {
+        0% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #ff5e00,
+                    #ff880088,
+                    .25vw,
+                    transparent .25vw,
+                    transparent .25vw);
+        }
+        25% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #ff5e00,
+                    #ff880088,
+                    .5vw,
+                    transparent .5vw,
+                    transparent .5vw);
+        }
+        50% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #ff5e00,
+                    #ff880088,
+                    .75vw,
+                    transparent .75vw,
+                    transparent .75vw);
+        }
+        75% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #ff5e00,
+                    #ff880088,
+                    .5vw,
+                    transparent .5vw,
+                    transparent .5vw);
+        }
+        100% {
+            background-image:
+                repeating-radial-gradient(circle at top left,
+                    #ff5e00,
+                    #ff880088,
+                    .25vw,
+                    transparent .25vw,
+                    transparent .25vw);
+        }
+    }
+@keyframes reveal {
+    0% { transform: translateY(10vh);}
+    50% { transform: translateY(10vh);}
+    100% { transform: translateY(0);}
+}
