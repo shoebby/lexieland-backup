@@ -2,12 +2,6 @@
     font-family: 'appleGaramond';
     src: url('fonts/AppleGaramond-Light.ttf');
 }
-
-@font-face {
-    font-family: 'barcode';
-    src: url('fonts/BarcodeFont.ttf');
-}
-
 @font-face {
     font-family: 'daydream';
     src: url('fonts/Daydream.ttf');
@@ -30,12 +24,13 @@ body {
     margin: 0;
     padding: 0;
     background-blend-mode: difference;
+    overflow: hidden;
 }
 
 .bioContainer {
-    width: 50vw;
+    width: 55vw;
     background: #000000ce;
-    margin: 5vh auto 10vh auto;
+    margin: 5vh auto 5vh auto;
     border: 0.1vw solid white;
     padding: 0;
 }
@@ -79,7 +74,8 @@ body {
     width: 30vw;
     padding: 1vw;
     color: #a02d00;
-    border: solid var(--quoteborder) .5vw;
+    border: var(--quoteborder) .5vw;
+    border-style: groove;
     animation: boxBgAnim 1s infinite linear;
     font-weight: bolder;
     text-shadow: .2vw .2vw 0 white;
@@ -181,4 +177,36 @@ body {
 }
 .research img {
     position: absolute;
+}
+.sourceOdd {
+    animation: dancing 1s infinite linear;
+}
+.sourceEven {
+    animation: dancing 1s .5s infinite linear;
+}
+@keyframes dancing {
+    0% { transform: rotate(-2deg);}
+    49% {transform: rotate(-2deg);}
+    50% {transform: rotate(2deg);}
+    100% {transform: rotate(2deg);}
+}
+.help {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.help img {
+    position: absolute;
+}
+.help p {
+    text-align: center;
+    width: 40%;
+    font-family: 'appleGaramond';
+    font-weight: 500;
+    font-size: 5vh;
+    color: white;
+    box-shadow: inset 0 0 1vw red;
+    background-color: black;
+    margin: 6.5vh auto;
+    padding: 1vh;
 }
