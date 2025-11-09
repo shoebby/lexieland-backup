@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'appleGaramond';
-    src: url('fonts/AppleGaramond-Light.ttf');
+    src: url('../fonts/AppleGaramond-Light.ttf');
 }
 @font-face {
     font-family: 'daydream';
-    src: url('fonts/Daydream.ttf');
+    src: url('../fonts/Daydream.ttf');
 }
 @font-face {
     font-family: 'rainyhearts';
-    src: url('fonts/rainyhearts.ttf');
+    src: url('../fonts/rainyhearts.ttf');
 }
 
 :root {
@@ -209,4 +209,15 @@ body {
     background-color: black;
     margin: 6.5vh auto;
     padding: 1vh;
+}
+.windows {
+    position: absolute;
+    bottom: 18vh;
+    right: 20vw;
+    font-family: 'rainyhearts';
+    font-size: 5vh;
+    color: #ff7300;
+    text-decoration: none;
+    background: none;
+    border: none;
 }
