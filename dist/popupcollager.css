@@ -1,0 +1,14 @@
+.popupController {
+    border: 1px solid black;
+    width: 30vw;
+    padding: 1vw;
+    margin: 0;
+    display: inline-block;
+}
+.popupController input {
+    width: 100%;
+    margin: 0 0 .5em 0;
+}
+.popupController p {
+    margin: 0;
+}
