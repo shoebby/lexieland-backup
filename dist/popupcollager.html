@@ -13,18 +13,28 @@
     <h1>Pop-Up Collage Maker</h1>
     <p>
         Make collages out of pop-up windows, specifying the things to which they link, their sizes, and screen positions!<br>
+        This toy was designed for 1080p screens.<br>
         For an example of what's possible <a href="./popupprincess.html">Click Here!</a>
     </p>
     <input type="button" value="Load Collage" target="GenerateCollage">
     <p>
-        Amount of popups: <input type="number" value="1" target="PopupNum" min="1">
+        Amount of popups: <input type="button" value="+" target="PopupNumAdd"> <input type="button" value="-" target="PopupNumRemove">
     </p>
-    <div class="popupController" id="popupController">
-        <p>Link: <input type="text" value="https://www.lexie.land/dist/index.html" target="pu1_l"></p>
-        <p>Inject HTML: <input type="text" value='<div>Cool Beans!</div>' target='pu1_html'></p>
+    </p>
+    <div id="popupController">
+        <p>Link: <input type="text" value="" target="pu1_l"></p>
+        <p>Inject HTML: <input type="text" value='' target='pu1_html'></p>
         <p>All following values are in px:</p>
-        <p>ScreenX: <input type="number" value="0" target="pu1_sX"></p>
-        <p>ScreenY: <input type="number" value="0" target="pu1_sY"></p>
+        <p>
+            ScreenX:
+            <input type="range" value="0" min="0" max="1920" target="pu1_sX" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output>
+        </p>
+        <p>
+            ScreenY:
+            <input type="range" value="0" min="0" max="1080" target="pu1_sY" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output>
+        </p>
         <p>Width: <input type="number" value="500" target="pu1_w"></p>
         <p>Height: <input type="number" value="500" target="pu1_h"></p>
     </div>

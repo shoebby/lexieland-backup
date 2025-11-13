@@ -1,9 +1,15 @@
 const dict = [];
 const popups = [];
+const template = document.querySelector("#popupController");
 
-const popupNum = document.querySelector("input[target='PopupNum']");
-popupNum.addEventListener("change", () => {
-    InitControllers();
+let popupNum = 1;
+const popupNum_add = document.querySelector("input[target='PopupNumAdd']");
+popupNum_add.addEventListener("click", () => {
+    InitControllers(1);
+});
+const popupNum_remove = document.querySelector("input[target='PopupNumRemove']");
+popupNum_remove.addEventListener("click", () => {
+    InitControllers(-1);
 });
 
 const linker = document.querySelector("input[target='GenerateCollage']");
@@ -32,17 +38,20 @@ function InitDict() {
     }
 }
 
-function InitControllers() {
-    const ctrls = document.getElementsByClassName("popupController");
+function InitControllers(modifier) {
+    if (popupNum + modifier < 1)
+        return
 
-    const want = popupNum.value;
+    const ctrls = document.querySelectorAll("#popupController");
+    
+    popupNum += modifier;
+
+    const want = popupNum;
     const have = ctrls.length;
 
     if (want > have) {
-        const controller = document.createElement("div");
+        const controller = template.cloneNode(true);
         document.body.appendChild(controller);
-        controller.classList.add("popupController");
-        controller.innerHTML = `<p>Link: <input type='text' value='https://www.lexie.land/dist/index.html' target='pu${want}_l'></p><p>Inject HTML: <input type='text' value='<div>Cool Beans!</div>' target='pu${want}_html'></p><p>All following values are in px:</p><p>ScreenX: <input type='number' value='0' target='pu${want}_sX'></p><p>ScreenY: <input type='number' value='0' target='pu${want}_sY'></p><p>Width: <input type='number' value='500' target='pu${want}_w'></p><p>Height: <input type='number' value='500' target='pu${want}_h'></p>`;
     } else if (want < have) {
         for (let i = 0; i < (have - want); i++) {
             document.body.removeChild(ctrls[ctrls.length-1]);
