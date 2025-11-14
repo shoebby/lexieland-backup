@@ -20,7 +20,7 @@ linker.addEventListener("click", (event) => {
 });
 
 function InitDict() {
-    dict.length = popupNum.value;
+    dict.length = popupNum;
 
     for (let i = 0; i < dict.length; i++) {
         const link = document.querySelector("input[target='pu" + (i+1) + "_l']");
@@ -31,9 +31,9 @@ function InitDict() {
         const html = document.querySelector("input[target='pu" + (i+1) + "_html']");
 
         dict[i] = {
-            url: link.value,
+            url: "" + link.value,
             features:"left=" + scrX.value + ",top=" + scrY.value + ",width=" + width.value + ",height=" + height.value,
-            html: html.value
+            html: "" + html.value
         };
     }
 }
