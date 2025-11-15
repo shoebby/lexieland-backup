@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<HTML>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="sprout_div.css">
+        <style>
+            .branch {
+                animation: spin 5s linear infinite;
+                height: var(--w);
+                border-radius: 999px;
+            }
+            @keyframes spin {
+                0% {
+                    rotate: 0deg;
+                }
+                50% {
+                    rotate: 360deg;
+                }
+                100% {
+                    rotate: 720deg;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var depthStep;
+            const depth = 6;
+            const ratio = 0.75;
+            const startLength = 150;
+            const angleLeft = 45;
+            const angleRight = 45;
+
+            const input_style_bodyBackgroundColour = "black";
+            const input_style_branchHeight = "1px";
+            const input_style_branchBorderRadius = "0px";
+            const input_style_branchBlendMode = "difference";
+            const input_style_branchBackground = "radial-gradient(circle at center, white, transparent)";
+            const input_style_branchBorderWidth = "";
+            const input_style_branchBorderColour = "";
+            const input_style_branchBorderType = "";
+
+            document.documentElement.style.setProperty("--bodyBackgroundColor", input_style_bodyBackgroundColour)
+            document.documentElement.style.setProperty("--height", input_style_branchHeight);
+            document.documentElement.style.setProperty("--borderRad", input_style_branchBorderRadius);
+            document.documentElement.style.setProperty("--blendMode", input_style_branchBlendMode);
+            document.documentElement.style.setProperty("--branchBackground", input_style_branchBackground);
+            document.documentElement.style.setProperty("--borderWidth", input_style_branchBorderWidth);
+            document.documentElement.style.setProperty("--borderColour", input_style_branchBorderColour);
+            document.documentElement.style.setProperty("--borderType", input_style_branchBorderType);
+
+            function initTrees(treeAmount) {
+                var startAngle = 360 / treeAmount;
+                depthstep = 255 / depth;
+                for (i = 0; i < treeAmount; i++) {
+                    tree(startLength, startAngle*i, depth, null, null, ratio);
+                }
+            }
+
+            function tree(startLength, startRot, depth, parent, angle, ratio) {
+                if (depth == 0) {
+                    return;
+                }
+
+                const newBranch = document.createElement("div");
+                newBranch.classList.add("branch");
+                newBranch.setAttribute("id", "treeBranch");                
+                
+                if (parent != null) {
+                    parent.appendChild(newBranch);
+
+                    newBranch.style.setProperty('--w', parent.offsetWidth * ratio + "px");
+                    newBranch.style.setProperty('--a', angle + "deg");
+
+                } else if (parent == null) {
+                    newBranch.classList.add("root");
+                    document.body.appendChild(newBranch);
+
+                    newBranch.style.setProperty('--w', startLength + "px");
+                    newBranch.style.setProperty('--a', startRot + "deg");
+                }
+
+                newBranch.style.setProperty('--colorR', 255);
+                newBranch.style.setProperty('--colorG', 255 - (depth * depthstep));
+                newBranch.style.setProperty('--colorB', 0);
+                newBranch.style.setProperty('--colorA', 1);
+
+                parent = newBranch;
+                tree(startLength, startRot, depth - 1, newBranch, angleLeft, ratio);
+                tree(startLength, startRot, depth - 1, newBranch, -angleRight, ratio);
+            }
+
+            if (document.getElementById("treeBranch") == null)
+                initTrees(3);
+        </script>
+    <body>
