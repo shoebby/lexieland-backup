@@ -22,6 +22,7 @@ summary::-webkit-details-marker {
     text-align: center;
     margin: 0;
     width: 70px;
+    cursor: pointer;
 }
 .bin {
     position: absolute;
@@ -31,6 +32,7 @@ summary::-webkit-details-marker {
     background-size: 100%;
     width: 35px;
     height: 35px;
+    cursor: pointer;
 }
 .myComputer {
     position: absolute;
@@ -40,6 +42,7 @@ summary::-webkit-details-marker {
     background-size: 100%;
     width: 35px;
     height: 35px;
+    cursor: pointer;
 }
 
 /* fractal category */
