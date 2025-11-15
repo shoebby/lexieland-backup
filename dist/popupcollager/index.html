@@ -22,20 +22,20 @@
     </p>
     </p>
     <div id="popupController">
-        <p>Link: <input type="text" value="" target="pu1_l"></p>
-        <p>Inject HTML: <input type="text" value='' target='pu1_html'></p>
+        <p>Link: <input type="text" value="" id="pu_link" target="pu1_l"></p>
+        <p>Inject HTML: <input type="text" value="" id="pu_html" target='pu1_html'></p>
         <p>All following values are in px:</p>
         <p>
             ScreenX:
-            <input type="range" value="0" min="0" max="1920" target="pu1_sX" oninput="this.nextElementSibling.value = this.value">
+            <input type="range" value="0" min="0" max="1920" id="pu_scrX" target="pu1_sX" oninput="this.nextElementSibling.value = this.value">
             <output>0</output>
         </p>
         <p>
             ScreenY:
-            <input type="range" value="0" min="0" max="1080" target="pu1_sY" oninput="this.nextElementSibling.value = this.value">
+            <input type="range" value="0" min="0" max="1080" id="pu_scrY" target="pu1_sY" oninput="this.nextElementSibling.value = this.value">
             <output>0</output>
         </p>
-        <p>Width: <input type="number" value="500" target="pu1_w"></p>
-        <p>Height: <input type="number" value="500" target="pu1_h"></p>
+        <p>Width: <input type="number" value="500" id="pu_width" target="pu1_w"></p>
+        <p>Height: <input type="number" value="500" id="pu_height" target="pu1_h"></p>
     </div>
 </body>

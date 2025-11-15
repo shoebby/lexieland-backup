@@ -29,11 +29,11 @@ function InitDict() {
         const width = document.querySelector("input[target='pu" + (i+1) + "_w']");
         const height = document.querySelector("input[target='pu" + (i+1) + "_h']");
         const html = document.querySelector("input[target='pu" + (i+1) + "_html']");
-
+        
         dict[i] = {
-            url: "" + link.value,
+            url: link.value,
             features:"left=" + scrX.value + ",top=" + scrY.value + ",width=" + width.value + ",height=" + height.value,
-            html: "" + html.value
+            html: html.value
         };
     }
 }
@@ -52,6 +52,12 @@ function InitControllers(modifier) {
     if (want > have) {
         const controller = template.cloneNode(true);
         document.body.appendChild(controller);
+        controller.querySelector("#pu_link").setAttribute("target", "pu" + popupNum + "_l");
+        controller.querySelector("#pu_html").setAttribute("target", "pu" + popupNum + "_html");
+        controller.querySelector("#pu_scrX").setAttribute("target", "pu" + popupNum + "_sX");
+        controller.querySelector("#pu_scrY").setAttribute("target", "pu" + popupNum + "_sY");
+        controller.querySelector("#pu_width").setAttribute("target", "pu" + popupNum + "_w");
+        controller.querySelector("#pu_height").setAttribute("target", "pu" + popupNum + "_h");
     } else if (want < have) {
         for (let i = 0; i < (have - want); i++) {
             document.body.removeChild(ctrls[ctrls.length-1]);
