@@ -45,6 +45,10 @@ summary::-webkit-details-marker {
     cursor: pointer;
 }
 
+.highlighted a {
+    color: white;
+}
+
 /* fractal category */
 #cat_fractal {
     position: absolute;
@@ -65,8 +69,58 @@ summary::-webkit-details-marker {
 }
 #cat_fractal .container {
     position: relative;
-    top: 5vh;
-    left: 10vw;
+    top: -15vh;
+    left: 5vw;
+    z-index: 5;
+}
+
+/* popup category */
+#cat_popup {
+    position: absolute;
+    left: 35px;
+    top: 335px;
+}
+#cat_popup summary {
+    background-image: url(images/webtoys/dir_closed.png);
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+}
+#cat_popup[open] summary {
+    background-image: url(images/webtoys/dir_open.png);
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+}
+#cat_popup .container {
+    position: relative;
+    top: 3vh;
+    left: 35vw;
+    z-index: 5;
+}
+
+/* art toy category */
+#cat_art {
+    position: absolute;
+    left: 35px;
+    top: 435px;
+}
+#cat_art summary {
+    background-image: url(images/webtoys/dir_closed.png);
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+}
+#cat_art[open] summary {
+    background-image: url(images/webtoys/dir_open.png);
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+}
+#cat_art .container {
+    position: relative;
+    top: 10vh;
+    left: 15vw;
     z-index: 5;
 }
 
@@ -126,7 +180,7 @@ summary::-webkit-details-marker {
     animation: time 1s linear infinite;
 }
 @keyframes time {
-    0% {content: "18:30";}
-    0% {content: "18 30";}
-    100% {content: "18:30";}
+    0% {content: "6:30 PM";}
+    0% {content: "6 30 PM";}
+    100% {content: "6:30 PM";}
 }
