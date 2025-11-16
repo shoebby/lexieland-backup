@@ -6,19 +6,25 @@
         <link rel="stylesheet" href="sprout_div.css">
         <style>
             .branch {
-                animation: spin 5s linear infinite;
+                animation: spin 30s linear infinite;
                 height: var(--w);
                 border-radius: 999px;
+            }
+            .root {
+                top: 10vh;
             }
             @keyframes spin {
                 0% {
                     rotate: 0deg;
+                    scale: 100%;
                 }
                 50% {
                     rotate: 360deg;
+                    scale: 200%;
                 }
                 100% {
                     rotate: 720deg;
+                    scale: 100%;
                 }
             }
         </style>
@@ -28,7 +34,7 @@
             var depthStep;
             const depth = 6;
             const ratio = 0.75;
-            const startLength = 150;
+            const startLength = 300;
             const angleLeft = 45;
             const angleRight = 45;
 
@@ -36,7 +42,7 @@
             const input_style_branchHeight = "1px";
             const input_style_branchBorderRadius = "0px";
             const input_style_branchBlendMode = "difference";
-            const input_style_branchBackground = "radial-gradient(circle at center, white, transparent)";
+            const input_style_branchBackground = "radial-gradient(circle at center, white, transparent), orange";
             const input_style_branchBorderWidth = "";
             const input_style_branchBorderColour = "";
             const input_style_branchBorderType = "";
