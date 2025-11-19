@@ -8,7 +8,9 @@
 }
 
 body {
-    background-color: #000;
+    background: url('images/doitforyou.png');
+    background-size: 5vw;
+
     color: white;
     padding: 0;
     margin: 0;
@@ -27,12 +29,19 @@ p, div {
     margin: 0;
     padding: 0;
 }
+div {
+    background-color: rgba(0, 0, 0, 0.6);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: 0;
+    image-rendering: pixelated;
+}
 
 .grid-container {
     width: 90vw;
     margin: 5vh auto;
     display: grid;
-    grid-template-columns: 40% 10% 40% 10%;
+    grid-template-columns: 35% 10% 45% 10%;
     grid-template-rows: 10vh 60vh 10vh;
     gap: 1vw;
 }
@@ -67,8 +76,15 @@ a {
 
 .topbar {
     width: 100%;
-    height: 3vw;
+    height: 2.5vw;
+
     background-color: #FF1D00;
+
+    font-family: 'lemonmilk-light';
+    font-size: 3vw;
+}
+.topbar p {
+    padding-left: 5vw;
 }
 
 .banner {
@@ -151,13 +167,14 @@ a {
 .tab-list input {
     box-sizing: border-box;
     border: #FF1D00 .1vw solid;
+    border-radius: 0;
 
     background: none;
-    color: silver;
-    border-radius: 0;
-    height: 33%;
-
+    height: 50%;
     flex: 1 0 auto;
+    
+    color: silver;
+    font-size: 1.7vh;
 }
 .tab-list input:hover {
     color: white;
