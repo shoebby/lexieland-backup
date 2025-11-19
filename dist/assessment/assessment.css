@@ -216,8 +216,9 @@ body {
     right: 20vw;
     font-family: 'rainyhearts';
     font-size: 5vh;
-    color: #ff7300;
+    color: #FF1D00;
+    background-color: black;
     text-decoration: none;
-    background: none;
-    border: none;
+    border: #FF1D00 solid 1px;
+    cursor: pointer;
 }
