@@ -6,7 +6,9 @@
 
         <title>LexieLand - Portfolio</title>
         <meta name="description" content="Portfolio of Alexandria Franka Maria van Eekelen, a game and narrative designer based in the Netherlands.">
+        
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <script type="module" src="portfolio.js"></script>
         <link rel="stylesheet" href="portfolio.css">
     </head>
     <body>
@@ -14,14 +16,22 @@
             Alexandria van Eekelen
         </div>
 
-        <div class="banner">
-            <span>ALEXANDRIA<br>Interactive Narrative Designer</span>
-            <img src="images/portfolio/horTextBlock.avif">
-        </div>
+        <div class="grid-container">
+            <div class="grid-item banner">
+                <div class="grid-sub-item" style="border: none;">
+                    <div style="width: 100%;">
+                        <p style="font-family:'lemonmilk-bold'; font-size: 3vh;">ALEXANDRIA</p>
+                        <br>
+                        <p style="font-family:'lemonmilk-light'; font-size: 2.5vh;">Interactive Narrative Designer</p>
+                    </div>
+                </div>
+                <div class="grid-sub-item" style="border: none;">
+                    <img src="images/portfolio/horTextBlock.avif" style="border-color:white; width: 100%;">
+                </div>
+            </div>
 
-        <div class="container">
-            <div class="group">
-                <div class="block">
+            <div class="grid-item bio">
+                <div class="grid-sub-item" style="border-bottom: none;">
                     <p style="text-align: center; padding: 1vh 1vw 0 1vw;">My name is Alex(andria),<br>
                         a Utrecht-based game and interactive narrative designer with her roots in D&D homebrew
                         <br><br>
@@ -33,29 +43,79 @@
                         <br><br>
                         I hope my work catches your fancy, and feel free to shoot me a message about whatever!
                     </p>
-                    <div style="text-align: center; padding-bottom: 1vh;">
-                        <a href="https://shoebby.itch.io/">GAMES</a>
-                        <a href="https://bsky.app/profile/lexie.land">BSKY</a>
-                        <a href="https://www.linkedin.com/in/alexandria-van-eekelen-257337158/">LINKEDIN</a>
-                        <a href="https://lexieland.bandcamp.com">BANDCAMP</a>
+                </div>
+                <div class="grid-sub-item" style="grid-column-start: 2; grid-column-end: 2; grid-row-start: 1; grid-row-end: 5;">
+                    <img src="images/portfolio/verticalTextBlock.avif" style="height: 100%;">
+                </div>
+                <div class="grid-sub-item" style="border-top: none;">
+                    <span>
+                        <a href="https://shoebby.itch.io/">GAMES</a> ★ <a href="https://bsky.app/profile/lexie.land">BSKY</a> ★ <a href="https://www.linkedin.com/in/alexandria-van-eekelen-257337158/">LINKEDIN</a> ★ <a href="https://lexieland.bandcamp.com">BANDCAMP</a>
+                    </span>
+                </div>
+                <div class="grid-sub-item">
+                    <img src="images/portfolio/gamesareimportant.gif" style="width: 100%; height: 100%;">
+                </div>
+                <div class="grid-sub-item">
+                    <img src="images/portfolio/contactme.avif" style="width: 100%; height: 100%;">
+                </div>
+            </div>
+
+            <div class="grid-item resume">
+                <div class="grid-sub-item">
+                    <img src="images/portfolio/admission.avif" style="width: 100%;">
+                </div>
+                <div class="grid-sub-item">
+                    <p>RESUME</p>
+                </div>
+            </div>
+
+            <div class="grid-item toolbelt">
+                <img src="images/portfolio/toolbelt.avif" style="width: 100%;">
+            </div>
+            
+            <div class="grid-item projects">
+                <div class="tab-list grid-sub-item">
+                    <input type="button" class="tab-link" target="proj-1" value="The Anders Cyclopaedia" id="defaultOpen">
+                    <input type="button" class="tab-link" target="proj-2" value="ONEIRO(PHOBIA/PHRENIA)">
+                    <input type="button" class="tab-link" target="proj-3" value="Internship Unexplored 2">
+                    <input type="button" class="tab-link" target="proj-4" value="Maintenance">
+                    <input type="button" class="tab-link" target="proj-5" value="The Pluimer Complex">
+                    <input type="button" class="tab-link" target="proj-6" value="KLÖR">
+                    <input type="button" class="tab-link" target="proj-7" value="Call of the Cars">
+                    <input type="button" class="tab-link" target="proj-8" value="WTVSR">
+                    <input type="button" class="tab-link" target="proj-9" value="Fishy Friends!">
+                    <input type="button" class="tab-link" target="proj-10" value="NSMC">
+                    <input type="button" class="tab-link" target="proj-11" value="Warpman Sam">
+                    <input type="button" class="tab-link" target="proj-12" value="FPS Level Design">
+                    <input type="button" class="tab-link" target="proj-13" value="Connections">
+                </div>
+                <div role="tab-content grid-sub-item">
+                    <div id="proj-1" class="tab">
+                        Project 1
                     </div>
-                    <img src="images/portfolio/gamesareimportant.gif" style="width: 100%;">
+                    <div id="proj-2" class="tab">
+                        Project 2
+
+                    </div>
+                    <div id="proj-3" class="tab">
+                        Project 3
+                    </div>
+                    <div id="proj-4" class="tab">
+                        Project 4
+                    </div>
                 </div>
-                <div class="block" style="width: 28%;">
-                    <img src="images/portfolio/admission.avif" style="width: 100%; height: 100%;"><br>
-                    <span>RESUME</span>
-                </div>
-                <div class="block"><img src="images/portfolio/toolbelt.avif"></div>
             </div>
             
-            <div class="group">
-                <div class="block">projects block</div>
-            </div>
-            
-            <div class="group">
-                <img src="images/placeholder.jpg">
-                <br>
-                <img src="images/portfolio/randopanel.avif">
+            <div class="grid-item creature">
+                <div class="grid-sub-item">
+                    <p>Lalala</p>
+                </div>
+                <div class="grid-sub-item">
+                    <img src="images/pfp.jpg" style="width: 100%;">
+                </div>
+                <div class="grid-sub-item">
+                    <img src="images/portfolio/randopanel.avif" style="width: 100%;">
+                </div>
             </div>
         </div>
     </body>
