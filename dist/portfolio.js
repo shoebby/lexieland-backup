@@ -23,6 +23,6 @@ function openProject(evt, projName) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    document.getElementById(projName).style.display = "block";
+    document.getElementById(projName).style.display = "grid";
     evt.currentTarget.className += " active";
 }

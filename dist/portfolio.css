@@ -22,8 +22,9 @@ img {
     padding: 0;
 
     box-sizing: border-box;
-    image-rendering: pixelated;
     border: transparent .1vw solid;
+    
+    image-rendering: pixelated;
 }
 p, div {
     margin: 0;
@@ -35,14 +36,22 @@ div {
     background-repeat: no-repeat;
     background-position: 0;
     image-rendering: pixelated;
+    filter: saturate(2);
+    animation: bganim 8s ease-in-out infinite;
 }
+@keyframes bganim {
+    0% {filter: saturate(2);}
+    50% {filter: saturate(8);}
+    100% {filter: saturate(2);}
+}
+
 
 .grid-container {
     width: 90vw;
     margin: 5vh auto;
     display: grid;
     grid-template-columns: 35% 10% 45% 10%;
-    grid-template-rows: 10vh 60vh 10vh;
+    grid-template-rows: 10vh 63vh 7vh;
     gap: 1vw;
 }
 .grid-item {
@@ -75,16 +84,22 @@ a {
 }
 
 .topbar {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    
     width: 100%;
-    height: 2.5vw;
+    height: 5vh;
 
     background-color: #FF1D00;
 
     font-family: 'lemonmilk-light';
-    font-size: 3vw;
+    font-size: 4.5vh;
+    color: black;
 }
 .topbar p {
-    padding-left: 5vw;
+    padding: 0 0 0 5vw;
+    margin: 0;
 }
 .favicon {
     animation: hueRot 4s linear infinite;
@@ -143,7 +158,7 @@ a {
 .projects {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 15% 85%;
+    grid-template-rows: 5vh 85%;
 
     grid-column-start: 3;
     grid-column-end: 4;
@@ -176,15 +191,17 @@ a {
 }
 .tab-list input {
     box-sizing: border-box;
-    border: #FF1D00 .1vw solid;
+    border: #FF1D00 1px solid;
     border-radius: 0;
 
     background: none;
-    height: 50%;
+    height: 2.5vh;
     flex: 1 0 auto;
     
     color: silver;
-    font-size: 1.7vh;
+    font-size: 1.5vh;
+
+    cursor: pointer;
 }
 .tab-list input:hover {
     color: white;
@@ -195,9 +212,68 @@ a {
 .tab-link {
     height: 50%;
 }
-.tab-content {
-
-}
 .tab {
-    display: none;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+
+    font-size: 1.5vh;
+}
+.tab .thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+.tab .summ {
+    width: 100%;
+    height: 100%;
+}
+.tab .contr-1 {
+    width: 100%;
+    height: 100%;
+
+    padding-top: .5vh;
+
+    border-top:#FF1D00 dotted .15vw;
+}
+.tab .contr-2 {
+    width: 100%;
+    height: 100%;
+
+    padding-top: .5vh;
+
+    border-top:#FF1D00 dotted .15vw;
+}
+.tab h1 {
+    padding: 0;
+    margin: 0;
+
+    font-family: 'lemonmilk-bold';
+    font-size: 2.4vh;
+}
+.tab h2 {
+    padding: 0;
+    margin: 0;
+
+    font-family: 'lemonmilk-light';
+    font-size: 1.5vh;
+    color: silver;
+}
+.tab h3 {
+    padding: 0;
+    margin: 0;
+
+    font-family: 'lemonmilk-light';
+    font-style: italic;
+    color: rgb(100, 100, 100);
+}
+.tab p {
+    margin: .1vw 1vw;
+    padding-left: .5vw;
+}
+.tab ul {
+    padding-left: 2vw;
 }
