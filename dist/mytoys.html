@@ -9,22 +9,24 @@
         <link rel="stylesheet" href="mytoys.css">
         <link rel="stylesheet" href="https://unpkg.com/98.css">
         <script type="module" src="mytoys.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     </head>
     <body>
-        <div class="bin"><p class="folderName">Recycling Bin</p></div>
-        <a href="./index.html"><div class="myComputer"><p class="folderName">Lexie.Land</p></div></a>
+        <div class="static bin"><p class="folderName">Recycling Bin</p></div>
+        <a href="./index.html"><div class="static myComputer"><p class="folderName">Lexie.Land</p></div></a>
 
         <!--INTERACTIVE FOLDERS-->
 
-        <details id="cat_fractal">
+        <details id="cat_fractal" class="openable">
             <summary><p class="folderName">Fractals</p></summary>
-            <div class="container window" style="width: 36vw;">
+            <div id="draggable" class="container window">
                 <div class="title-bar">
                     <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Fractals (C:)</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
+                    <button aria-label="Maximize" onclick="document.querySelector('#cat_fractal .window').setAttribute('style', 'width: 100vw; height: 100vh; top: -270px; left: -35px;');"></button>
+                    <button aria-label="Close" onclick="document.querySelector('#cat_fractal').open = false;"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
@@ -124,15 +126,15 @@
             </div>
         </details>
 
-        <details id="cat_popup">
+        <details id="cat_popup" class="openable">
             <summary><p class="folderName">Pop-Up Windows</p></summary>
-            <div class="container window" style="width: 36vw;">
+            <div id="draggable" class="container window" style="width: 36vw;">
                 <div class="title-bar">
                     <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Pop-Up Windows (C:)</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
                     <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
+                    <button aria-label="Close" onclick="document.querySelector('#cat_popup').open = false;"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
@@ -224,15 +226,15 @@
             </div>
         </details>
 
-        <details id="cat_art">
+        <details id="cat_art" class="openable">
             <summary><p class="folderName">Art Toys</p></summary>
-            <div class="container window" style="width: 36vw;">
+            <div id="draggable" class="container window" style="width: 36vw;">
                 <div class="title-bar">
                     <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Art Toys (C:)</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
                     <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
+                    <button aria-label="Close" onclick="document.querySelector('#cat_art').open = false;"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
@@ -320,17 +322,15 @@
             </div>
         </details>
 
-        <!-- WIN MEDIA PLAYER -->
-
-        <Details class="winMedia">
+        <Details class="winMedia openable">
             <summary><p class="folderName">Windows Media Player</p></summary>
-            <div class="container window" style="width: 25vw;">
+            <div id="draggable" class="container window" style="width: 25vw;">
                 <div class="title-bar">
                     <div class="title-bar-text"><img src="images/webtoys/icon_winMedia.png" style="height: 1em; margin-right: .5em;">Windows Media Player</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
                     <button aria-label="Maximize"></button>
-                    <button aria-label="Close"></button>
+                    <button aria-label="Close" onclick="document.querySelector('details.winMedia').open = false;"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 8px;">
@@ -384,6 +384,33 @@
                 </div>
             </div>
         </Details>
+
+        <details id="cat_recurse" class="recurse openable">
+            <summary><p class="folderName">Recurse^3</p></summary>
+            <div id="draggable" class="container window" style="width: 90vw;">
+                <div class="title-bar">
+                    <div class="title-bar-text"><img src="images/webtoys/icon_winMedia.png" style="height: 1em; margin-right: .5em;">Recurse^3</div>
+                    <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="document.querySelector('#cat_recurse').open = false;"></button>
+                    </div>
+                </div>
+                <fieldset style="padding: 4px 0 4px 8px;">
+                    <div class="field-row">
+                        <span style="margin-right: .6em;"><span style="text-decoration: underline;">F</span>ile</span>
+                        <span style="margin-right: .6em;"><span style="text-decoration: underline;">V</span>iew</span>
+                        <span style="margin-right: .6em;"><span style="text-decoration: underline;">P</span>lay</span>
+                        <span style="margin-right: .6em;"><span style="text-decoration: underline;">F</span>avourites</span>
+                        <span style="margin-right: .6em;"><span style="text-decoration: underline;">G</span>o</span>
+                        <span style="margin-right: .6em;"><span style="text-decoration: underline;">H</span>elp</span>
+                    </div>
+                </fieldset>
+                <div class="window-body">
+                    <iframe style="width: 100%; height: 85vh;" src="SI26.html"></iframe>
+                </div>
+            </div>
+        </details>
 
         <!-- START BAR -->
 

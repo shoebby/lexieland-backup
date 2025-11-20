@@ -11,7 +11,44 @@ summary:first-of-type {
     list-style-type: none;
 }
 summary::-webkit-details-marker {
-  display:none;
+    display:none;
+}
+
+.highlighted a {
+    color: white;
+}
+
+/* === DESKTOP FOLDERS === */
+
+.static {
+    position: absolute;
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    z-index: -1;
+}
+
+.openable {
+    position: absolute;
+}
+.openable .container {
+    position: relative;
+    z-index: 1;
+}
+.openable summary {
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+    z-index: -1;
+}
+.openable[open] summary {
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+}
+.openable[open] .folderName {
+    font-weight: bold;
 }
 
 .folderName {
@@ -24,123 +61,105 @@ summary::-webkit-details-marker {
     width: 70px;
     cursor: pointer;
 }
+
+/* === STATICS === */
+
 .bin {
-    position: absolute;
     left: 35px;
     top: 35px;
     background-image: url(images/webtoys/bin.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
 }
 .myComputer {
-    position: absolute;
     left: 35px;
     top: 135px;
     background-image: url(images/webtoys/myComputer.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
 }
 
+/* === OPENABLES === */
+
+/* media player */  
 .winMedia {
-    position: absolute;
     left: 135px;
     top: 35px;
+}
+.winMedia summary {
     background-image: url(images/webtoys/winMedia.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
 }
 .winMedia .container {
-    position: relative;
     top: 5vh;
     left: 50vw;
-    z-index: 3;
 }
 
-.highlighted a {
-    color: white;
-}
-
-/* fractal category */
+/* fractal */
 #cat_fractal {
-    position: absolute;
     left: 35px;
     top: 235px;
 }
 #cat_fractal summary {
     background-image: url(images/webtoys/dir_closed.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
 }
 #cat_fractal[open] summary {
     background-image: url(images/webtoys/dir_open.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
 }
 #cat_fractal .container {
-    position: relative;
     top: -15vh;
     left: 5vw;
-    z-index: 5;
+}
+#cat_fractal .window {
+    width: 36vw;
 }
 
-/* popup category */
+/* popup */
 #cat_popup {
-    position: absolute;
     left: 35px;
     top: 335px;
 }
 #cat_popup summary {
     background-image: url(images/webtoys/dir_closed.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
 }
 #cat_popup[open] summary {
     background-image: url(images/webtoys/dir_open.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
 }
 #cat_popup .container {
-    position: relative;
     top: 3vh;
     left: 35vw;
-    z-index: 5;
 }
 
-/* art toy category */
+/* art toys */
 #cat_art {
-    position: absolute;
     left: 35px;
     top: 435px;
 }
 #cat_art summary {
     background-image: url(images/webtoys/dir_closed.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
 }
 #cat_art[open] summary {
     background-image: url(images/webtoys/dir_open.png);
-    background-size: 100%;
-    width: 35px;
-    height: 35px;
 }
 #cat_art .container {
-    position: relative;
     top: 10vh;
     left: 15vw;
-    z-index: 5;
 }
 
+.recurse {
+    left: 135px;
+    top: 135px;
+}
+.recurse summary {
+    background-image: url(images/placeholder.jpg);
+}
+.recurse .container {
+    top: -135px;
+    left: -135px;
+}
+
+/* === FILE EXPLORERS === */
+
+.title-bar {
+    cursor: pointer;
+}
+
+/* === START BAR === */
 .startBar {
     padding: 2px;
     margin: 0;
@@ -200,4 +219,12 @@ summary::-webkit-details-marker {
     0% {content: "6:30 PM";}
     0% {content: "6 30 PM";}
     100% {content: "6:30 PM";}
+}
+div {
+    animation: rotDivs 0s linear infinite;
+}
+@keyframes rotDivs {
+    0% {rotate: 0deg;}
+    50% {rotate: 360deg;}
+    100% {rotate: 720deg;}
 }

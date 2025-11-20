@@ -13,3 +13,11 @@ document.querySelectorAll('table.interactive').forEach(element => {
         }
     })
 });
+
+$( function() {
+    $( ".container" ).draggable({
+        stack: ".ui-draggable", /* Stack the currently dragged item on top of all other items. */
+		distance: 0, /* I believe this has to do with mouse distance? */
+		containment: "document", /* Makes it so pieces don't get lost off the page while dragging them */
+    });
+} );
