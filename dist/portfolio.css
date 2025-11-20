@@ -86,6 +86,16 @@ a {
 .topbar p {
     padding-left: 5vw;
 }
+.favicon {
+    animation: hueRot 4s linear infinite;
+    background-image: url('images/favicon.ico');
+    width: 3vw;
+    height: 3vw;
+}
+@keyframes hueRot {
+    0% {filter: contrast(10) hue-rotate(0deg);}
+    100% {filter: contrast(10) hue-rotate(360deg);}
+}
 
 .banner {
     display: grid;
