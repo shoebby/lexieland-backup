@@ -8,7 +8,7 @@
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <link rel="stylesheet" href="mytoys.css">
         <link rel="stylesheet" href="https://unpkg.com/98.css">
-        <script type="module" src="mytoys.js"></script>
+        <script src="mytoys.js" type="module"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     </head>
@@ -25,7 +25,8 @@
                     <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Fractals (C:)</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize" onclick="document.querySelector('#cat_fractal .window').setAttribute('style', 'width: 100vw; height: 100vh; top: -270px; left: -35px;');"></button>
+                    <button onclick="doThing()">penisgirl</button>
+                    <button aria-label="Maximize" onclick="const target = document.querySelector('#cat_fractal .window'); target.setAttribute('style', 'width: 100vw; height: 100vh; top: -270px; left: -35px;'); this.setAttribute('aria-label','Restore')"></button>
                     <button aria-label="Close" onclick="document.querySelector('#cat_fractal').open = false;"></button>
                     </div>
                 </div>

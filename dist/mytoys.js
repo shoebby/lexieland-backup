@@ -21,3 +21,7 @@ $( function() {
 		containment: "document", /* Makes it so pieces don't get lost off the page while dragging them */
     });
 } );
+
+function doThing() {
+    console.log("boyvagina");
+}
