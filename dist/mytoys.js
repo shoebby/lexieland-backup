@@ -1,3 +1,5 @@
+const windowTemplate = document.querySelector("#windowNaked");
+
 document.querySelectorAll('table.interactive').forEach(element => {
     element.addEventListener('click', (event) => {
         const highlightedClass = 'highlighted';
@@ -28,11 +30,43 @@ document.querySelectorAll("button[target='maximize']").forEach(element => {
         ToggleWindowSize(element);
     })
 });
+
 document.querySelectorAll("button[target='close']").forEach(element => {
     element.addEventListener('click', (event) => {
         element.parentNode.parentNode.parentNode.parentNode.open = false;
     })
 });
+
+document.querySelectorAll("input[target='openWindow']").forEach(element => {
+    element.addEventListener('click', (event) => {
+        const page_title = element.getAttribute("value");
+        const page_url = element.getAttribute("link");
+        openWindow(page_title, page_url);
+    })
+});
+document.querySelectorAll("a[target='openWindow']").forEach(element => {
+    element.addEventListener('click', (event) => {
+        const page_title = element.getAttribute("value");
+        const page_url = element.getAttribute("link");
+        openWindow(page_title, page_url);
+    })
+});
+
+document.querySelectorAll("button[target='closeInstWindow']").forEach(element => {
+    element.addEventListener('click', (event) => {
+        element.parentNode.parentNode.parentNode.remove();
+    })
+});
+
+function openWindow(title, url) {
+    const newWindow = windowTemplate.cloneNode(true);
+    newWindow.removeAttribute('id');
+    document.body.appendChild(newWindow);
+    newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 100vh; position: fixed; top: 0; left: 0;');
+    newWindow.querySelector("button[target='closeInstWindow']").addEventListener('click', (event) => {newWindow.remove();});
+    newWindow.querySelector('div.title-bar-text').innerHTML = title
+    newWindow.querySelector('iframe').setAttribute('src', url);
+}
 
 function ToggleWindowSize(button) {
     const target = button.parentNode.parentNode.parentNode;
