@@ -1,6 +1,7 @@
 body {
     font-size: 1vh;
     background-color: hsl(181, 89%, 28%);
+    overflow: hidden;
 }
 
 summary {
@@ -227,4 +228,53 @@ div {
     0% {rotate: 0deg;}
     50% {rotate: 360deg;}
     100% {rotate: 720deg;}
+}
+
+/* === START MENU === */
+.startMenu {
+    position: absolute;
+    height: 47vh;
+    top: -47.6vh;
+    left: 5px;
+    width: 200px;
+    z-index: 10;
+}
+.startMenu-vert {
+    float: left;
+    height: 98%;
+    width: 11%;
+    background-color: #0000A8;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    writing-mode: sideways-lr;
+    text-orientation: mixed;
+    font-size: 170%;
+    padding-bottom: 2%;
+    margin: 0;
+}
+.startMenu-list {
+    float: right;
+    height: 100%;
+    width: 88%;
+}
+.startMenu-list table {
+    width: 100%;
+    background: none;
+}
+.startMenu-list td {
+    padding: 3px 0 3px 5px;
+    vertical-align: middle;
+}
+.startMenu-list img {
+    width: 100%;
+}
+.startMenu .divider {
+    background: #000;
+    border-bottom: 1px solid grey;
+    border-right: 1px solid grey;
+    box-shadow: 1px 0 0 #fff,1px 1px 0 #fff,0 1px 0 #fff,-1px 0 0 #a9a9a9,-1px -1px 0 #a9a9a9,0 -1px 0 #a9a9a9,-1px 1px 0 #fff,1px -1px #a9a9a9;
+    box-sizing: border-box;
+    height: 1px;
+    margin-left: 5%;
+    width: 90%;
 }

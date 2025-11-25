@@ -25,9 +25,8 @@
                     <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Fractals (C:)</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
-                    <button onclick="doThing()">penisgirl</button>
-                    <button aria-label="Maximize" onclick="const target = document.querySelector('#cat_fractal .window'); target.setAttribute('style', 'width: 100vw; height: 100vh; top: -270px; left: -35px;'); this.setAttribute('aria-label','Restore')"></button>
-                    <button aria-label="Close" onclick="document.querySelector('#cat_fractal').open = false;"></button>
+                    <button aria-label="Maximize" target="maximize"></button>
+                    <button aria-label="Close" target="close"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
@@ -134,8 +133,8 @@
                     <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Pop-Up Windows (C:)</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close" onclick="document.querySelector('#cat_popup').open = false;"></button>
+                    <button aria-label="Maximize" target="maximize"></button>
+                    <button aria-label="Close" target="close"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
@@ -234,8 +233,8 @@
                     <div class="title-bar-text"><img src="images/webtoys/exploring.png" style="height: 1em; margin-right: .5em;">Exploring - Art Toys (C:)</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close" onclick="document.querySelector('#cat_art').open = false;"></button>
+                    <button aria-label="Maximize" target="maximize"></button>
+                    <button aria-label="Close" target="close"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 2px; font-weight: bold;">
@@ -323,15 +322,15 @@
             </div>
         </details>
 
-        <Details class="winMedia openable">
+        <Details id="cat_media" class="winMedia openable">
             <summary><p class="folderName">Windows Media Player</p></summary>
             <div id="draggable" class="container window" style="width: 25vw;">
                 <div class="title-bar">
                     <div class="title-bar-text"><img src="images/webtoys/icon_winMedia.png" style="height: 1em; margin-right: .5em;">Windows Media Player</div>
                     <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close" onclick="document.querySelector('details.winMedia').open = false;"></button>
+                    <button aria-label="Maximize" target="maximize"></button>
+                    <button aria-label="Close" target="close"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 8px;">
@@ -392,9 +391,9 @@
                 <div class="title-bar">
                     <div class="title-bar-text"><img src="images/webtoys/icon_winMedia.png" style="height: 1em; margin-right: .5em;">Recurse^3</div>
                     <div class="title-bar-controls">
-                    <button aria-label="Minimize"></button>
-                    <button aria-label="Maximize"></button>
-                    <button aria-label="Close" onclick="document.querySelector('#cat_recurse').open = false;"></button>
+                        <button aria-label="Minimize"></button>
+                        <button aria-label="Maximize" target="maximize"></button>
+                        <button aria-label="Close" target="close"></button>
                     </div>
                 </div>
                 <fieldset style="padding: 4px 0 4px 8px;">
@@ -416,9 +415,59 @@
         <!-- START BAR -->
 
         <div class="startBar">
-            <a class="startButtonWrapper" href="">
-                <div class="startButton"></div>
-            </a>
+            <details class="startButtonWrapper">
+                <summary><div class="startButton"></div></summary>
+                <div class="window startMenu">
+                    <div class="startMenu-vert"><b>Windows</b>98</div>
+                    <div class="startMenu-list">
+                        <table class="interactive">
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/winupdate.png"></td>
+                                <td>Windows Update</td>
+                            </tr>
+                        </table>
+                        <div class="divider"></div>
+                        <table class="interactive">
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/guymode.png"></td>
+                                <td>Guy Mode</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/documents.png"></td>
+                                <td>Documents</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/settings.png"></td>
+                                <td>Settings</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/find.png"></td>
+                                <td>Find</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/help.png"></td>
+                                <td>Help</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/run.png"></td>
+                                <td>Run...</td>
+                            </tr>
+                        </table>
+                        <div class="divider"></div>
+                        <table class="interactive">
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/logoff.png"></td>
+                                <td>Log Off Lexie...</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40px;"><img src="images/webtoys/shutdown.png"></td>
+                                <td>Shut Down...</td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                </div>
+            </details>
 
             <fieldset style="position: relative; top: 1px; bottom: 1px; padding: .7em 0; float: left;"></fieldset>
 
