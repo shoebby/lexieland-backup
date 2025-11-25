@@ -147,7 +147,7 @@ summary::-webkit-details-marker {
     top: 135px;
 }
 .recurse summary {
-    background-image: url(images/placeholder.jpg);
+    background-image: url(images/webtoys/icon_recurse.png);
 }
 .recurse .container {
     top: -135px;
@@ -236,7 +236,7 @@ div {
     height: 47vh;
     top: -47.6vh;
     left: 5px;
-    width: 200px;
+    width: 10.5vw;
     z-index: 10;
 }
 .startMenu-vert {
@@ -277,4 +277,11 @@ div {
     height: 1px;
     margin-left: 5%;
     width: 90%;
+}
+.documents-list {
+    color: black;
+    vertical-align: middle;
+}
+.documents-list img {
+    width: 15px;
 }
