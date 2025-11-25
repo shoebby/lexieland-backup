@@ -62,7 +62,7 @@ function openWindow(title, url) {
     const newWindow = windowTemplate.cloneNode(true);
     newWindow.removeAttribute('id');
     document.body.appendChild(newWindow);
-    newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 100vh; position: fixed; top: 0; left: 0;');
+    newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 97vh; position: fixed; top: 0; left: 0;');
     newWindow.querySelector("button[target='closeInstWindow']").addEventListener('click', (event) => {newWindow.remove();});
     newWindow.querySelector('div.title-bar-text').innerHTML = title
     newWindow.querySelector('iframe').setAttribute('src', url);
