@@ -346,6 +346,7 @@ div {
     width: 100vw;
     height: 100vh;
     z-index: 999999;
+    pointer-events: none;
 
     background-color: silver;
 
@@ -375,10 +376,12 @@ div {
         background: repeating-linear-gradient(rgba(36, 36, 36, 0.2) 2px, rgba(36, 36, 36, 0.2) 4px, transparent 6px, transparent 10px);
     }
 }
+#startupOverlay .title {
+    z-index: -1;
+}
 #startupOverlay span {
     font-family: 'appleGaramondLight';
     font-size: 10vh;
-    cursor: crosshair;
 }
 #startupOverlay accent {
     font-family: 'appleGaramondLight';
@@ -390,5 +393,6 @@ div {
     width: 3vw;
     left: 48.5vw;
     top: 58vh;
-    cursor: pointer;
+    pointer-events: all;
+    z-index: -1;
 }
