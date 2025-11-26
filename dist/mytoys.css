@@ -95,6 +95,11 @@ summary::-webkit-details-marker {
     top: 135px;
     background-image: url(images/webtoys/myComputer.png);
 }
+.recurse {
+    left: 135px;
+    top: 135px;
+    background-image: url(images/webtoys/icon_recurse.png);
+}
 
 /* === OPENABLES === */
 

@@ -62,9 +62,9 @@ function openWindow(title, url) {
     const newWindow = windowTemplate.cloneNode(true);
     newWindow.removeAttribute('id');
     document.body.appendChild(newWindow);
-    newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 97vh; position: fixed; top: 0; left: 0;');
+    newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 97vh; position: fixed; top: 0; left: 0; z-index: 999;');
     newWindow.querySelector("button[target='closeInstWindow']").addEventListener('click', (event) => {newWindow.remove();});
-    newWindow.querySelector('div.title-bar-text').innerHTML = title
+    newWindow.querySelector('div.title-bar-text').innerHTML = "<img src='images/webtoys/icon_app.png' style='height: 1em; margin-right: .5em;'>" + title;
     newWindow.querySelector('iframe').setAttribute('src', url);
 }
 
