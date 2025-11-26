@@ -18,10 +18,6 @@ function startupSeq() {
         title.remove();
     }, 4500);
 
-    let audio = new Audio('sounds/webtoys/visunov_alien.mp3');
+    const audio = new Audio('sounds/webtoys/visunov_alien_var.mp3');
     audio.play();
-
-    // setTimeout(() => {
-    //     overlay.remove();
-    // }, 5500);
 }
