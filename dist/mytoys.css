@@ -113,6 +113,11 @@ summary::-webkit-details-marker {
     top: 135px;
     background-image: url(images/webtoys/icon_recurse.png);
 }
+.poppy {
+    left: 235px;
+    top: 35px;
+    background-image: url(images/webtoys/poppy.png);
+}
 
 /* === OPENABLES === */
 
@@ -178,18 +183,6 @@ summary::-webkit-details-marker {
 #cat_art .container {
     top: 10vh;
     left: 15vw;
-}
-
-.recurse {
-    left: 135px;
-    top: 135px;
-}
-.recurse summary {
-    background-image: url(images/webtoys/icon_recurse.png);
-}
-.recurse .container {
-    top: -135px;
-    left: -135px;
 }
 
 /* === FILE EXPLORERS === */
@@ -395,4 +388,49 @@ div {
     top: 58vh;
     pointer-events: all;
     z-index: -1;
+}
+
+#poppy {
+    position: absolute;
+    bottom: 10vh;
+    right: 5vw;
+
+    z-index: 99999;
+
+    transition: 3s;
+}
+#poppy div {
+    position: absolute;
+    top: 5%;
+    left: -150%;
+
+    transition: 3s;
+}
+#poppy input {
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-decoration: underline;
+}
+#poppy p {
+    float: left;
+    background: #fff2a5;
+    padding: 1vw;
+    min-width: 10vw;
+    max-width: 15vw;
+}
+#poppy img {
+    width: 222px;
+    height: 333px;
+
+    animation: poppyAnim 2s linear infinite;
+}
+@keyframes poppyAnim {
+    0% { rotate: 15deg; }
+    50% { rotate: -15deg; }
+    100% { rotate: 15deg; }
+}
+
+red {
+    color: red;
 }

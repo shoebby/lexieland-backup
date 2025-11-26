@@ -21,6 +21,7 @@
                 </div>
                 <div class="buttonContainer">
                     <button target="startup">Boot!</button>
+                    <button target="quickstart">Quickboot!</button>
                 </div>
             </div>
         </div>
@@ -28,6 +29,7 @@
         <div class="static bin"><p class="folderName">Recycling Bin</p></div>
         <a value="www.lexie.land" target="openWindow" link="./index.html"><div class="static myComputer"><p class="folderName">Lexie.Land</p></div></a>
         <a value="Recurse^3" target="openWindow" link="./SI26.html"><div class="static recurse"><p class="folderName">Recurse^3</p></div></a>
+        <a value="Poppy" target="openPoppy" link="./poppy.html"><div class="static poppy"><p class="folderName">Poppy The Assistant</p></div></a>
 
         <!--INTERACTIVE FOLDERS-->
 
@@ -563,6 +565,16 @@
             <div class="window-body" style="margin: 1%;">
                 <iframe style="width: 100%; height: 90vh;" src=""></iframe>
             </div>
+        </div>
+
+        <div id="poppy" style="display: none;">
+            <div>
+                <p>
+                    <span id="poppyTxt">Hi! I'm Poppy, your <red>V</red>isunov<red>OS</red> assistant! Let's craft some stories!</span><br><br>
+                    <input type="button" value="NEXT" target="progressPoppy">
+                </p>
+            </div>
+            <img src="images/webtoys/poppy_big.png">
         </div>
 
         <script>

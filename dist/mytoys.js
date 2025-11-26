@@ -25,6 +25,64 @@ $( function() {
     });
 } );
 
+
+
+// poppy
+const poppy = document.querySelector("#poppy");
+const poppyBox = poppy.querySelector("div");
+const poppyDialog = poppy.querySelector("#poppyTxt");
+
+document.querySelector("a[target='openPoppy']").addEventListener('click', (event) => {startPoppy()});
+
+function startPoppy() {
+    poppy.style.setProperty("bottom", "10vh");
+    poppy.style.setProperty("right", "5vw");
+
+    poppyBox.style.setProperty("top", "5%");
+    poppyBox.style.setProperty("left", "-150%");
+
+    poppyDialog.innerHTML = "Hi! I'm Poppy, your <red>V</red>isunov<red>OS</red> assistant! Let's craft some stories!"
+
+    poppy.style.setProperty('display', 'block');
+}
+function closePoppy() {
+    poppyStep = 0;
+    poppy.style.setProperty('display', 'none');
+}
+
+let poppyStep = 0;
+poppy.querySelector("input[target='progressPoppy']").addEventListener('click', (event) => {progressPoppy()});
+
+function progressPoppy() {
+    poppyStep += 1;
+
+    switch (poppyStep) {
+        case 1:
+            poppy.style.setProperty("bottom", "65vh");
+            poppy.style.setProperty("right", "70vw");
+
+            poppyBox.style.setProperty("top", "10%");
+            poppyBox.style.setProperty("left", "100%");
+
+            poppyDialog.innerHTML = "Over here you can see some of your installed toys, Recurse^3 is my favourite!<br>Feel free to play around with them and see what they do!";
+            break;
+        case 2:
+            document.querySelector("#cat_media summary").click();
+
+            poppy.style.setProperty("bottom", "35vh");
+            poppy.style.setProperty("right", "10vw");
+
+            poppyBox.style.setProperty("top", "60%");
+            poppyBox.style.setProperty("left", "-150%");
+
+            poppyDialog.innerHTML = "The media player lets you listen to some songs while you work, with a pretty visualizer to boot!";
+            break;
+        default:
+            closePoppy();
+    }
+}
+
+// audio functionality
 document.querySelectorAll("button, summary, input, a").forEach(element => {
     element.addEventListener('click', (event) => {
         playAudio('./sounds/webtoys/click.mp3')
@@ -37,43 +95,14 @@ function playAudio(path) {
     audio.play();
 }
 
+
+
+// maximizing and closing windows
 document.querySelectorAll("button[target='maximize']").forEach(element => {
     element.addEventListener('click', (event) => {
         ToggleWindowSize(element);
     })
 });
-
-document.querySelectorAll("button[target='close']").forEach(element => {
-    element.addEventListener('click', (event) => {
-        element.parentNode.parentNode.parentNode.parentNode.open = false;
-    })
-});
-
-document.querySelectorAll("input[target='openWindow'], a[target='openWindow']").forEach(element => {
-    element.addEventListener('click', (event) => {
-        const page_title = element.getAttribute("value");
-        const page_url = element.getAttribute("link");
-        openWindow(page_title, page_url);
-    })
-});
-
-document.querySelectorAll("button[target='closeInstWindow']").forEach(element => {
-    element.addEventListener('click', (event) => {
-        element.parentNode.parentNode.parentNode.remove();
-    })
-});
-
-function openWindow(title, url) {
-    const newWindow = windowTemplate.cloneNode(true);
-    newWindow.removeAttribute('id');
-    document.body.appendChild(newWindow);
-    newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 97vh; position: fixed; top: 0; left: 0; z-index: 999;');
-    newWindow.querySelector("button[target='closeInstWindow']").addEventListener('click', (event) => {newWindow.remove();});
-    newWindow.querySelectorAll("button, input, a").forEach(element => {element.addEventListener('click', (event) => {playAudio('./sounds/webtoys/click.mp3')})});
-    newWindow.querySelector('div.title-bar-text').innerHTML = "<img src='images/webtoys/icon_app.png' style='height: 1em; margin-right: .5em;'>" + title;
-    newWindow.querySelector('iframe').setAttribute('src', url);
-}
-
 function ToggleWindowSize(button) {
     const target = button.parentNode.parentNode.parentNode;
 
@@ -92,4 +121,35 @@ function ToggleWindowSize(button) {
         }
         button.setAttribute('aria-label','Maximize');
     }
+}
+document.querySelectorAll("button[target='close']").forEach(element => {
+    element.addEventListener('click', (event) => {
+        element.parentNode.parentNode.parentNode.parentNode.open = false;
+    })
+});
+
+
+
+// creating and closing instantiated windows
+document.querySelectorAll("input[target='openWindow'], a[target='openWindow']").forEach(element => {
+    element.addEventListener('click', (event) => {
+        const page_title = element.getAttribute("value");
+        const page_url = element.getAttribute("link");
+        openWindow(page_title, page_url);
+    })
+});
+document.querySelectorAll("button[target='closeInstWindow']").forEach(element => {
+    element.addEventListener('click', (event) => {
+        element.parentNode.parentNode.parentNode.remove();
+    })
+});
+function openWindow(title, url) {
+    const newWindow = windowTemplate.cloneNode(true);
+    newWindow.removeAttribute('id');
+    document.body.appendChild(newWindow);
+    newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 97vh; position: fixed; top: 0; left: 0; z-index: 999;');
+    newWindow.querySelector("button[target='closeInstWindow']").addEventListener('click', (event) => {newWindow.remove();});
+    newWindow.querySelectorAll("button, input, a").forEach(element => {element.addEventListener('click', (event) => {playAudio('./sounds/webtoys/click.mp3')})});
+    newWindow.querySelector('div.title-bar-text').innerHTML = "<img src='images/webtoys/icon_app.png' style='height: 1em; margin-right: .5em;'>" + title;
+    newWindow.querySelector('iframe').setAttribute('src', url);
 }
