@@ -25,6 +25,18 @@ $( function() {
     });
 } );
 
+document.querySelectorAll("button, summary, input, a").forEach(element => {
+    element.addEventListener('click', (event) => {
+        playAudio('./sounds/webtoys/click.mp3')
+    })
+});
+
+function playAudio(path) {
+    console.log("playing " + path)
+    const audio = new Audio(path);
+    audio.play();
+}
+
 document.querySelectorAll("button[target='maximize']").forEach(element => {
     element.addEventListener('click', (event) => {
         ToggleWindowSize(element);
@@ -37,14 +49,7 @@ document.querySelectorAll("button[target='close']").forEach(element => {
     })
 });
 
-document.querySelectorAll("input[target='openWindow']").forEach(element => {
-    element.addEventListener('click', (event) => {
-        const page_title = element.getAttribute("value");
-        const page_url = element.getAttribute("link");
-        openWindow(page_title, page_url);
-    })
-});
-document.querySelectorAll("a[target='openWindow']").forEach(element => {
+document.querySelectorAll("input[target='openWindow'], a[target='openWindow']").forEach(element => {
     element.addEventListener('click', (event) => {
         const page_title = element.getAttribute("value");
         const page_url = element.getAttribute("link");
@@ -64,6 +69,7 @@ function openWindow(title, url) {
     document.body.appendChild(newWindow);
     newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 97vh; position: fixed; top: 0; left: 0; z-index: 999;');
     newWindow.querySelector("button[target='closeInstWindow']").addEventListener('click', (event) => {newWindow.remove();});
+    newWindow.querySelectorAll("button, input, a").forEach(element => {element.addEventListener('click', (event) => {playAudio('./sounds/webtoys/click.mp3')})});
     newWindow.querySelector('div.title-bar-text').innerHTML = "<img src='images/webtoys/icon_app.png' style='height: 1em; margin-right: .5em;'>" + title;
     newWindow.querySelector('iframe').setAttribute('src', url);
 }

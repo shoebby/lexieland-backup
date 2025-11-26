@@ -9,12 +9,25 @@
         <link rel="stylesheet" href="mytoys.css">
         <link rel="stylesheet" href="https://unpkg.com/98.css">
         <script src="mytoys.js" type="module"></script>
+        <script src="mytoys_startup.js" type="module"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     </head>
     <body>
+        <div id="startupOverlay">
+            <div id="scanlines">
+                <p>
+                    <span><accent>V</accent>isunov<accent>OS</accent></span>
+                </p>
+                <div class="buttonContainer">
+                    <button target="startup">Boot!</button>
+                </div>
+            </div>
+        </div>
+
         <div class="static bin"><p class="folderName">Recycling Bin</p></div>
         <a value="www.lexie.land" target="openWindow" link="./index.html"><div class="static myComputer"><p class="folderName">Lexie.Land</p></div></a>
+        <a value="Recurse^3" target="openWindow" link="./SI26.html"><div class="static recurse"><p class="folderName">Recurse^3</p></div></a>
 
         <!--INTERACTIVE FOLDERS-->
 
@@ -385,8 +398,6 @@
             </div>
         </Details>
 
-        <a value="Recurse^3" target="openWindow" link="./SI26.html"><div class="static recurse"><p class="folderName">Recurse^3</p></div></a>
-        
         <!-- START BAR -->
 
         <div class="startBar">

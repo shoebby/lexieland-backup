@@ -12,6 +12,19 @@
     src:url(https://unpkg.com/98.css@0.1.21/dist/ms_sans_serif_bold.woff) format("woff");
     src:url(https://unpkg.com/98.css@0.1.21/dist/ms_sans_serif_bold.woff2) format("woff2");
 }
+@font-face {
+    font-family: 'appleGaramond';
+    src: url(fonts/AppleGaramond.ttf) format('TrueType');
+}
+@font-face {
+    font-family: 'appleGaramondLight';
+    src: url(fonts/AppleGaramond-Light.ttf) format('TrueType');
+}
+
+html {
+    padding: 0;
+    margin: 0;
+}
 
 * {
     font-family: "Pixelated MS Sans Serif",Arial;
@@ -324,4 +337,58 @@ div {
     float: right;
     padding-right: 10px;
     font-family: monospace;
+}
+
+#startupOverlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+
+    background-color: silver;
+
+    transition: 0;
+}
+#startupOverlay #scanlines {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    animation: scanlines .2s linear infinite;
+
+    box-shadow: inset black 0 0 3vw;
+}
+@keyframes scanlines {
+    0% {
+        background: repeating-linear-gradient(rgba(36, 36, 36, 0.2) 0, rgba(36, 36, 36, 0.2) 2px, transparent 4px, transparent 8px);
+    }
+    50% {
+        background: repeating-linear-gradient(rgba(36, 36, 36, 0.15) 0, rgba(36, 36, 36, 0.15) 2px, transparent 4px, transparent 8px);
+    }
+    100% {
+        background: repeating-linear-gradient(rgba(36, 36, 36, 0.2) 2px, rgba(36, 36, 36, 0.2) 4px, transparent 6px, transparent 10px);
+    }
+}
+#startupOverlay span {
+    font-family: 'appleGaramondLight';
+    font-size: 10vh;
+    cursor: crosshair;
+}
+#startupOverlay accent {
+    font-family: 'appleGaramondLight';
+    font-size: 12vh;
+    color: red;
+}
+#startupOverlay .buttonContainer {
+    position: absolute;
+    width: 3vw;
+    left: 48.5vw;
+    top: 58vh;
+    cursor: pointer;
 }
