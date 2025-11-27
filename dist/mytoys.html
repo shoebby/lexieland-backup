@@ -29,6 +29,7 @@
         <div class="static bin"><p class="folderName">Recycling Bin</p></div>
         <a value="www.lexie.land" target="openWindow" link="./index.html"><div class="static myComputer"><p class="folderName">Lexie.Land</p></div></a>
         <a value="Recurse^3" target="openWindow" link="./SI26.html"><div class="static recurse"><p class="folderName">Recurse^3</p></div></a>
+        <a value="DivBrush" target="openWindow" link="./divbrush.html"><div class="static divbrush"><p class="folderName">DivBrush</p></div></a>
         <a value="Poppy" target="openPoppy" link="./poppy.html"><div class="static poppy"><p class="folderName">Poppy The Assistant</p></div></a>
 
         <!--INTERACTIVE FOLDERS-->
@@ -366,9 +367,13 @@
                     </div>
                 </fieldset>
                 <div class="window-body" style="width: 98%; height: 98%; margin: 1%;">
-                    <iframe style="width: 99%; height: 70%;" src="visualizer.html"></iframe>
+                    <iframe style="width: 99%; height: 70%;" src=""></iframe>
 
-                    <div class="field-border-disabled" style="width: 100%; height: 8px; margin-top: 4px; padding: 0;"></div>
+                    <div class="field-row" style="width: 100%; display: flex;">
+                        <button disabled style="flex: 1;">⏮</button>
+                        <button style="flex: 1;" target="toggleMusic" state="paused">▶</button>
+                        <button disabled style="flex: 1;">⏭</button>
+                    </div>
 
                     <div class="sunken-panel;" style="margin-top: 1%;">
                         <table style="text-align: right; width: 100%; background-color: black; color: white;">
@@ -418,7 +423,7 @@
                         <table class="interactive">
                             <tr>
                                 <td style="width: 40px;"><img src="images/webtoys/guymode.png"></td>
-                                <td><u>G</u>uy Mode</td>
+                                <td><a target="guyMode" link=""><u>G</u>uy Mode</a></td>
                             </tr>
                             <tr>
                                 <td style="width: 40px;"><img src="images/webtoys/documents.png"></td>
@@ -488,7 +493,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 40px;"><img src="images/webtoys/settings.png"></td>
-                                <td><u>S</u>ettings</td>
+                                <td><a value="" target="openSettings" link=""><u>S</u>ettings</a></td>
                             </tr>
                             <tr>
                                 <td style="width: 40px;"><img src="images/webtoys/find.png"></td>
@@ -543,6 +548,41 @@
             </span>
         </div>
 
+        <div id="settings" class="window container" style="display: none;">
+            <div class="title-bar">
+                <div class="title-bar-text"><img src="images/webtoys/settings.png" style="height: 1em; margin-right: .5em;">Settings</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize" disabled></button>
+                    <button aria-label="Close" target="closeSettings"></button>
+                </div>
+            </div>
+            <fieldset style="padding: 4px 0 4px 8px;">
+                <div class="field-row">
+                    <span style="margin-right: .6em;"><u>V</u>iew</span>
+                    <span style="margin-right: .6em;"><u>G</u>o</span>
+                    <span style="margin-right: .6em;"><u>H</u>elp</span>
+                </div>
+            </fieldset>
+            <div class="window-body" style="margin: 1%; height: 80%;">
+                <img src="images/webtoys/settings.png" style="float: right;">
+                <fieldset>
+                    <legend>Display Settings</legend>
+                    <div class="field-row">
+                        <input checked type="checkbox" id="toggle_sl" name="toggle_sl"/>
+                        <label for="toggle_sl">Scanlines</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Audio Settings</legend>
+                    <div class="field-row">
+                        <input checked type="checkbox" id="toggle_hum" name="toggle_hum"/>
+                        <label for="toggle_hum">Electronic Hum</label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
         <div id="windowNaked" class="window" style="display: none;">
             <div class="title-bar">
                 <div class="title-bar-text"><img src="images/webtoys/icon_app.png" style="height: 1em; margin-right: .5em;">Recurse^3</div>
@@ -575,6 +615,10 @@
                 </p>
             </div>
             <img src="images/webtoys/poppy_big.png">
+        </div>
+
+        <div id="guy" style="display: none; position: absolute; cursor: grab; z-index: -30;">
+            <img src="images/webtoys/guymode.png">  
         </div>
 
         <script>

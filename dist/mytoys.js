@@ -1,4 +1,16 @@
 const windowTemplate = document.querySelector("#windowNaked");
+const guyTemplate = document.querySelector("#guy");
+const guyLines = [
+    'sounds/webtoys/jc_augmentedvision.mp3',
+    'sounds/webtoys/jc_getmeinside.mp3',
+    'sounds/webtoys/jc_gladnothurt.mp3',
+    'sounds/webtoys/jc_noproblem.mp3',
+    'sounds/webtoys/jc_notarmed.mp3',
+    'sounds/webtoys/jc_performduties.mp3',
+    'sounds/webtoys/jc_risk.mp3',
+    'sounds/webtoys/jc_wontletdown.mp3',
+];
+
 
 document.querySelectorAll('table.interactive').forEach(element => {
     element.addEventListener('click', (event) => {
@@ -24,6 +36,64 @@ $( function() {
 		containment: "document", /* Makes it so pieces don't get lost off the page while dragging them */
     });
 } );
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+
+
+//settings
+const settingsWindow = document.querySelector("#settings");
+document.querySelector("a[target='openSettings']").addEventListener('click', (event) => {openSettings()});
+settingsWindow.querySelector("button[target='closeSettings']").addEventListener('click', (event) => {closeSettings()});
+
+function openSettings(){
+    settingsWindow.style.setProperty("display", "inline-block");
+}
+function closeSettings(){
+    settingsWindow.style.setProperty("display", "none");
+}
+
+settingsWindow.querySelector("#toggle_sl").addEventListener('change', function() {
+    if (this.checked) {
+        scanlines.style.setProperty("display","flex");
+    } else {
+        scanlines.style.setProperty("display","none");
+    }
+});
+settingsWindow.querySelector("#toggle_hum").addEventListener('change', function() {
+if (this.checked) {
+        powerHum.play();
+    } else {
+        powerHum.pause();
+    }
+});
+
+
+
+//guymode
+document.querySelector("a[target='guyMode']").addEventListener('click', (event) => {guyMode()});
+
+function guyMode() {
+    for (let i = 0; i < 10; i++){
+        const newGuy = guyTemplate.cloneNode(true);
+        newGuy.removeAttribute('id');
+
+        newGuy.style.setProperty("display", "inline-block");
+        newGuy.style.setProperty("top", getRandomInt(100) + "vh" );
+        newGuy.style.setProperty("left", getRandomInt(100) + "vw" );
+
+        $(newGuy).draggable({
+            distance: 0,
+            containment: "document",
+        });
+
+        document.body.appendChild(newGuy);
+    }
+
+    playAudio(guyLines[getRandomInt(guyLines.length)]);
+}
 
 
 
@@ -77,10 +147,46 @@ function progressPoppy() {
 
             poppyDialog.innerHTML = "The media player lets you listen to some songs while you work, with a pretty visualizer to boot!";
             break;
+        case 3:
+            document.querySelector("#cat_media summary").click();
+
+            document.querySelector("#cat_fractal summary").click();
+            document.querySelector("#cat_popup summary").click();
+            document.querySelector("#cat_art summary").click();
+
+            poppy.style.setProperty("bottom", "60vh");
+            poppy.style.setProperty("right", "35vw");
+
+            poppyBox.style.setProperty("top", "10%");
+            poppyBox.style.setProperty("left", "90%");
+
+            poppyDialog.innerHTML = "These folders contain multiple files, programs, and websites that you can play around with!";
+
+            break;
+        case 4:
+            document.querySelector("#cat_fractal summary").click();
+            document.querySelector("#cat_popup summary").click();
+            document.querySelector("#cat_art summary").click();
+
+            poppy.style.setProperty("bottom", "50vh");
+            poppy.style.setProperty("right", "50vw");
+
+            poppyBox.style.setProperty("top", "100%");
+            poppyBox.style.setProperty("left", "0%");
+
+            poppyDialog.innerHTML = "I wish I could tell you more, but this is just a demo version of <red>V</red>isunov<red>OS</red>, so look around and get excited for when 1.0 comes your way!";
+
+            break;
+        case 5:
+            poppyDialog.innerHTML = "<red>V</red>isunov<red>OS</red>, storycrafting, the HTML way!";
+
+            break;
         default:
             closePoppy();
     }
 }
+
+
 
 // audio functionality
 document.querySelectorAll("button, summary, input, a").forEach(element => {
@@ -94,6 +200,26 @@ function playAudio(path) {
     const audio = new Audio(path);
     audio.play();
 }
+
+
+const playButton = document.querySelector("button[target='toggleMusic']");
+let playState = playButton.getAttribute("state");
+let song = new Audio('sounds/strawberriesandlancables.mp3');
+const visualizerIframe = document.querySelector("#cat_media iframe");
+
+playButton.addEventListener('click', function() {
+    if (playState === "paused") {
+        playButton.innerHTML = "⏸";
+        playState = "playing";
+        visualizerIframe.setAttribute("src", "./visualizer.html");
+        song.play();
+    } else if (playState === "playing") {
+        playButton.innerHTML = "▶";
+        playState = "paused";
+        visualizerIframe.setAttribute("src", "");
+        song.pause();
+    }
+});
 
 
 

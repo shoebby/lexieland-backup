@@ -113,6 +113,11 @@ summary::-webkit-details-marker {
     top: 135px;
     background-image: url(images/webtoys/icon_recurse.png);
 }
+.divbrush {
+    left: 135px;
+    top: 235px;
+    background-image: url(images/placeholder.jpg);
+}
 .poppy {
     left: 235px;
     top: 35px;
@@ -397,14 +402,14 @@ div {
 
     z-index: 99999;
 
-    transition: 3s;
+    transition: 1s;
 }
 #poppy div {
     position: absolute;
     top: 5%;
     left: -150%;
 
-    transition: 3s;
+    transition: 1s;
 }
 #poppy input {
     cursor: pointer;
@@ -433,4 +438,8 @@ div {
 
 red {
     color: red;
+}
+
+#settings {
+    width: 15vw;
 }

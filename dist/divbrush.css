@@ -1,0 +1,14 @@
+.body {
+    overflow: hidden;
+}
+.brush {
+    position: absolute;
+    z-index: -999;
+}
+input {
+
+}
+#background {
+    width: 300px;
+    height: 200px;
+}
