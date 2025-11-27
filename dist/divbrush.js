@@ -1,8 +1,5 @@
 let isDrawing = false;
 
-(function() {
-    "use strict";
-
     document.onmousemove = handleMouseMove;
     function handleMouseMove(event) {
         var dot, eventDoc, doc, body, pageX, pageY;
@@ -26,26 +23,32 @@ let isDrawing = false;
         else
             return;
     }
-    document.onmousedown = (event) => { isDrawing = true }
+    document.onmousedown = (event) => { isDrawing = true; handleMouseMove(event);}
     document.onmouseup = (event) => { isDrawing = false }
-
-    
-})();
 
 function draw(event) {
     let dot;
     dot = document.createElement('div');
 
     dot.style.setProperty("background", input_background.value);
+    dot.style.setProperty("background-repeat", "no-repeat");
+    dot.style.setProperty("background-size", "cover");
+
+    dot.style.setProperty("border-left", input_border.value);
+    dot.style.setProperty("border-right", input_border.value);
+    dot.style.setProperty("border-radius", input_borderRadius.value + "px");
+
     dot.style.setProperty("width", input_width.value + "px");
     dot.style.setProperty("height", input_height.value + "px");
 
     dot.className = "brush";
-    dot.style.left = event.pageX + "px";
-    dot.style.top = event.pageY + "px";
+    dot.style.left = event.pageX - (input_width.value/2) + "px";
+    dot.style.top = event.pageY - (input_height.value/2) + "px";
     document.body.appendChild(dot);
 }
 
 const input_width = document.querySelector("#width");
 const input_height = document.querySelector("#height");
-const input_background = document.querySelector("#background")
+const input_background = document.querySelector("#background");
+const input_border = document.querySelector("#border");
+const input_borderRadius = document.querySelector("#borderRadius");

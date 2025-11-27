@@ -9,22 +9,40 @@
     <script src="divbrush.js" type="module"></script>
 </head>
 <body>
-    <div style="width: 10vw;">
-        <fieldset>
-            <legend>Dimensions (in px)</legend>
+    <div id="toolbar">
+        <details>
+            <summary>Dimensions (in px)</summary>
+            <div class="tool-content">
+                <label for="width">Width: </label>
+                <input id="width" type="number" value="2">
+                <br>
+                <label for="height">Height: </label>
+                <input id="height" type="number" value="2">
+            </div>
+        </details>
 
-            <label for="width">Width: </label>
-            <input id="width" type="number" value="2">
+        <details>
+            <summary>Background</summary>
 
-            <label for="height">Height: </label>
-            <input id="height" type="number" value="2">
-        </fieldset>
+            <div class="tool-content">
+                <textarea id="background" cols="40" rows="5">black</textarea>
+            </div>
+        </details>
 
-        <fieldset>
-            <legend>Background Fill</legend>
+        <details>
+            <summary>Border</summary>
 
-            <label for="background">Background: </label>
-            <textarea id="background" cols="40" rows="5">black</textarea>
-        </fieldset>
+            <div class="tool-content">
+                <textarea id="border" cols="40" rows="1">1px solid black</textarea>
+            </div>
+        </details>
+
+        <details>
+            <summary>Border Radius</summary>
+
+            <div class="tool-content">
+                <input id="borderRadius" type="number" value="0">
+            </div>
+        </details>
     </div>
 </body>

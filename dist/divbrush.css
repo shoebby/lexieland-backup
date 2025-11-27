@@ -1,14 +1,64 @@
 .body {
     overflow: hidden;
+    padding: 0;
 }
+
+#toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    border-bottom: 2px solid black;
+
+    height: 5vh;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: silver;
+}
+
+#toolbar details {
+    border: 2px solid black;
+    
+    padding: .2vw;
+    
+    flex: 1;
+    align-items: center;
+
+    cursor: pointer;
+
+    width: 100%;
+}
+#toolbar details[open] {
+    font-weight: bold;
+    background-color: gray;
+}
+.tool-content {
+    position: absolute;
+    top: 5vh;
+
+    background-color: silver;
+
+    border: 2px solid black;
+
+    padding: 1vw;
+}
+
 .brush {
     position: absolute;
     z-index: -999;
-}
-input {
+    transform-origin: 50%;
 
+    animation: animStrokes 2s linear infinite;
 }
 #background {
     width: 300px;
     height: 200px;
+}
+@keyframes animStrokes {
+    0% { rotate: 0deg ; }
+    100% { rotate: 360deg ; }
 }
