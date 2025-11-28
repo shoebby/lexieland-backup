@@ -1,6 +1,7 @@
 let isDrawing = false;
+const canvasEl = document.querySelector("#canvas");
 
-    document.onmousemove = handleMouseMove;
+    canvasEl.onmousemove = handleMouseMove;
     function handleMouseMove(event) {
         var dot, eventDoc, doc, body, pageX, pageY;
             
@@ -23,8 +24,8 @@ let isDrawing = false;
         else
             return;
     }
-    document.onmousedown = (event) => { isDrawing = true; handleMouseMove(event);}
-    document.onmouseup = (event) => { isDrawing = false }
+    canvasEl.onmousedown = (event) => { isDrawing = true; handleMouseMove(event);}
+    canvasEl.onmouseup = (event) => { isDrawing = false }
 
 function draw(event) {
     let dot, shadow;
@@ -51,7 +52,7 @@ function draw(event) {
     dot.className = "brush";
     dot.style.left = event.pageX - (input_width.value/2) + "px";
     dot.style.top = event.pageY - (input_height.value/2) + "px";
-    document.body.appendChild(dot);
+    canvasEl.appendChild(dot);
 }
 
 const input_width = document.querySelector("#width");

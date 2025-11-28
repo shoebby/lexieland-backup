@@ -6,6 +6,15 @@ html, body {
     font-size: 1.5vh;
 }
 
+#canvas {
+    width: 100%;
+    height: 100%;
+
+    background-color: whitesmoke;
+
+    z-index: -999;
+}
+
 #toolbar {
     position: fixed;
     top: 0;
@@ -51,6 +60,5 @@ html, body {
 
 .brush {
     position: absolute;
-    z-index: -999;
     transform-origin: 50%;
 }
