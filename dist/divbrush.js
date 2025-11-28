@@ -47,7 +47,7 @@ function draw(event) {
     dot.style.setProperty("height", input_height.value + "px");
 
     dot.style.setProperty("animation", "brushAnim " + input_animSettings.value);
-    shadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim { 0%{rotate:0deg;} 100%{rotate:" + input_animation_rot.value + "deg;}}");
+    shadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim {" + input_animation.value + "}");
 
     dot.className = "brush";
     dot.style.left = event.pageX - (input_width.value/2) + "px";
@@ -63,5 +63,5 @@ const input_borderR = document.querySelector("#borderR");
 const input_borderT = document.querySelector("#borderT");
 const input_borderB = document.querySelector("#borderB");
 const input_borderRadius = document.querySelector("#borderRadius");
-const input_animation_rot = document.querySelector("#animation_rot");
+const input_animation = document.querySelector("#animation");
 const input_animSettings = document.querySelector("#animSettings");
