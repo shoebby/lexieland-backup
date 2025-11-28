@@ -1,6 +1,7 @@
 .body {
     overflow: hidden;
     padding: 0;
+    font-size: 1.5vh;
 }
 
 #toolbar {
@@ -26,11 +27,8 @@
     padding: .2vw;
     
     flex: 1;
-    align-items: center;
 
     cursor: pointer;
-
-    width: 100%;
 }
 #toolbar details[open] {
     font-weight: bold;
@@ -45,20 +43,12 @@
     border: 2px solid black;
 
     padding: 1vw;
+
+    text-align: right;
 }
 
 .brush {
     position: absolute;
     z-index: -999;
     transform-origin: 50%;
-
-    animation: animStrokes 2s linear infinite;
-}
-#background {
-    width: 300px;
-    height: 200px;
-}
-@keyframes animStrokes {
-    0% { rotate: 0deg ; }
-    100% { rotate: 360deg ; }
 }

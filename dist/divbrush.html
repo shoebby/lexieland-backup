@@ -25,7 +25,7 @@
             <summary>Background</summary>
 
             <div class="tool-content">
-                <textarea id="background" cols="40" rows="5">black</textarea>
+                <textarea id="background" cols="40" rows="2">black</textarea>
             </div>
         </details>
 
@@ -33,7 +33,17 @@
             <summary>Border</summary>
 
             <div class="tool-content">
-                <textarea id="border" cols="40" rows="1">1px solid black</textarea>
+                <label for="borderL">Left</label>
+                <textarea id="borderL" cols="40" rows="1">1px solid black</textarea>
+                <br>
+                <label for="borderR">Right</label>
+                <textarea id="borderR" cols="40" rows="1">1px solid black</textarea>
+                <br>
+                <label for="borderT">Top</label>
+                <textarea id="borderT" cols="40" rows="1">1px solid black</textarea>
+                <br>
+                <label for="borderB">Bottom</label>
+                <textarea id="borderB" cols="40" rows="1">1px solid black</textarea>
             </div>
         </details>
 
@@ -42,6 +52,18 @@
 
             <div class="tool-content">
                 <input id="borderRadius" type="number" value="0">
+            </div>
+        </details>
+
+        <details>
+            <summary>Animation</summary>
+
+            <div class="tool-content">
+                <label for="animation_rot">Rotating: </label>
+                <textarea id="animation_rot" cols="40" rows="1">360</textarea>
+
+                <label for="animSettings">Animation Settings: </label>
+                <textarea id="animSettings" cols="40" rows="1">infinite 2s linear</textarea>
             </div>
         </details>
     </div>

@@ -27,19 +27,26 @@ let isDrawing = false;
     document.onmouseup = (event) => { isDrawing = false }
 
 function draw(event) {
-    let dot;
+    let dot, shadow;
     dot = document.createElement('div');
+    shadow = dot.attachShadow({ mode: "open" });
+    shadow.adoptedStyleSheets = [new CSSStyleSheet()];
 
     dot.style.setProperty("background", input_background.value);
     dot.style.setProperty("background-repeat", "no-repeat");
     dot.style.setProperty("background-size", "cover");
 
-    dot.style.setProperty("border-left", input_border.value);
-    dot.style.setProperty("border-right", input_border.value);
+    dot.style.setProperty("border-left", input_borderL.value);
+    dot.style.setProperty("border-right", input_borderR.value);
+    dot.style.setProperty("border-top", input_borderT.value);
+    dot.style.setProperty("border-bottom", input_borderB.value);
     dot.style.setProperty("border-radius", input_borderRadius.value + "px");
 
     dot.style.setProperty("width", input_width.value + "px");
     dot.style.setProperty("height", input_height.value + "px");
+
+    dot.style.setProperty("animation", "brushAnim " + input_animSettings.value);
+    shadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim { 0%{rotate:0deg;} 100%{rotate:" + input_animation_rot.value + "deg;}}");
 
     dot.className = "brush";
     dot.style.left = event.pageX - (input_width.value/2) + "px";
@@ -50,5 +57,10 @@ function draw(event) {
 const input_width = document.querySelector("#width");
 const input_height = document.querySelector("#height");
 const input_background = document.querySelector("#background");
-const input_border = document.querySelector("#border");
+const input_borderL = document.querySelector("#borderL");
+const input_borderR = document.querySelector("#borderR");
+const input_borderT = document.querySelector("#borderT");
+const input_borderB = document.querySelector("#borderB");
 const input_borderRadius = document.querySelector("#borderRadius");
+const input_animation_rot = document.querySelector("#animation_rot");
+const input_animSettings = document.querySelector("#animSettings");
