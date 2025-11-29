@@ -1,4 +1,7 @@
 let isDrawing = false;
+
+const dotTemplate = document.createElement('div');
+
 const canvasEl = document.querySelector("#canvas");
 
     canvasEl.onmousemove = handleMouseMove;
@@ -24,35 +27,38 @@ const canvasEl = document.querySelector("#canvas");
         else
             return;
     }
-    canvasEl.onmousedown = (event) => { isDrawing = true; handleMouseMove(event);}
+    canvasEl.onmousedown = (event) => { isDrawing = true; setStroke(); handleMouseMove(event);}
     canvasEl.onmouseup = (event) => { isDrawing = false }
 
+function setStroke() {
+    dotTemplate.style.setProperty("background", input_background.value);
+    dotTemplate.style.setProperty("background-repeat", "no-repeat");
+    dotTemplate.style.setProperty("background-size", "cover");
+
+    dotTemplate.style.setProperty("border-left", input_borderL.value);
+    dotTemplate.style.setProperty("border-right", input_borderR.value);
+    dotTemplate.style.setProperty("border-top", input_borderT.value);
+    dotTemplate.style.setProperty("border-bottom", input_borderB.value);
+    dotTemplate.style.setProperty("border-radius", input_borderRadius.value + "px");
+
+    dotTemplate.style.setProperty("width", input_width.value + "px");
+    dotTemplate.style.setProperty("height", input_height.value + "px");
+
+    dotTemplate.style.setProperty("animation", "brushAnim " + input_animSettings.value);
+
+    dotTemplate.className = "brush";
+}
+
 function draw(event) {
-    let dot, shadow;
-    dot = document.createElement('div');
-    shadow = dot.attachShadow({ mode: "open" });
+    let newDot = dotTemplate.cloneNode();
+    let shadow = newDot.attachShadow({ mode: "open" });
     shadow.adoptedStyleSheets = [new CSSStyleSheet()];
-
-    dot.style.setProperty("background", input_background.value);
-    dot.style.setProperty("background-repeat", "no-repeat");
-    dot.style.setProperty("background-size", "cover");
-
-    dot.style.setProperty("border-left", input_borderL.value);
-    dot.style.setProperty("border-right", input_borderR.value);
-    dot.style.setProperty("border-top", input_borderT.value);
-    dot.style.setProperty("border-bottom", input_borderB.value);
-    dot.style.setProperty("border-radius", input_borderRadius.value + "px");
-
-    dot.style.setProperty("width", input_width.value + "px");
-    dot.style.setProperty("height", input_height.value + "px");
-
-    dot.style.setProperty("animation", "brushAnim " + input_animSettings.value);
     shadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim {" + input_animation.value + "}");
 
-    dot.className = "brush";
-    dot.style.left = event.pageX - (input_width.value/2) + "px";
-    dot.style.top = event.pageY - (input_height.value/2) + "px";
-    canvasEl.appendChild(dot);
+    newDot.style.left = event.pageX - (input_width.value/2) + "px";
+    newDot.style.top = event.pageY - (input_height.value/2) + "px";
+
+    canvasEl.appendChild(newDot);
 }
 
 const input_width = document.querySelector("#width");

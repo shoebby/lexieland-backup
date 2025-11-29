@@ -31,7 +31,9 @@ html, body {
 
     background-color: silver;
 }
-
+#toolbar summary {
+    height: 100%;
+}
 #toolbar details {
     border: 2px solid black;
     
@@ -43,7 +45,9 @@ html, body {
 }
 #toolbar details[open] {
     font-weight: bold;
-    background-color: gray;
+    background-color: rgb(36, 36, 36);
+    border: 2px solid white;
+    color: white;
 }
 .tool-content {
     position: absolute;
