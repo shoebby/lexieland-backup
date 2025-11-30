@@ -205,6 +205,7 @@ function playAudio(path) {
 const playButton = document.querySelector("button[target='toggleMusic']");
 let playState = playButton.getAttribute("state");
 let song = new Audio('sounds/strawberriesandlancables.mp3');
+song.volume = 0.2;
 const visualizerIframe = document.querySelector("#cat_media iframe");
 
 playButton.addEventListener('click', function() {

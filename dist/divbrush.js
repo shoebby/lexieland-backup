@@ -71,3 +71,9 @@ const input_borderB = document.querySelector("#borderB");
 const input_borderRadius = document.querySelector("#borderRadius");
 const input_animation = document.querySelector("#animation");
 const input_animSettings = document.querySelector("#animSettings");
+
+
+const overlay = document.querySelector("#divBrush_bootOverlay");
+document.querySelector("button[target='closeOverlay']").addEventListener('click', function() {
+    overlay.remove();
+});

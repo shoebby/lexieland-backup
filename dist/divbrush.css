@@ -1,9 +1,117 @@
+@font-face {
+    font-family: 'f25';
+    src: url("./fonts/F25_Bank_Printer_Bold.ttf");
+}
+
 html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
     padding: 0;
     font-size: 1.5vh;
+}
+
+#divBrush_bootOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+
+    background: linear-gradient(to bottom right, hsl(24, 100%, 59%) 0%, hsl(0, 100%, 69%) 50%);
+}
+#divBrush_bootOverlay button {
+    width: 10%;
+
+    border: none;
+    background: none;
+
+    font-family: "f25";
+    font-size: 3vh;
+    color: white;
+
+    cursor: pointer;
+
+    animation: start_btn 4s ease-in-out infinite;
+}
+@keyframes start_btn {
+    0%      {rotate: 15deg; transform: scale(1);}
+    25%     {rotate: -15deg;}
+    50%     {rotate: 15deg; transform: scale(1.5);}
+    75%     {rotate: -15deg;}
+    100%    {rotate: 15deg; transform: scale(1);}
+}
+.title {
+    font-family: "f25";
+    font-size: 10vh;
+    color: transparent;
+    text-align: center;
+}
+.title div {
+    margin-bottom: -50px;
+}
+.t_b {
+    display: inline-block;
+    font-size: 20vh;
+    rotate: -5deg;
+
+    box-sizing: border-box;
+    -webkit-text-stroke: 5px blue;
+    background: yellow;
+    background-clip: text;
+
+    margin: 0 -50px;
+}
+.t_r {
+    display: inline-block;
+    font-size: 20vh;
+    rotate: 0deg;
+    
+    color: transparent;
+    background: repeating-radial-gradient(circle at center, #ff7300 0%, #ff7300 4%, #e70909 5%, #e70909 9%);
+    background-clip: text;
+
+    margin: 0 -50px;
+}
+.t_u {
+    display: inline-block;
+    font-size: 20vh;
+    rotate: 10deg;
+
+    background: repeating-linear-gradient(to left, black 0, black 4px, transparent 5px, transparent 19px),
+    repeating-linear-gradient(to top, black 0, black 4px, transparent 5px, transparent 19px), lime;
+    background-clip: text;
+
+    margin: 0 -50px;
+}
+.t_s {
+    display: inline-block;
+    font-size: 20vh;
+    rotate: -8deg;
+
+    background: url("images/webtoys/guymode.png"), black;
+    background-size: 100%;
+    background-clip: text;
+
+    margin: 0 -50px;
+}
+.t_h {
+    display: inline-block;
+    font-size: 20vh;
+    rotate: -2deg;
+
+    text-shadow: #ff0000 10px 10px 0, #ff5100 20px 20px 0, #ffa600 30px 30px 0, rgb(251, 255, 0) 20px 20px 0;
+    background: yellow;
+    background-clip: text;
+
+    margin: 0 -50px;
 }
 
 #canvas {
@@ -65,4 +173,5 @@ html, body {
 .brush {
     position: absolute;
     transform-origin: 50%;
+    pointer-events: none;
 }
