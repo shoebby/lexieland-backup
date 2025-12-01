@@ -111,13 +111,23 @@ function startPoppy() {
     poppyBox.style.setProperty("top", "5%");
     poppyBox.style.setProperty("left", "-150%");
 
-    poppyDialog.innerHTML = "Hi! I'm Poppy, your <red>V</red>isunov<red>OS</red> assistant! Let's craft some stories!"
+    poppyDialog.innerHTML = "Hi! I'm Poppy, your personal <red>V</red>isunov<red>OS</red> assistant! Let me show you around."
 
     poppy.style.setProperty('display', 'block');
+
+    playAudio("./sounds/webtoys/poppyHonk.mp3");
 }
 function closePoppy() {
     poppyStep = 0;
     poppy.style.setProperty('display', 'none');
+    playAudio("./sounds/webtoys/poppyHonk.mp3");
+}
+function movePoppy(poppy_y, poppy_x, text_y, text_x) {
+    poppy.style.setProperty("bottom", poppy_y + "vh");
+    poppy.style.setProperty("right", poppy_x + "vw");
+
+    poppyBox.style.setProperty("top", text_y + "%");
+    poppyBox.style.setProperty("left", text_x + "%");
 }
 
 let poppyStep = 0;
@@ -128,58 +138,67 @@ function progressPoppy() {
 
     switch (poppyStep) {
         case 1:
-            poppy.style.setProperty("bottom", "65vh");
-            poppy.style.setProperty("right", "70vw");
+            movePoppy(65, 70, 10, 100);
 
-            poppyBox.style.setProperty("top", "10%");
-            poppyBox.style.setProperty("left", "100%");
-
-            poppyDialog.innerHTML = "Over here you can see some of your installed toys, Recurse^3 is my favourite!<br>Feel free to play around with them and see what they do!";
+            poppyDialog.innerHTML = "Over here you can see your installed <b>Toywares</b>, Recurse^3 is my favourite!";
             break;
         case 2:
-            document.querySelector("#cat_media summary").click();
-
-            poppy.style.setProperty("bottom", "35vh");
-            poppy.style.setProperty("right", "10vw");
-
-            poppyBox.style.setProperty("top", "60%");
-            poppyBox.style.setProperty("left", "-150%");
-
-            poppyDialog.innerHTML = "The media player lets you listen to some songs while you work, with a pretty visualizer to boot!";
+            poppyDialog.innerHTML = "<b>Toywares</b> is what we call the programs in <red>VOS</red> that enable you to create, lets take a look at the ones included in this demo!";
             break;
         case 3:
+            document.querySelector(".recurse").click();
+            
+            movePoppy(5, 25, 30, -140);
+
+            poppyDialog.innerHTML = "<b>Recurse^3</b> lets you trees out of divs, using CSS styling for positioning and making the branches look pretty!<br>My favourite recipe is width === height, a high border radius, and a radial gradient to make them look like balls!";
+            break;
+        case 4:
+            document.querySelector("#Recurse3").remove();
+            document.querySelector(".divbrush").click();
+
+            movePoppy(5, 25, 50, -140);
+            
+            poppyDialog.innerHTML = "<b>DivBRUSH</b> lets you draw using self-styled divs! You can apply complex background patterns, borders, and animations to your brush to create one-of-a-kind artworks!";
+            break;
+        case 5:
+            document.querySelector("#DivBrush").remove();
+            document.querySelector(".popupcollage").click();
+
+            movePoppy(5, 10, 50, -140);
+
+            poppyDialog.innerHTML = "<b>Pop-Up Collager</b> lets you make collages of injected HTML and webpages using pop-ups! Set the width, height, positions, and contents of each pop-up exactly to your liking!";
+
+            break;
+        case 6:
+            document.querySelector("#PopUpCollager").remove();
+            document.querySelector("#cat_media summary").click();
+
+            movePoppy(35, 10, 60, -150);
+
+            poppyDialog.innerHTML = "Now over to the media player, it lets you listen to songs while you work, with a pretty visualizer to boot!";
+            break;
+        case 7:
             document.querySelector("#cat_media summary").click();
 
             document.querySelector("#cat_fractal summary").click();
             document.querySelector("#cat_popup summary").click();
-            document.querySelector("#cat_art summary").click();
+            //document.querySelector("#cat_art summary").click();
 
-            poppy.style.setProperty("bottom", "60vh");
-            poppy.style.setProperty("right", "35vw");
+            movePoppy(60, 35, 10, 90);
 
-            poppyBox.style.setProperty("top", "10%");
-            poppyBox.style.setProperty("left", "90%");
-
-            poppyDialog.innerHTML = "These folders contain multiple files, programs, and websites that you can play around with!";
-
+            poppyDialog.innerHTML = "These folders contain some additional programs and websites that you can play around with, not to mention a couple of additional secrets findable in the OS...";
             break;
-        case 4:
+        case 8:
             document.querySelector("#cat_fractal summary").click();
             document.querySelector("#cat_popup summary").click();
-            document.querySelector("#cat_art summary").click();
+            //document.querySelector("#cat_art summary").click();
 
-            poppy.style.setProperty("bottom", "50vh");
-            poppy.style.setProperty("right", "50vw");
-
-            poppyBox.style.setProperty("top", "100%");
-            poppyBox.style.setProperty("left", "0%");
+            movePoppy(50, 50, 100, 0);
 
             poppyDialog.innerHTML = "I wish I could tell you more, but this is just a demo version of <red>V</red>isunov<red>OS</red>, so look around and get excited for when 1.0 comes your way!";
-
             break;
-        case 5:
-            poppyDialog.innerHTML = "<red>V</red>isunov<red>OS</red>, storycrafting, the HTML way!";
-
+        case 9:
+            poppyDialog.innerHTML = "<red>V</red>isunov<red>OS</red>, storycrafting the HTML way!";
             break;
         default:
             closePoppy();
@@ -272,7 +291,7 @@ document.querySelectorAll("button[target='closeInstWindow']").forEach(element =>
 });
 function openWindow(title, url) {
     const newWindow = windowTemplate.cloneNode(true);
-    newWindow.removeAttribute('id');
+    newWindow.setAttribute('id', title);
     document.body.appendChild(newWindow);
     newWindow.setAttribute('style', 'display: block; width: 99.7vw; height: 97vh; position: fixed; top: 0; left: 0; z-index: 999;');
     newWindow.querySelector("button[target='closeInstWindow']").addEventListener('click', (event) => {newWindow.remove();});

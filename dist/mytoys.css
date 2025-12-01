@@ -128,6 +128,11 @@ summary::-webkit-details-marker {
     bottom: 135px;
     background-image: url(images/webtoys/about.png);
 }
+.popupcollage {
+    left: 135px;
+    top: 335px;
+    background-image: url(images/webtoys/collager.png);
+}
 
 /* === OPENABLES === */
 
