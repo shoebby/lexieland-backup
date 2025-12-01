@@ -123,6 +123,11 @@ summary::-webkit-details-marker {
     top: 35px;
     background-image: url(images/webtoys/poppy.png);
 }
+.about {
+    left: 35px;
+    bottom: 135px;
+    background-image: url(images/webtoys/about.png);
+}
 
 /* === OPENABLES === */
 
