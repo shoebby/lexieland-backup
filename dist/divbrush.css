@@ -157,6 +157,12 @@ html, body {
     border: 2px solid white;
     color: white;
 }
+#toolbar .preview {
+    flex: .5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .tool-content {
     position: absolute;
     top: 5vh;

@@ -4,49 +4,50 @@ const dotTemplate = document.createElement('div');
 
 const canvasEl = document.querySelector("#canvas");
 
-    canvasEl.onmousemove = handleMouseMove;
-    function handleMouseMove(event) {
-        var dot, eventDoc, doc, body, pageX, pageY;
-            
-        event = event || window.event;
-            
-        if (event.pageX == null && event.clientX != null) {
-            eventDoc = (event.target && event.target.ownerDocument) || document;
-            doc = eventDoc.documentElement;
-            body = eventDoc.body;
+canvasEl.onmousemove = handleMouseMove;
+canvasEl.onmousedown = (event) => { isDrawing = true; setStroke(dotTemplate); handleMouseMove(event);}
+canvasEl.onmouseup = (event) => { isDrawing = false };
 
-            event.pageX = event.clientX +
-            (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
-            (doc && doc.clientLeft || body && body.clientLeft || 0);
-            event.pageY = event.clientY +
-            (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
-            (doc && doc.clientTop  || body && body.clientTop  || 0 );
-        }
-        if (isDrawing)
-            draw(event);
-        else
-            return;
+function handleMouseMove(event) {
+    var dot, eventDoc, doc, body, pageX, pageY;
+
+    event = event || window.event;
+
+    if (event.pageX == null && event.clientX != null) {
+        eventDoc = (event.target && event.target.ownerDocument) || document;
+        doc = eventDoc.documentElement;
+        body = eventDoc.body;
+
+        event.pageX = event.clientX +
+        (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+        (doc && doc.clientLeft || body && body.clientLeft || 0);
+        event.pageY = event.clientY +
+        (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+        (doc && doc.clientTop  || body && body.clientTop  || 0 );
     }
-    canvasEl.onmousedown = (event) => { isDrawing = true; setStroke(); handleMouseMove(event);}
-    canvasEl.onmouseup = (event) => { isDrawing = false }
+    if (isDrawing)
+        draw(event);
+    else
+        return;
+}
 
-function setStroke() {
-    dotTemplate.style.setProperty("background", input_background.value);
-    dotTemplate.style.setProperty("background-repeat", "no-repeat");
-    dotTemplate.style.setProperty("background-size", "cover");
+function setStroke(target) {
+    target.style.setProperty("background", input_background.value);
+    target.style.setProperty("background-repeat", "no-repeat");
+    target.style.setProperty("background-size", "cover");
 
-    dotTemplate.style.setProperty("border-left", input_borderL.value);
-    dotTemplate.style.setProperty("border-right", input_borderR.value);
-    dotTemplate.style.setProperty("border-top", input_borderT.value);
-    dotTemplate.style.setProperty("border-bottom", input_borderB.value);
-    dotTemplate.style.setProperty("border-radius", input_borderRadius.value + "px");
+    target.style.setProperty("border-left", input_borderL.value);
+    target.style.setProperty("border-right", input_borderR.value);
+    target.style.setProperty("border-top", input_borderT.value);
+    target.style.setProperty("border-bottom", input_borderB.value);
+    target.style.setProperty("border-radius", input_borderRadius.value + "px");
 
-    dotTemplate.style.setProperty("width", input_width.value + "px");
-    dotTemplate.style.setProperty("height", input_height.value + "px");
+    target.style.setProperty("width", input_width.value + "px");
+    target.style.setProperty("height", input_height.value + "px");
 
-    dotTemplate.style.setProperty("animation", "brushAnim " + input_animSettings.value);
+    target.style.setProperty("animation", "brushAnim " + input_animSettings.value);
 
-    dotTemplate.className = "brush";
+    target.className = "brush";
 }
 
 function draw(event) {
@@ -77,3 +78,11 @@ const overlay = document.querySelector("#divBrush_bootOverlay");
 document.querySelector("button[target='closeOverlay']").addEventListener('click', function() {
     overlay.remove();
 });
+
+const previewBrush = document.querySelector(".peviewBrush");
+document.querySelectorAll("input, textarea, details").forEach(element => {
+    element.addEventListener('click', function() {
+        setStroke(previewBrush);
+    })
+});
+setStroke(previewBrush);
