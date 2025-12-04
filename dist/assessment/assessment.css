@@ -10,6 +10,10 @@
     font-family: 'rainyhearts';
     src: url('../fonts/rainyhearts.ttf');
 }
+@font-face {
+    font-family: 'barcode';
+    src: url('../fonts/BarcodeFont.ttf');
+}
 
 :root {
     --bgimg: "";
@@ -28,15 +32,95 @@ body {
 }
 
 .bioContainer {
-    width: 55vw;
-    background: #000000ce;
-    margin: 5vh auto 5vh auto;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 23% 5vh;
+
+    width: 50vw;
+    height: 90vh;
+
+    margin: 5vh auto;
+    padding: 0;
+    
+    font-family: 'appleGaramond';
+    color: whitesmoke;
+
+    background-color: #000000c0;
     border: 0.1vw solid white;
+}
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.sub-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 100%;
+}
+.bio_pfp {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    background-image: url('../images/pfp.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    border-bottom: 0.1vw solid white;
+    border-right: 0.1vw solid white;
+}
+.bio_namebar {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    border-bottom: 0.1vw solid white;
+}
+.bio_barcode {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    font-family: 'barcode';
+    font-size: 4.9vh;
+
+    border-bottom: 0.1vw solid white;
+    border-right: 0.1vw solid white;
+
+    margin: 0;
     padding: 0;
 }
+.bio_hortext {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 5;
 
-.bio {
-    width: 100%;
+    font-family: 'rainyhearts';
+    font-size: 5vh;
+
+    border-right: 0.1vw solid white;
+
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+.bio_stats {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 5;
+
+    font-family: 'rainyhearts';
+    font-size: 6vh;
 }
 
 .btn_next {
@@ -49,20 +133,49 @@ body {
     font-family: 'daydream';
     font-size: 5vh;
     text-align: center;
-    color: white;
-    text-shadow: 0vw .5vw 1vw blue;
-    background: none;
+    color: transparent;
+    box-shadow: 0vw .5vw 1vw blue;
     border: none;
     text-decoration: none;
     transition: 1s;
     transition-timing-function: ease-out;
+    animation: cont .1s linear infinite;
 }
 .btn_next a:link, a:visited, a:focus, a:active {
     text-decoration: none;
 }
 .btn_next a:hover {
-    color:blue;
+    animation: cont_hover .1s linear infinite;
 }
+@keyframes cont {
+    0% {
+        background: repeating-linear-gradient(blue 0, blue 3px, transparent 5px, transparent 9px);
+        background-clip: text;
+    }
+    50% {
+        background: repeating-linear-gradient(blue 4px blue 7px, transparent 9px, transparent 13px);
+        background-clip: text;
+    }
+    100% {
+        background: repeating-linear-gradient(blue 2px, blue 5px, transparent 7px, transparent 11px);
+        background-clip: text;
+    }
+}
+@keyframes cont_hover {
+    0% {
+        background: repeating-linear-gradient(blue 0, blue 2px, white 4px, white 8px);
+        background-clip: text;
+    }
+    50% {
+        background: repeating-linear-gradient(blue 4px blue 6px, white 8px, white 12px);
+        background-clip: text;
+    }
+    100% {
+        background: repeating-linear-gradient(blue 2px, blue 4px, white 6px, white 10px);
+        background-clip: text;
+    }
+}
+
 .quoteblock {
     position: absolute;
     left: 5vw;
@@ -161,7 +274,7 @@ body {
 .kennel span {
     color: #ff7300;
     position: absolute;
-    top: 2.5vh;
+    top: 5vh;
     width: 18vw;
     text-align: center;
     z-index: 5;
@@ -169,6 +282,19 @@ body {
     font-family: 'rainyhearts';
     rotate: 13deg;
     font-weight: bold;
+}
+.research-title {
+    position: absolute;
+    font-family: 'daydream';
+    background: repeating-radial-gradient(circle at top, red 0%, red 3%, orange 4%, orange 7%);
+    background-clip: text;
+    -webkit-text-stroke: white 3px;
+    color: #00000000;
+    text-align: center;
+    font-size: 10vh;
+    left: 27vw;
+    top: 3vh;
+    rotate: 4deg;
 }
 .research {
     position: absolute;
@@ -190,25 +316,28 @@ body {
     50% {transform: rotate(2deg);}
     100% {transform: rotate(2deg);}
 }
-.help {
+.visunovos {
     position: absolute;
     width: 100%;
     height: 100%;
+
+    display: flex;
+    justify-items: center;
+    align-items: center;
 }
-.help img {
+.visunovos iframe {
+    width: 80vw;
+    height: 90vh;
+}
+.visunovos_note {
     position: absolute;
-}
-.help p {
-    text-align: center;
-    width: 40%;
+
     font-family: 'appleGaramond';
-    font-weight: 500;
-    font-size: 5vh;
-    color: white;
-    box-shadow: inset 0 0 1vw red;
-    background-color: black;
-    margin: 6.5vh auto;
-    padding: 1vh;
+    color: orangered;
+    text-shadow: black .2vw .4vh 0;
+    font-size: 4vh;
+    
+    background-color: #ff905c;
 }
 .windows {
     position: absolute;
@@ -220,5 +349,15 @@ body {
     background-color: black;
     text-decoration: none;
     border: #FF1D00 solid 1px;
+    cursor: pointer;
+}
+.windows_disabled {
+    position: absolute;
+    font-family: 'rainyhearts';
+    font-size: 2.5vh;
+    color: #a8a8a8;
+    background-color: black;
+    text-decoration: none;
+    border: #a8a8a8 solid 1px;
     cursor: pointer;
 }
