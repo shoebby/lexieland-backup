@@ -3,8 +3,9 @@ let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight
 
 console.log("width: " + vw + "| height: " + vh);
 
-const features_spr = "left=1325,top=600,width=750,height=750";
-const features_sier = "left=175,top=100,width=800,height=700";
+const features_spr = "left=1325,top=600,width=" + vw/3 + ",height=" + vh/2;
+const features_sier = "left=" + vw/2 + ",top=100,width=" + vw/3 + ",height=" + vh/2;
+const features_plot = "left=0,top=0,width=" + vw/2 + ",height=" + vh;
 
 const features_1 = "left=0,top=0,width=" + vw/2 + ",height=" + vh/2;
 const features_2 = "left=0,top=" + vh/2 + ",width=" + vw/2 + ",height=" + vh/2;
@@ -22,9 +23,10 @@ if (linker != null){
     linker.addEventListener("click", (event) => {
         openRequestedTab(
             ['https://www.lexie.land/dist/visualizer.html',
-            'https://www.lexie.land/dist/sierpinski.html']
+            'https://www.lexie.land/dist/sierpinski.html',
+            'https://www.lexie.land/dist/blogpost-penplot.html']
             ,
-            [features_spr,features_sier]
+            [features_spr,features_sier, features_plot]
         );
         event.preventDefault();
     });
