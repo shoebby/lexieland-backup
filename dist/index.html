@@ -3,301 +3,86 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="me" href="https://mastodon.social/@shoebby"></link>
 
         <title>LexieLand</title>
         <meta name="description" content="The home of a critter and its many wonderful tidbits, trinkets, and relics.
         If you ask it politely it might even share them with you!">
+
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <script type="module" src="index.js"></script>
         <link rel="stylesheet" href="mainstyle.css">
-        <link rel="stylesheet" href="https://www.kazehai.com/css/tyvnjam.css">
-        <link rel="stylesheet" href="https://yurievnring.neocities.org/css/yurievnring.css">
+        <Style>
+            body {
+                overflow: hidden;
+            }
+            .lexietop {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .lexiebottom {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image:
+                    radial-gradient(circle at center center,
+                        #000000,
+                        #ffa600),
+                    repeating-radial-gradient(circle at center center,
+                        #f7c1a1,
+                        #a02500,
+                        .2em,
+                        transparent .2em,
+                        transparent .1em);
+            }
+            .entranceImg {
+                animation: imgAnim linear 8s infinite;
+                image-rendering: pixelated;
+                filter: contrast(2);
+            }
+            @keyframes imgAnim {
+                0% {
+                    transform:
+                        rotate(5deg)
+                        scale(75%);
+                    filter: brightness(0.4) contrast(2);
+                }
+                25% {
+                    transform:
+                        rotate(0deg)
+                        scale(90%);
+                    filter: brightness(1) contrast(2);
+                }
+                50% {
+                    transform:
+                        rotate(-5deg)
+                        scale(75%);
+                    filter: brightness(0.4) contrast(2);
+                }
+                75% {
+                    transform:
+                        rotate(0deg)
+                        scale(90%);
+                    filter: brightness(1) contrast(2);
+                }
+                100% {
+                    transform:
+                        rotate(5deg)
+                        scale(75%);
+                    filter: brightness(0.4) contrast(2);
+                }
+            }
+        </Style>
     </head>
     <body>
-        <audio src="sounds/headsounds.ogg"></audio>
         <div class="lexietop"></div>
         <div class="lexiebottom"></div>
         <div class="container">
-            <div class="banner">
-                <img class="banner-letter" src="images/banner/banner-a.png">
-                <img class="banner-letter" src="images/banner/banner-l.png">
-                <img class="banner-letter" src="images/banner/banner-e.png">
-                <img class="banner-letter" src="images/banner/banner-x.png">
-                <img class="banner-letter" src="images/banner/banner-a.png">
-                <img class="banner-letter" src="images/banner/banner-n.png">
-                <img class="banner-letter" src="images/banner/banner-d.png">
-                <img class="banner-letter" src="images/banner/banner-r.png">
-                <img class="banner-letter" src="images/banner/banner-i.png">
-                <img class="banner-letter" src="images/banner/banner-a.png">
+            <div style="text-align: center; margin-top: 25vh; height: 50vh;">
+                <img src="images/embedimg.jpg" class="entranceImg">
+                <br>
+                <a href="homepage.html" style="border: 1px outset white; padding: 3px 8px; font-size: 18pt;">GO TO LEXIELAND!!!</a>
             </div>
-            <img src="images/favicon.ico" class="buddy" id="buddy">
-            <table class="buddyParent">
-                <tbody>
-                    <tr>
-                        <!-- main -->
-                        <td class="maintd">
-                            <div id="introBox" class="box" style="display: flex;">
-                                <div class="wiki">
-                                    <img id="pfp" class="pfp" src="images/mutt.PNG">
-                                    <br><br><br><br><br><br><br><br><br><br>
-
-                                    <p style="text-align: center; margin: 0px;">(fig.1: Lexie Having Fun)</p>
-
-                                    <p style="width: 300px;">
-                                        ___/SPECS\______________________
-                                        <br>
-                                        <span style="color:#FF1D00">Aliases:</span> Lexie, Shoe, Cuppy, Cuppydog
-                                        <br>
-                                        <span style="color:#FF1D00">Species:</span> Uncertain
-                                        <br>
-                                        <span style="color:#FF1D00">NFPA Rating:</span> 2-0-1-RAD
-                                        <br>
-                                        <span style="color:#FF1D00">Bouba/Kiki:</span> Bouba
-                                        <br>
-                                        <span style="color:#FF1D00">Voice Actor:</span> Benjamin Reichwald
-                                        <br>
-                                        <span style="color:#FF1D00">Genetic Sequence (Excerpt):</span> CGATTTATA
-                                        <br>
-                                        <span style="color:#FF1D00">Soul Texture:</span> Sticky
-                                        <br>
-                                        <span style="color:#FF1D00">Primary Coping Mechanism:</span> Tuoys
-                                        <br>
-                                        <span style="color:#FF1D00">Secondary Coping Mechanism:</span> Extreme Violence
-                                        <br>
-                                        <span style="color:#FF1D00">Vibrational Frequency:</span> 100Hz
-                                        <br>
-                                        <span style="color:#FF1D00">Social Link:</span> Temperance
-                                        <br>
-                                        <span style="color:#FF1D00">Type:</span> Ghost/Electric
-                                        <br>
-                                        <span style="color:#FF1D00">Filetype:</span> .FLAC
-                                        <br>
-                                        <span style="color:#FF1D00">Movement:</span> Romanticism/Art Nouveau
-                                        <br>
-                                        <span style="color:#FF1D00">Movement:</span> Quake
-                                        <br><br>
-                                        ___/OBSESSIONS\_________________
-                                        <br>
-                                        <span style="color:#FF1D00">Favourite Colour:</span> Orange (NOT a nationalist)
-                                        <br>
-                                        <span style="color:#FF1D00">Interesting Thing:</span> Skin-on-skin contact
-                                        <br>
-                                        <span style="color:#FF1D00">Absolute Kino:</span> The Devils (1971)
-                                        <br>
-                                        <span style="color:#FF1D00">Current Noise Of Interest:</span> "Shtabil"
-                                        <br>
-                                        <span style="color:#FF1D00">Zaddies:</span> Doré, Klimt, Muscha, Vrubel
-                                    </p>
-                                </div>
-                                <div style="text-align: justify;">
-                                    <h2 id="welcomeBox" class="spinner" style="transform-origin: 30% 50%;">
-                                        Whoa!!!!!!!!!!!! Hello!!!!!!!!!!!!
-                                    </h2>
-                                    <p>My name is Alexandria but most people call me Lexie, this is my little 'hub' where I have my links and projects and blog and such things that bring me a big big smile.</p>
-
-                                    <p>I primarily make games and things related to games, like asset packs and tools! You can find all of that to the right under 'workz' and more about me <a href="">here</a>!</p>
-                                    
-                                    <p>My constant when it comes to the stuff I make is that I like to craft stories. Making people care/laugh/cry/angry with my games is so so so pawesome.</p>
-
-                                    <p>My current main project is aimed at facillitating the telling of stories though, through a semi-game engine of my own making. It's going to be super fucking cool just trust me bro.</p>
-
-                                    <p>My non-work related hobbies primarily consist of watching movies and building gunpla. Qubeley is my favourite mobile suit and so far I've managed to find and build the HG, HG Mk.2, HG Mk.2 red, and MG kits! Besides that hobbies come and go often, which is arguably awesome and kind of ideal for something low-stakes like that.</p>
-                                        
-                                    <p>Feel free to reach out thru my socials or add me on pisscorp <3</p>
-                                    <marquee behavior="alternate" direction="up"><marquee behavior="alternate">DVD</marquee></marquee>
-                                </div>
-                            </div>
-                            <div class="mainMarquee">
-                                <marquee behavior="scroll">
-                                    <span>
-                                        BREAKING NEWS: Local cuppydog has been sighted eating an aluminum can, more on this story at 9 |
-                                        500 burglar clowns have been apprehended in what has been dubbed "The Greatest Traffic Stop" |
-                                        "I feel neglected" - Lady Death comes out against retired genocidal maniac |
-                                        Qubeley voted 'coolest most awesome gundam' by a margin of 90%, experts are unsurprised |
-                                        World peace has been postponed - "Suffering builds character" says expert |
-                                        Florida gatorgirl CLAMPS DOWN on transphobia, everyone cheers |
-                                    </span>
-                                </marquee>
-                            </div>
-                            <div id="blogBox" class="box">
-                                <h2 class="spinner">Blog</h2>
-                                <br>
-                                <br>
-                                <span>
-                                    ⚞ <b><a href="blog/blogpost-pnes.html" style="color: #FF1D00;">
-                                        The Perfect Narrative Evaluation System
-                                    </a></b> ⚟ 16/10/2025
-                                </span>
-                                <br>
-                                <span>
-                                    ⚞ <b><a href="blog/blogpost-lcgdemo.html" style="color: #FF1D00;">
-                                        Lino VN Graphix and Shitpost Soundpacks
-                                    </a></b> ⚟ 02/10/2025
-                                </span>
-                                <br>
-                                <span>
-                                    ⚞ <b><a href="blog/blogpost-fleshnpressure.html" style="color: #FF1D00;">
-                                        Academics, Selfishness, and My First Visual Novel
-                                    </a></b> ⚟ 20/07/2025
-                                </span>
-                                <br>
-                                <span>
-                                    ⚞ <b><a href="blog/blogpost-sincereweb.html" style="color: #FF1D00;">
-                                        The Sincere Web - Or, Learning To Be Myself
-                                    </a></b> ⚟ 01/04/2025
-                                </span>
-                                <br>
-                                <span>
-                                    ⚞ <b><a href="blog/blogpost-somreview.html" style="color: #FF1D00;">
-                                        A Paradox is a Gun - Shadow of Memories/Destiny
-                                    </a></b> ⚟ 25/03/2025
-                                </span>
-                                <br>
-                                <span>
-                                    ⚞ <b><a href="blog/blogpost-penplot.html" style="color: #FF1D00;">
-                                        Pen Plotters, Fractals, and Other Whimsical Tangents
-                                    </a></b> ⚟ 24/02/2025
-                                </span>
-                            </div>
-                            <div id="projectsBox" class="box">
-                                <h2 class="spinner">Trinkets and Relics</h2>
-                                <br>
-                                <br>
-                                <h3><a href="https://shoebby.itch.io/flesh-and-pressure" style="color: #FF1D00;">☰ Flesh and Pressure</a></h3>
-                                <p style="margin: 0 0 20px 0;">
-                                    A visual novel about a lovesick girl and her trash compactor, and the relationship blossoming between them.
-                                </p>
-                                <h3><a href="https://shoebby.itch.io/the-anders-cyclopaedia" style="color: #FF1D00;">☰ The Anders Cyclopaedia</a></h3>
-                                <p style="margin: 0 0 20px 0;">
-                                    A game about exploring and compiling the wilderness of a parallel universe.
-                                    <br><br>
-                                    Currently only a demo version is available, progress is slow and might halt in the near future.
-                                </p>
-                                <h3><a href="https://shoebby.itch.io/oneirophobiaphrenia" style="color: #FF1D00;">☰ ONEIRO(PHOBIA/PHRENIA)</a></h3>
-                                <p style="margin: 0 0 20px 0;">
-                                    A game about dreams, through the 4:3 lens of a CRT TV.
-                                </p>
-                                <h3><a href="https://github.com/shoebby/DRAAD" style="color: #FF1D00;">☰ DRAAD</a></h3>
-                                <p style="margin: 0 0 20px 0;">
-                                    A point-and-click adventure, currently being worked on.
-                                    <br><br>
-                                    Not much to show yet apart from the repository, maybe more soon!
-                                </p>
-                                <h3><a href="SI26.html" style="color: #FF1D00;">☰ Recurse() { Recurse(); Recurse(); }</a></h3>
-                                <p style="margin: 0 0 20px 0;">
-                                    A web-based fractal drawing toy, comprised out of divs and using CSS for styling purposes!
-                                    <br><br>
-                                    Printing repeatedly onto the same paper encouraged, makes for beautiful graphics and very hot CPUs.
-                                </p>
-                                <h3>Various Other Projects:</h3>
-                                <p>
-                                    <a href="page_well/index.html">The Well</a> ✩
-                                    <a href="critterCrafter/index.html">Critter Crafter</a> ✩
-                                    <a href="popupcollager/index.html">Pop-Up Collage Maker</a> ✩
-                                    <a href="popupprincess.html">Pop-Up Princess</a> ✩
-                                    <a href="assessment/assessment1.html">T4 Assessment</a> ✩
-                                    <a href="sprout_div.html">Divvy Sprout!</a> ✩
-                                    <a href="https://addons.mozilla.org/en-US/firefox/addon/webby-sprouts/">Webby Sprouts!</a> ✩
-                                    <a href="sierpinski.html">Sierpinski Doubt!</a> ✩
-                                    <a href="interview.html">Interview With A Tool - Godot</a> ✩
-                                </p>
-                            </div>
-                        </td>
-                        <!-- side -->
-                        <td class="menutd">
-                            <div class="box" id="statuscafe">
-                                <div id="statuscafe-username"></div>
-                                <div id="statuscafe-content"></div>
-                            </div>
-                            <script src="https://status.cafe/current-status.js?name=shoebby" defer></script>
-
-                            <div class="box" name="quests box">
-                                <!-- <img src="one.jpg" style="max-width: 25%; position: relative; vertical-align: top;"> -->
-                                <h2 class="spinner">Quests</h2>
-                                <br>
-                                <br>
-                                <a class="navlink" href="index.html">♡ The Home</a>
-                                <br>
-                                <a class="navlink" href="about.html">♡ The Lexie</a>
-                                <br>
-                                <a class="navlink" href="blog/blogindex.html">♡ The Blog</a>
-                                <br>
-                                <a class="navlink underConstruction" href="portfolio.html">⚠ The Portfolio</a>
-                                
-
-                                <h3>Workz</h3>
-                                <a class="navlink" href="mygames.html">☆ Games</a>
-                                <br>
-                                <a class="navlink" href="mytoys.html">☆ Webtoys</a>
-                                <br>
-                                <a class="navlink" href="mydrawings.html">☆ Pile O' Drawings</a>
-                                <br>
-                                <a class="navlink underConstruction" href="">⚠ Videos</a>
-                                <br>
-                                <a class="navlink" href="https://lexieland.bandcamp.com">⚠ Music</a>
-                                <br>
-                                <a class="navlink underConstruction" href="">⚠ Resources</a>
-                                <br>
-                                <a class="navlink" href="coolwebsites.html">☆ Cool Websites</a>
-                                <br>
-                                <a class="navlink" href="https://github.com/shoebby">☆ GitHub</a>
-                                <br>
-                                <a class="navlink" href="plamo/plamo-main">☆ Plamo Zone</a>
-                                <br>
-                                <a class="navlink underConstruction" href="">⚠ Crafts</a>
-
-                                <h3>Trackerz</h3>
-                                <a class="navlink" href="https://letterboxd.com/shoebby/">☼ Letterboxd</a>
-                                <br>
-                                <a class="navlink" href="https://www.last.fm/user/shoebby">☼ Last.FM</a>
-                                <br>
-                                <a class="navlink" href="https://anilist.co/user/shoebby/">☼ Anilist</a>
-                                <br>
-                                <a class="navlink" href="https://backloggd.com/u/shoebby/">☼ Backloggd</a>
-                                <br>
-                                <a class="navlink" href="https://www.goodreads.com/user/show/79770440-shoebby">☼ Goodreads</a>
-
-                                <h3>Socialz</h3>
-                                <a class="navlink" href="https://bsky.app/profile/lexie.land">☾ Bluesky</a>
-                                <br>
-                                <a class="navlink" href="https://mastodon.social/@shoebby">☾ Mastodon</a>
-                                <br>
-                                <a class="navlink" href="">☾ 'shoebby' on discord!</a>
-                            </div>
-                            <div id='tyvnjam'>
-                                <script type="text/javascript" src="https://www.kazehai.com/else/tyvnjam/variables.js"></script>
-                                <script type="text/javascript" src="https://www.kazehai.com/else/tyvnjam/widget.js"></script>
-                            </div>
-                            <div id='yevn'>
-                                <script type="text/javascript" src="https://yurievnring.neocities.org/js/yurievnring-variables.js"></script>
-                                <script type="text/javascript" src="https://yurievnring.neocities.org/js/yurievnring-widget.js"></script>      
-                            </div>
-                            <div style="width: 100%; margin: 0 auto; text-align: center;" name="buttons box">
-                                    <img src="images/buttons/button-88-2.gif">
-                                    <img src="images/buttons/button-hill.gif">
-                                    <img src="images/buttons/button-imgay.jpg">
-                                    <img src="images/buttons/button-cuppydog.jpg">
-                                    <img src="images/buttons/button-likecomputer.jpg">
-                                    <img src="images/buttons/button-ralsei.gif">
-                                    <img src="images/buttons/button-internetarchive.gif">
-                                    <img src="images/buttons/button-vibri.gif">
-                                    <img src="images/buttons/button-wikipedia.gif">
-                                    <img src="images/buttons/button-trans.jpg">
-                                    <img src="images/buttons/valid-rss-rogers.png">
-                                    <img src="images/buttons/seb-button.png">
-                            </div>
-                            <div style="padding: 5px;" name="gamer card box">
-                                <a href="https://www.exophase.com/user/shoebby/">
-                                    <img src="https://card.exophase.com/2/0/289147.png?1742820007" class="gamerCard">
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <footer>
-                <span>(c) 2025 shoebby. All Rights Reserved.</span>
-            </footer>
         </div>
     </body>
 </HTML>
