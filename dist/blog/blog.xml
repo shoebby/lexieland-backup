@@ -1,9 +1,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Lexie.Land BLOG!</title>
-        <link>https://www.lexie.land/dist/blogindex.html</link>
+        <link>https://www.lexie.land/dist/blog/blogindex.html</link>
         <description>Thoughts about stuff, post-mortems, reviews, manic writings, everything a girl could ask for.</description>
-        <atom:link href="https://www.lexie.land/dist/blog.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.lexie.land/dist/blog/blog.xml" rel="self" type="application/rss+xml" />
 
         <item>
             <title>The Perfect Narrative Evaluation System (P-NES)</title>
