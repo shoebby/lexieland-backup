@@ -52,3 +52,10 @@ hl:hover .dropdown-content {
     font-size: 1.5vh;
     padding: .5vh;
 }
+
+scrap {
+    color:gray;
+}
+scrap hl {
+    color: darkred;
+}
