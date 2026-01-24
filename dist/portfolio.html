@@ -14,6 +14,7 @@
     <body>
         <div class="topbar">
             <p>Alexandria Franka Maria van Eekelen</p>
+            <p style="font-size: 2vh; text-align: right;">&lt;!--Work in process, currently only for 16:9 browsing--></pre></p>
         </div>
 
         <div class="grid-container">
@@ -32,7 +33,7 @@
 
             <div class="grid-item bio">
                 <div class="grid-sub-item" style="border-bottom: none;">
-                    <p style="text-align: center; padding: 1vh 1vw 0 1vw; font-size: 1.8vh;">Alexandria Franka Maria is...<br><br>
+                    <p>Alexandria Franka Maria is...<br><br>
                         An Utrecht-based game and interactive narrative designer, with her roots in D&D homebrew.
                         <br><br>
                         A Creative Media and Game Technologies graduate.
@@ -51,7 +52,14 @@
                     </span>
                 </div>
                 <div class="grid-sub-item" style="background-image: url('images/portfolio/gamesareimportant.gif');"></div>
-                <div class="grid-sub-item" style="background-image: url('images/portfolio/contactme.avif');"></div>
+                <div class="grid-sub-item contact" style="background-image: url('images/portfolio/contactme.avif');">
+                    <p>
+                        alexandria.vaneekelen@gmail.com
+                    </p>
+                    <p>
+                        shoebby#1212
+                    </p>
+                </div>
             </div>
 
             <div class="grid-item resume">
@@ -88,68 +96,82 @@
                             <h1>The Anders Cyclopaedia</h1>
                             <h3>(Graduation Project)</h3>
                             <h2>Lexicology and Exploration</h2>
-                            <br>
-                            <p>
+                            <p class="desc">
                                 An experiment of merging digital and pen & paper gameplay. Explore a parallel world and record its denizens to your Cyclopaedia.
                             </p>
-                            <br>
-                            <p>
-                                Genre: Third-Person, Exploration, Puzzle<br>
-                                Engine: Unity<br>
-                                Duration: 20 weeks<br>
-                                Itch.io link: The Anders Cyclopaedia<br>
-                                Companion Paper: No Stupid Questions
-                            </p>
+                            <div class="stats">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Tags:</th>
+                                            <td>Third-Person // Exploration // Puzzle</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Engine:</th>
+                                            <td>Unity (2022.3.10f1)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Dev Time:</th>
+                                            <td>20 weeks</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Link:</th>
+                                            <td><a href="https://shoebby.itch.io/the-anders-cyclopaedia">The Anders Cyclopaedia</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Companion Paper:</th>
+                                            <td><a href="./pdfs/nostupidquestions.pdf">No Stupid Questions</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="contr-1">
-                            <h2>Contributions</h2>
-                            <br>
-                            <p>
-                                Visual Design
-                                <ul>
-                                    <li>Modelling and texturing a 3D player model.</li>
-                                    <li>Modelling and texturing 4 Andersian creatures.</li>
-                                    <li>Modelling and texturing various environmental assets.</li>
-                                </ul>
-                            </p>
-                            <p>
-                                Level Design
-                                <ul>
-                                    <li>Designing 3 explorable areas.</li>
-                                </ul>
-                            </p>
-                            <p>
-                                Animation
-                                <ul>
-                                    <li>Rigging and animating each creature.</li>
-                                    <li>Rigging and making a few custom animations for the player character.</li>
-                                </ul>
-                            </p>
-                        </div>
-                        <div class="contr-2">
-                            <p>
-                                Game Design
-                                <ul>
-                                    <li>Establishing the core premise of the game.</li>
-                                    <li>Designing 5 main areas, each with their own puzzles and level elements.</li>
-                                    <li>Designing the Cyclopaedia aspect of the game.</li>
-                                </ul>
-                            </p>
-                            <p>
-                                Narrative Design
-                                <ul>
-                                    <li>Writing all of the game's dialogue.</li>
-                                    <li>Implementing narrative "pipe" scenes between explorable areas.</li>
-                                    <li>Writing the Cyclopaedia, with the addition of narrative tidbits to be used in puzzles.</li>
-                                </ul>
-                            </p>
-                            <p>
-                                Audio Design
-                                <ul>
-                                    <li>Production and implementation of various sound effects.</li>
-                                    <li>Production of 1 musical track.</li>
-                                </ul>
-                            </p>
+                        <div class="contributions">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th colspan="4">Contributions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th rowspan="3">Art</th>
+                                        <td>Modelling and texturing a 3D player model.</td>
+                                        <th rowspan="3">Gameplay</th>
+                                        <td>Establishing the core premise of the game.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Modelling and texturing 4 Andersian creatures.</td>
+                                        <td>Concepting and designing the Cyclopaedia mechanic.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Modelling and texturing various environmental assets.</td>
+                                        <td>Designing 5 main areas, each with their own puzzles and level elements.</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Level</th>
+                                        <td>Designing 3 explorable areas.</td>
+                                        <th rowspan="3">Narrative</th>
+                                        <td>Writing all of the game's dialogue.</td>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="2">Animation</th>
+                                        <td>Rigging and animating each creature.</td>
+                                        <td>Implementing narrative "pipe" scenes between explorable areas.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rigging and making a portion of the animations for the player character.</td>
+                                        <td>Writing the Cyclopaedia, with the addition of narrative tidbits to be used in puzzles.</td>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="2">Audio</th>
+                                        <td>Production and implementation of various sound effects.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Production of 1 musical track</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div id="proj-2" class="tab">

@@ -6,16 +6,22 @@
     font-family: lemonmilk-light;
     src: url(./fonts/LEMONMILK-Light.otf);
 }
+@font-face {
+    font-family: apple;
+    src: url(./fonts/AppleGaramond-Light.ttf);
+}
 
 body {
     background: url('images/doitforyou.png');
     background-size: 5vw;
 
+    font-family: 'apple';
+    font-size: 2vh;
     color: white;
+
     padding: 0;
     margin: 0;
     overflow: hidden;
-    font-size: 1.5vh;
 }
 img {
     margin: 0;
@@ -102,14 +108,9 @@ a {
     margin: 0;
 }
 .favicon {
-    animation: hueRot 4s linear infinite;
     background-image: url('images/favicon.ico');
     width: 3vw;
     height: 3vw;
-}
-@keyframes hueRot {
-    0% {filter: contrast(10) hue-rotate(0deg);}
-    100% {filter: contrast(10) hue-rotate(360deg);}
 }
 
 .banner {
@@ -135,6 +136,10 @@ a {
     grid-row-start: 2;
     grid-row-end: 3;
 }
+.bio p {
+    text-align: center;
+    padding: 1vh 1vw 0 1vw;
+}
 
 .resume {
     display: grid;
@@ -155,10 +160,21 @@ a {
     grid-row-end: 4;
 }
 
+.contact {
+    display: block;
+    padding-left: 2vw;
+    padding-top: 4vh;
+    font-size: 2vh;
+}
+.contact p {
+    text-align: left;
+    padding: 0 0 2vh 0;
+}
+
 .projects {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 5vh 85%;
+    grid-template-rows: 6% 94%;
 
     grid-column-start: 3;
     grid-column-end: 4;
@@ -186,16 +202,19 @@ a {
 
 .tab-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scrollbar-color: #FF1D00 black;
+    scrollbar-width: thin;
     justify-content: space-between;
 }
 .tab-list input {
     box-sizing: border-box;
-    border: #FF1D00 1px solid;
+    border: #FF1D00 .1vw solid;
     border-radius: 0;
 
     background: none;
-    height: 2.5vh;
+    height: 100%;
     flex: 1 0 auto;
     
     color: silver;
@@ -209,71 +228,85 @@ a {
 .tab-list input.active {
     color: red;
 }
-.tab-link {
-    height: 50%;
-}
 .tab {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
-
-    font-size: 1.5vh;
 }
 .tab .thumb {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 100%;
-    height: 100%;
 }
+
 .tab .summ {
-    width: 100%;
-    height: 100%;
+    font-size: 1.75vh;
 }
-.tab .contr-1 {
-    width: 100%;
-    height: 100%;
-
-    padding-top: .5vh;
-
-    border-top:#FF1D00 dotted .15vw;
-}
-.tab .contr-2 {
-    width: 100%;
-    height: 100%;
-
-    padding-top: .5vh;
-
-    border-top:#FF1D00 dotted .15vw;
-}
-.tab h1 {
+.tab .summ h1 {
     padding: 0;
     margin: 0;
 
     font-family: 'lemonmilk-bold';
-    font-size: 2.4vh;
+    font-size: 1.75vh;
 }
-.tab h2 {
+.tab .summ h2 {
     padding: 0;
     margin: 0;
 
     font-family: 'lemonmilk-light';
-    font-size: 1.5vh;
+    font-size: 1.75vh;
     color: silver;
 }
-.tab h3 {
+.tab .summ h3 {
     padding: 0;
     margin: 0;
 
     font-family: 'lemonmilk-light';
     font-style: italic;
     color: rgb(100, 100, 100);
+    font-size: 1.75vh;
 }
-.tab p {
-    margin: .1vw 1vw;
+.tab .summ .desc {
+    font-style: italic;
+    padding-left: 1vw;
+}
+.tab .summ .stats {
+}
+.tab .summ th {
+    text-align: right;
+}
+
+.tab .contributions {
+    width: 100%;
+    height: 100%;
+
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.tab .contributions table {
+    border-collapse: collapse;
+    border-top: .1vw solid rgb(255, 0, 0);
+    font-size: 1.75vh;
+}
+.tab .contributions thead th {
+    border: none;
+    padding-bottom: 1vh;
+
+    font-family: 'lemonmilk-light';
+    font-size: 1.75vh;
+    color: silver;
+}
+.tab .contributions th,td {
+    text-align: left;
+    vertical-align: top;
+}
+.tab .contributions th {
+    border-right: .1vw solid rgb(255, 0, 0);
+    padding-right: .5vw;
+}
+.tab .contributions td {
     padding-left: .5vw;
 }
-.tab ul {
-    padding-left: 2vw;
+.tab .contributions td::before {
+    content: "⚉ ";
 }
