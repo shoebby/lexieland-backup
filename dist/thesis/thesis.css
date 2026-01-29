@@ -4,18 +4,11 @@ body {
     text-align: justify;
     background: black;
     color: white;
-    font-size: 2.2vh;
+    font-size: 1.2em;
+    font-family: 'Times New Roman', Times, serif;
 }
 a {
     color: white;
-}
-hl {
-    position: relative;
-    display: inline-block;
-    color: red;
-    text-decoration: dotted 1px blue;
-    cursor: pointer;
-    transition: .2s;
 }
 .dropdown-content {
     display: none;
@@ -38,8 +31,24 @@ hl {
     display: inline-block;
     margin: 0 auto;
 }
+
+hl {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: .2s;
+
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: -3px;
+    font-size: 1em;
+    color: red;
+}
+hl .dropdown-content {
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 0;
+}
 hl:hover {
-    color: black;
+    color: white;
     background-color: blue;
 }
 hl:hover .dropdown-content {
@@ -55,7 +64,19 @@ hl:hover .dropdown-content {
 
 scrap {
     color:gray;
+    font-size: 0.25em;
 }
 scrap hl {
     color: darkred;
+    font-size: 0.25em
+}
+
+em {
+    font-style: normal;
+}
+em::before {
+    content: "— ";
+}
+em::after {
+    content: " —";
 }
