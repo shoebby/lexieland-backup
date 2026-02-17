@@ -80,3 +80,16 @@ em::before {
 em::after {
     content: " —";
 }
+
+table {
+    border: 2px solid white;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+}
+th, td {
+    border: 1px solid white;
+    padding: 8px 10px;
+    vertical-align: top;
+}
