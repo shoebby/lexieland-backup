@@ -81,6 +81,15 @@ em::after {
     content: " —";
 }
 
+.quote {
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: blue;
+    color: white;
+    font-size: 0.8em;
+    padding: 0.4em;
+}
+
 table {
     border: 2px solid white;
     width: 100%;
