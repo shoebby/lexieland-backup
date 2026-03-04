@@ -102,3 +102,94 @@ th, td {
     padding: 8px 10px;
     vertical-align: top;
 }
+
+.shaky {
+    text-align: center;
+    display: block;
+    text-shadow: white 0 0 10px;
+    font-size: 24pt;
+}
+.shaky::after {
+    content: "CRY";
+    
+    position: absolute;
+    left: 48%;
+
+    animation: shakyFader1 .5s infinite linear;
+}
+@keyframes shakyFader1 {
+    0%, 100% {
+        transform: translate(0, 0);
+        color: #ffffffe3;
+    }
+    10% {
+        transform: translate(-9px, 1px);
+    }
+    20% {
+        transform: translate(1px, -5px);
+    }
+    30% {
+        transform: translate(-5px, 3px);
+    }
+    40% {
+        transform: translate(4px, 2px);
+    }
+    50% {
+        transform: translate(-3px, 8px);
+        color: #ffffff38;
+    }
+    60% {
+        transform: translate(1px, -2px);
+    }
+    70% {
+        transform: translate(1px, 9px);
+    }
+    80% {
+        transform: translate(-4px, 3px);
+    }
+    90% {
+        transform: translate(-7px, 4px);
+    }
+}
+.shaky::before {
+    content: "CRY";
+
+    position: absolute;
+    left: 49%;
+
+    animation: shakyFader2 .5s infinite linear;
+}
+@keyframes shakyFader2 {
+    0%, 100% {
+        transform: translate(0, 0);
+        color: #ffffff38;
+    }
+    10% {
+        transform: translate(-3px, -3px);
+    }
+    20% {
+        transform: translate(3px, 5px);
+    }
+    30% {
+        transform: translate(8px, 6px);
+    }
+    40% {
+        transform: translate(-2px, 4px);
+    }
+    50% {
+        transform: translate(7px, -6px);
+        color: #ffffffe3;
+    }
+    60% {
+        transform: translate(9px, 7px);
+    }
+    70% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(-10px, 1px);
+    }
+    90% {
+        transform: translate(-4px, 8px);
+    }
+}
