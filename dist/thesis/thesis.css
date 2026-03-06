@@ -6,17 +6,18 @@ body {
     color: white;
     font-size: 1.2em;
     font-family: 'Times New Roman', Times, serif;
+    overflow-x: hidden;
 }
 a {
     color: white;
 }
-.dropdown-content {
+.sidenote {
     display: none;
     position: absolute;
-    bottom: 0%;
-    left: 100%;
-    min-width: 300px;
+    left: 70%;
+    max-width: 500px;
     padding: .5em;
+    margin: -1em 0 0 1.5em;
     z-index: 1;
     transition: .2s;
     text-align: left;
@@ -26,15 +27,13 @@ a {
     border: .1em solid rgb(207, 207, 207);
     box-sizing: border-box;
 }
-.dropdown-content img {
+.sidenote img {
     width: 100%;
     display: inline-block;
     margin: 0 auto;
 }
 
-hl {
-    position: relative;
-    display: inline-block;
+.hl {
     cursor: pointer;
     transition: .2s;
 
@@ -43,15 +42,15 @@ hl {
     font-size: 1em;
     color: red;
 }
-hl .dropdown-content {
+.hl .sidenote {
     font-family: 'Times New Roman', Times, serif;
     letter-spacing: 0;
 }
-hl:hover {
+.hl:hover {
     color: white;
     background-color: blue;
 }
-hl:hover .dropdown-content {
+.hl:hover .sidenote {
     display: block;
 }
 .notes {
