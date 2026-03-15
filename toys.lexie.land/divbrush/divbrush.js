@@ -32,6 +32,10 @@ function handleMouseMove(event) {
 }
 
 function setStroke(target) {
+    target.style.setProperty("position", "absolute");
+    target.style.setProperty("transform-origin", "50%");
+    target.style.setProperty("pointer-events", "none");
+
     target.style.setProperty("background", input_background.value);
     target.style.setProperty("background-repeat", "no-repeat");
     target.style.setProperty("background-size", "cover");
@@ -73,6 +77,7 @@ const input_borderRadius = document.querySelector("#borderRadius");
 const input_animation = document.querySelector("#animation");
 const input_animSettings = document.querySelector("#animSettings");
 
+const input_saveCanvas = document.querySelector("#saveCanvas");
 
 const overlay = document.querySelector("#divBrush_bootOverlay");
 document.querySelector("button[target='closeOverlay']").addEventListener('click', function() {
@@ -80,9 +85,21 @@ document.querySelector("button[target='closeOverlay']").addEventListener('click'
 });
 
 const previewBrush = document.querySelector(".peviewBrush");
+let previewShadow = previewBrush.attachShadow({ mode: "open" });
+
+function SetPreview() {
+    setStroke(previewBrush);
+    previewShadow.adoptedStyleSheets = [new CSSStyleSheet()];
+    previewShadow.adoptedStyleSheets[0].replaceSync("@keyframes brushAnim {" + input_animation.value + "}");
+}
+
 document.querySelectorAll("input, textarea, details").forEach(element => {
     element.addEventListener('click', function() {
-        setStroke(previewBrush);
+        SetPreview();
     })
 });
-setStroke(previewBrush);
+SetPreview();
+
+document.querySelector("button[target='saveCanvas']").addEventListener('click', function() {
+    capture();
+});

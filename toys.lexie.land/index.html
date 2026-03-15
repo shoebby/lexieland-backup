@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LexieLand - My Web Toys</title>
+        <title>LexieLand - VisunovOS</title>
         <meta name="description" content="Web toys built entirely or in large part by Alexandria van Eekelen, toydev at large.">
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <link rel="stylesheet" href="mytoys.css">
+        <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="https://unpkg.com/98.css">
-        <script src="mytoys.js" type="module"></script>
-        <script src="mytoys_startup.js" type="module"></script>
+        <script src="index.js" type="module"></script>
+        <script src="index_startup.js" type="module"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     </head>
@@ -27,16 +27,20 @@
         </div>
 
         <div class="static bin"><p class="folderName">Recycling Bin</p></div>
-        <a value="www.lexie.land" target="openWindow" link="./index.html"><div class="static myComputer"><p class="folderName">Lexie.Land</p></div></a>
-        <a value="Recurse3" target="openWindow" link="./SI26.html"><div class="static recurse"><p class="folderName">Recurse^3</p></div></a>
-        <a value="DivBrush" target="openWindow" link="./divbrush.html"><div class="static divbrush"><p class="folderName">DivBrush</p></div></a>
-        <a value="Poppy" target="openPoppy" link="./poppy.html"><div class="static poppy"><p class="folderName">Poppy</p></div></a>
-        <a value="About VisunovOS" target="openWindow" link="./mytoys_about.html"><div class="static about"><p class="folderName">About VisunovOS</p></div></a>
-        <a value="PopUpCollager" target="openWindow" link="./popupcollager/index.html"><div class="static popupcollage"><p class="folderName">Pop-Up Collager</p></div></a>
+        <div class="static myComputer"><p class="folderName">Visit lexie.land!</p></div>
+        <a value="Recurse3" target="openWindow" link="./recurse3/"><div class="static recurse"><p class="folderName">Recurse^3</p></div></a>
+        <a value="DivBrush" target="openWindow" link="./divbrush/"><div class="static divbrush"><p class="folderName">DivBrush</p></div></a>
+        <a value="Poppy" target="openPoppy"><div class="static poppy"><p class="folderName">Poppy</p></div></a>
+        <a value="About VisunovOS" target="openWindow" link="./about.html"><div class="static about"><p class="folderName">About VisunovOS</p></div></a>
+        <a value="PopUpCollager" target="openWindow" link="./popupcollager/"><div class="static popupcollage"><p class="folderName">Pop-Up Collager</p></div></a>
+        <a value="Sierpinski" target="openWindow" link=".//sierpinski/"><div class="static sierpinski"><p class="folderName">Sierpinskinator</p></div></a>
+        <a value="DivSprout" target="openWindow" link="./sprout/"><div class="static sprout"><p class="folderName">Div-Sprouter</p></div></a>
+        <a target="guyMode"><div class="static guymode"><p class="folderName">Guy Mode</p></div></a>
+        <a target="openSettings"><div class="static settings"><p class="folderName">Settings</p></div></a>
 
         <!--INTERACTIVE FOLDERS-->
 
-        <details id="cat_fractal" class="openable">
+        <!-- <details id="cat_fractal" class="openable">
             <summary><p class="folderName">Fractals</p></summary>
             <div class="container window">
                 <div class="title-bar">
@@ -107,17 +111,12 @@
                         <tbody>
                             <tr>
                                 <td>Recurse3</td>
-                                <td><a value="Recurse^3" target="openWindow" link="./SI26.html"><u>www.lexie.land/dist/SI26.html</u></a></td>
+                                <td><a value="Recurse^3" target="openWindow" link="./recurse3.html"><u>toys.lexie.land/recurse3.html</u></a></td>
                                 <td>Completed</td>
                             </tr>
                             <tr>
                                 <td>Divvy Sprout!</td>
-                                <td><a value="Divvy Sprout!" target="openWindow" link="./sprout_div.html"><u>www.lexie.land/dist/sprout_div.html</u></a></td>
-                                <td>Completed</td>
-                            </tr>
-                            <tr>
-                                <td>Webby Sprouts!</td>
-                                <td><a value="Webby Sprouts" target="openWindow" link="https://addons.mozilla.org/en-US/firefox/addon/webby-sprouts/"><u>addons.mozilla.org/en-US/firefox/addon/webby-sprouts/</u></a></td>
+                                <td><a value="Divvy Sprout!" target="openWindow" link="./sprout_div.html"><u>toys.lexie.land/sprout_div.html</u></a></td>
                                 <td>Completed</td>
                             </tr>
                             <tr>
@@ -125,6 +124,7 @@
                                 <td><a value="Sierpinski Doubt!" target="openWindow" link="./sierpinski.html"><u>www.lexie.land/dist/sierpinski.html</u></a></td>
                                 <td>Completed</td></a>
                             </tr>
+                            <tr><td></td><td></td><td></td></tr>
                             <tr><td></td><td></td><td></td></tr>
                             <tr><td></td><td></td><td></td></tr>
                             <tr><td></td><td></td><td></td></tr>
@@ -142,9 +142,9 @@
                     <p class="status-bar-field"><img src='images/webtoys/icon_folder.png' style="height: .9em; padding-top: .1em;"> Fractals</p>
                 </div>
             </div>
-        </details>
+        </details> -->
 
-        <details id="cat_popup" class="openable">
+        <!-- <details id="cat_popup" class="openable">
             <summary><p class="folderName">Pop-Up Windows</p></summary>
             <div class="container window" style="width: 36vw;">
                 <div class="title-bar">
@@ -242,7 +242,7 @@
                     <p class="status-bar-field"><img src='images/webtoys/icon_folder.png' style="height: .9em; padding-top: .1em;"> Pop-Up Windows</p>
                 </div>
             </div>
-        </details>
+        </details> -->
 
         <!-- <details id="cat_art" class="openable">
             <summary><p class="folderName">Art Toys</p></summary>
@@ -417,13 +417,6 @@
                     <div class="startMenu-list">
                         <table class="interactive">
                             <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/winupdate.png"></td>
-                                <td>Windows Update</td>
-                            </tr>
-                        </table>
-                        <div class="divider"></div>
-                        <table class="interactive">
-                            <tr>
                                 <td style="width: 40px;"><img src="images/webtoys/guymode.png"></td>
                                 <td><a target="guyMode" link=""><u>G</u>uy Mode</a></td>
                             </tr>
@@ -495,33 +488,9 @@
                             </tr>
                             <tr>
                                 <td style="width: 40px;"><img src="images/webtoys/settings.png"></td>
-                                <td><a value="" target="openSettings" link=""><u>S</u>ettings</a></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/find.png"></td>
-                                <td><u>F</u>ind</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/help.png"></td>
-                                <td><u>H</u>elp</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/run.png"></td>
-                                <td><u>R</u>un...</td>
+                                <td><a target="openSettings"><u>S</u>ettings</a></td>
                             </tr>
                         </table>
-                        <div class="divider"></div>
-                        <table class="interactive">
-                            <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/logoff.png"></td>
-                                <td><u>L</u>og Off Lexie...</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 40px;"><img src="images/webtoys/shutdown.png"></td>
-                                <td>Sh<u>u</u>t Down...</td>
-                            </tr>
-                        </table>
-                        
                     </div>
                 </div>
             </details>

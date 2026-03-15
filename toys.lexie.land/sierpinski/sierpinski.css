@@ -1,0 +1,30 @@
+:root {
+    --s: 1;
+}
+
+body {
+    background-color: black;
+}
+
+.point {
+    position: absolute;
+
+    margin-top: "0px";
+    margin-left: "0px";
+
+    border-radius: 999px;
+    transform-origin: center;
+    animation-name: spin;
+    animation-duration: .2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    0% {
+    }
+    50% {
+    }
+    100% {
+    }
+}

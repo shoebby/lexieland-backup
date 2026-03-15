@@ -13,7 +13,7 @@
         <div style="position: absolute;">
             <a href="index.html">home</a>
             <br><br>
-            <input type="button" value="get that sierpinski going!" onclick="init(8);">
+            <input type="button" value="get that sierpinski going!" onclick="init(5);">
             <br><br>
             <input type="button" value="destroy a sierpinski!" onclick="destroySierpinsk();">
         </div>
@@ -22,10 +22,10 @@
             var colorStep;
             var sizeStep;
             var rotStep;
-            var startSize = 8;
+            var startSize = 25;
 
             function init(depth) {
-                colorStep = 255 / depth;
+                colorStep = 50 / depth;
                 sizeStep = startSize / depth;
                 rotStep = 80 / depth;
 
@@ -34,14 +34,21 @@
                 startPoint.setAttribute("id", "point");
                 document.body.appendChild(startPoint);
 
-                startPoint.style.left = "50%";
-                startPoint.style.top = "500px";
+                startPoint.style.left = "50vw";
+                startPoint.style.top = "50vh";
+
+                setPointStyle(startPoint, depth + 1);
 
                 //traditional sierpinski triangle
-                sierpinsk([[0, -200], [200, 100], [-200, 100]], depth, startPoint, .5);
+                //sierpinsk([[0, -200], [200, 100], [-200, 100]], depth, startPoint, .5);
 
                 //variance
                 //sierpinsk([[100, 0], [-100, 0], [0, -150], [0, 300]], depth, startPoint, .5);
+
+                //pentagon
+                sierpinsk([[0, -150], [-125, -50], [125, -50], [75, 100], [-75, 100]],depth, startPoint, .5);
+                
+                //sierpinsk([[-49, -86], [-121, 145], [88, -25]],depth, startPoint, .75);
             }
 
             function destroySierpinsk() {
@@ -58,15 +65,27 @@
                     newPixel.classList.add("point");
                     parent.appendChild(newPixel);
 
-                    newPixel.style.left = points[i][0] + "px";
-                    newPixel.style.top = points[i][1] + "px";
+                    // newPixel.style.left = points[i][0] + "px";
+                    // newPixel.style.top = points[i][1] + "px";
+                    
+                    newPixel.style.transform = `translateX(${points[i][0]}px) translateY(${points[i][1]}px)`;
 
-                    newPixel.style.backgroundColor = "rgb(160, " + (colorStep * depth) / 4 + ", " + colorStep * depth + ")";
+                    setPointStyle(newPixel, depth);
+
                     //newPixel.style.transform = "rotate(" + rotStep * depth + "deg)"
+
                     var newPoints = points.map((point) => point.map((coord) => coord * ratio));
 
                     sierpinsk(newPoints, depth - 1, newPixel, ratio);
                 }
             }
+
+            function setPointStyle(point, pointDepth) {
+                point.style.backgroundColor = `hsl(${(((colorStep * pointDepth) * 2) + 60)}deg, 100%, ${colorStep * pointDepth}%)`;
+
+                point.style.width = sizeStep * pointDepth + "px";
+                point.style.height = sizeStep * pointDepth + "px";
+            }
+
         </script>
     <body>

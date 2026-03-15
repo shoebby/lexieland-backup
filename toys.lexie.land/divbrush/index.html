@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LexieLand - DivBrush</title>
     <meta name="description" content="Draw divs with your cursor!">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="divbrush.css">
     <script src="divbrush.js" type="module"></script>
 </head>
@@ -20,7 +19,9 @@
         </div>
         <button target="closeOverlay">start drawing!</button>
     </div>
+
     <div id="canvas"></div>
+
     <div id="toolbar">
         <div class="preview">
             <div class="peviewBrush"></div>
@@ -81,49 +82,50 @@
             </div>
         </details>
     </div>
+
     <script>
-            const audio = new Audio("./sounds/webtoys/divbrush.mp3");
-            audio.play();
+        const audio = new Audio("../sounds/webtoys/divbrush.mp3");
+        audio.play();
 
-            const title = document.querySelector(".title");
-            const title_b = document.querySelector(".t_b");
-            const title_r = document.querySelector(".t_r");
-            const title_u = document.querySelector(".t_u");
-            const title_s = document.querySelector(".t_s");
-            const title_h = document.querySelector(".t_h");
-            const playbtn = document.querySelector("button[target='closeOverlay']");
+        const title = document.querySelector(".title");
+        const title_b = document.querySelector(".t_b");
+        const title_r = document.querySelector(".t_r");
+        const title_u = document.querySelector(".t_u");
+        const title_s = document.querySelector(".t_s");
+        const title_h = document.querySelector(".t_h");
+        const playbtn = document.querySelector("button[target='closeOverlay']");
 
-            title_b.style.setProperty("display", "none");
-            title_r.style.setProperty("display", "none");
-            title_u.style.setProperty("display", "none");
-            title_s.style.setProperty("display", "none");
-            title_h.style.setProperty("display", "none");
-            playbtn.style.setProperty("display", "none");
+        title_b.style.setProperty("display", "none");
+        title_r.style.setProperty("display", "none");
+        title_u.style.setProperty("display", "none");
+        title_s.style.setProperty("display", "none");
+        title_h.style.setProperty("display", "none");
+        playbtn.style.setProperty("display", "none");
 
-            setTimeout(() => {
-                title.style.setProperty("rotate", "-35deg");
-            }, 0);
-            setTimeout(() => {
-                title.style.setProperty("rotate", "35deg");
-            }, 200);
-            setTimeout(() => {
-                title.style.setProperty("rotate", "0deg");
-                title_b.style.setProperty("display", "inline-block");
-            }, 350);
-            setTimeout(() => {
-                title_r.style.setProperty("display", "inline-block");
-            }, 550);
-            setTimeout(() => {
-                title_u.style.setProperty("display", "inline-block");
-            }, 750);
-            setTimeout(() => {
-                title_s.style.setProperty("display", "inline-block");
-            }, 950);
-            setTimeout(() => {
-                title_h.style.setProperty("display", "inline-block");
-                title.style.setProperty("transition", "3s");
-                title.style.setProperty("transform", "scale(1.2)");
-                playbtn.style.setProperty("display", "block");
-            }, 1150);
+        setTimeout(() => {
+            title.style.setProperty("rotate", "-35deg");
+        }, 0);
+        setTimeout(() => {
+            title.style.setProperty("rotate", "35deg");
+        }, 200);
+        setTimeout(() => {
+            title.style.setProperty("rotate", "0deg");
+            title_b.style.setProperty("display", "inline-block");
+        }, 350);
+        setTimeout(() => {
+            title_r.style.setProperty("display", "inline-block");
+        }, 550);
+        setTimeout(() => {
+            title_u.style.setProperty("display", "inline-block");
+        }, 750);
+        setTimeout(() => {
+            title_s.style.setProperty("display", "inline-block");
+        }, 950);
+        setTimeout(() => {
+            title_h.style.setProperty("display", "inline-block");
+            title.style.setProperty("transition", "3s");
+            title.style.setProperty("transform", "scale(1.2)");
+            playbtn.style.setProperty("display", "block");
+        }, 1150);
     </script>
 </body>

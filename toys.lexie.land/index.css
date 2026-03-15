@@ -133,6 +133,26 @@ summary::-webkit-details-marker {
     top: 335px;
     background-image: url(images/webtoys/collager.png);
 }
+.sierpinski {
+    left: 235px;
+    top: 335px;
+    background-image: url(images/webtoys/sierpinskinator.png);
+}
+.sprout {
+    left: 235px;
+    top: 435px;
+    background-image: url(images/webtoys/sprout.png);
+}
+.settings {
+    left: 335px;
+    top: 435px;
+    background-image: url(images/webtoys/settings.png);
+}
+.guymode {
+    left: 535px;
+    top: 135px;
+    background-image: url(images/webtoys/guymode.png);
+}
 
 /* === OPENABLES === */
 
@@ -280,8 +300,8 @@ div {
 .startMenu {
     position: absolute;
     height: 40vh;
-    top: -40.5vh;
-    left: 5px;
+    top: -40.7vh;
+    left: 0;
     width: 10.5vw;
     z-index: 10;
 }

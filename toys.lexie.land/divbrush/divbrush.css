@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'f25';
-    src: url("./fonts/F25_Bank_Printer_Bold.ttf");
+    src: url("../fonts/F25_Bank_Printer_Bold.ttf");
 }
 
 html, body {
@@ -96,7 +96,7 @@ html, body {
     font-size: 20vh;
     rotate: -8deg;
 
-    background: url("images/webtoys/guymode.png"), black;
+    background: url("../images/webtoys/guymode.png"), black;
     background-size: 100%;
     background-clip: text;
 
